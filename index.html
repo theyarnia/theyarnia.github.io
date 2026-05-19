@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Yarnia</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Import fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=The+Seasons&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  </head>
-  <body>
+<head>
+  <title>Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=The+Seasons&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <h3>Filter</h3>
+    <ul>
+      <li><a href="#" onclick="filterCategory('animal')">Animals</a></li>
+      <li><a href="#" onclick="filterCategory('character')">Characters</a></li>
+      <li><a href="#" onclick="filterCategory('flower')">Flowers</a></li>
+      <li><a href="#" onclick="filterCategory('bag')">Bags</a></li>
+    </ul>
+    <a href="cart.html">🛒 View Cart</a>
+    <a href="contact.html">📞 Contact Us</a>
+  </aside>
+
+  <main>
     <h1>Welcome to Yarnia!</h1>
     <p>Handmade crochet treasures ♡</p>
 
     <h2>Our Products</h2>
     <div class="product-grid">
-      <div class="product">
+      <div class="product" data-category="character">
         <img src="mike-wazowski.jpg" alt="Crochet Mike Wazowski">
-        <h3>Crochet Mike Wazowski</h3>
+        <h3><a href="mike.html">Crochet Mike Wazowski</a></h3>
         <p>Rs. 1500</p>
-        <a href="https://wa.me/923328234439?text=I%20want%20to%20order%20Crochet%20Mike%20Wazowski" target="_blank">
-          <button>Order Now</button>
-        </a>
+        <button onclick="addToCart('Crochet Mike Wazowski',1500)">Add to Cart</button>
       </div>
 
-      <div class="product">
+      <div class="product" data-category="flower">
         <img src="lily.jpg" alt="Crochet Lily">
-        <h3>Crochet Lily</h3>
+        <h3><a href="lily.html">Crochet Lily</a></h3>
         <p>Rs. 2000</p>
-        <a href="https://wa.me/923328234439?text=I%20want%20to%20order%20Crochet%20Lily" target="_blank">
-          <button>Order Now</button>
-        </a>
+        <button onclick="addToCart('Crochet Lily',2000)">Add to Cart</button>
       </div>
 
-      <div class="product">
+      <div class="product" data-category="animal">
         <img src="bunny.jpg" alt="Crochet Bunny">
-        <h3>Crochet Bunny</h3>
+        <h3><a href="bunny.html">Crochet Bunny</a></h3>
         <p>Rs. 3000</p>
-        <a href="https://wa.me/923328234439?text=I%20want%20to%20order%20Crochet%20Bunny" target="_blank">
-          <button>Order Now</button>
-        </a>
+        <button onclick="addToCart('Crochet Bunny',3000)">Add to Cart</button>
       </div>
-    </div>
-  </body>
+
+     <div class="product" data-category="flower">
+        <img src="tulip.jpg" alt="Crochet Tulip">
+        <h3><a href="tulip.html">Crochet Tulip</a></h3>
+        <p>Rs. 1500</p>
+        <button onclick="addToCart('Crochet Tulip',1500)">Add to Cart</button>
+      </div>
+     </div>
+
+  </main>
+
+  <script src="cart.js"></script>
+</body>
 </html>
