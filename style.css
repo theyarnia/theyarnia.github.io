@@ -1,20 +1,46 @@
 body {
   background-color: lavender;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif; /* clean body font */
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'The Seasons', serif; /* elegant display font */
 }
 
 h1 {
+  color: pink;
+  margin-top: 20px;
+}
+
+h2 {
   color: purple;
+  margin-top: 40px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .product {
   border: 2px solid purple;
-  padding: 10px;
-  margin: 20px;
-  display: inline-block;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
   background-color: white;
   border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 button {
@@ -24,7 +50,10 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  font-family: 'Inter', sans-serif;
 }
+
 button:hover {
-  background-color: darkviolet;
+  background-color: brown;
 }
