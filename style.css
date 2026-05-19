@@ -10,9 +10,22 @@ h1, h2, h3 {
   font-family: 'The Seasons', serif;
 }
 
-h1 {
-  color: brown; /* warm headline */
-  margin-top: 20px;
+/* Header Banner */
+.site-header {
+  background-color: brown; /* banner color */
+  color: white;
+  padding: 20px 0;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.site-header .tagline {
+  margin: 5px 0 0;
+  font-size: 1.2em;
+  font-family: 'Inter', sans-serif;
 }
 
 h2 {
@@ -29,7 +42,7 @@ h2 {
 }
 
 .product {
-  border: 2px solid #8B4513; /* mocha border */
+  border: 2px solid #8B4513;
   padding: 15px;
   width: 200px;
   text-align: center;
@@ -44,7 +57,7 @@ h2 {
 }
 
 button {
-  background-color: #8B4513; /* mocha button */
+  background-color: #8B4513;
   color: white;
   padding: 8px 12px;
   border: none;
@@ -55,5 +68,5 @@ button {
 }
 
 button:hover {
-  background-color: brown; /* darker hover */
+  background-color: brown;
 }
