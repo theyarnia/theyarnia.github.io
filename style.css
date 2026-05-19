@@ -5,8 +5,9 @@ body {
 }
 
 h1 {
-  color: pink;
+  color: purple;
 }
+
 .product {
   border: 2px solid purple;
   padding: 10px;
@@ -16,12 +17,8 @@ h1 {
   border-radius: 10px;
 }
 
-.product img {
-  border-radius: 8px;
-}
-
 button {
-  background-color: brown;
+  background-color: purple;
   color: white;
   padding: 8px 12px;
   border: none;
@@ -29,5 +26,5 @@ button {
   cursor: pointer;
 }
 button:hover {
-  background-color: green;
+  background-color: darkviolet;
 }
