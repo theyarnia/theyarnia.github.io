@@ -1,22 +1,22 @@
 body {
   background-color: lavender;
-  font-family: 'Inter', sans-serif; /* clean body font */
+  font-family: 'Inter', sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
 h1, h2, h3 {
-  font-family: 'The Seasons', serif; /* elegant display font */
+  font-family: 'The Seasons', serif;
 }
 
 h1 {
-  color: pink;
+  color: brown; /* warm headline */
   margin-top: 20px;
 }
 
 h2 {
-  color: purple;
+  color: #8B4513; /* mocha brown for subheadings */
   margin-top: 40px;
 }
 
@@ -29,7 +29,7 @@ h2 {
 }
 
 .product {
-  border: 2px solid purple;
+  border: 2px solid #8B4513; /* mocha border */
   padding: 15px;
   width: 200px;
   text-align: center;
@@ -44,7 +44,7 @@ h2 {
 }
 
 button {
-  background-color: purple;
+  background-color: #8B4513; /* mocha button */
   color: white;
   padding: 8px 12px;
   border: none;
@@ -55,5 +55,5 @@ button {
 }
 
 button:hover {
-  background-color: brown;
+  background-color: brown; /* darker hover */
 }
