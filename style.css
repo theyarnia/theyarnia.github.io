@@ -1,47 +1,72 @@
 body {
-  background-color: #fffafc; /* soft blush */
+  background-color: #fffafc;
   font-family: 'Inter', sans-serif;
-  text-align: center;
   margin: 0;
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f8d7e3;
+  padding: 20px;
+  border-right: 2px solid #e6c9d8;
+}
+
+.sidebar h3 {
+  font-family: 'The Seasons', serif;
+  color: #b58db6;
+}
+
+.sidebar ul {
+  list-style: none;
   padding: 0;
 }
 
-h1, h2, h3 {
-  font-family: 'The Seasons', serif;
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #a67873;
+  font-weight: 600;
+}
+
+main {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
 }
 
 h1 {
-  color: #d8a7b1; /* pastel rose */
-  margin-top: 40px;
+  font-family: 'The Seasons', serif;
+  color: #d8a7b1;
   font-size: 3em;
-  letter-spacing: 2px;
+  margin-top: 20px;
 }
 
 p {
-  color: #a67873; /* muted mocha */
-  font-size: 1.2em;
-  margin-top: 8px;
+  color: #a67873;
   font-style: italic;
 }
 
 h2 {
-  color: #b58db6; /* soft lilac */
-  margin-top: 50px;
+  color: #b58db6;
+  margin-top: 40px;
 }
 
 .product-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* keeps products centered */
+  justify-content: center;
   gap: 25px;
   margin-top: 30px;
 }
 
 .product {
-  border: 2px solid #e6c9d8; /* pastel border */
+  border: 2px solid #e6c9d8;
   padding: 15px;
   width: 220px;
-  text-align: center;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(216, 167, 177, 0.25);
