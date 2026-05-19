@@ -5,5 +5,29 @@ body {
 }
 
 h1 {
-  color: purple;
+  color: pink;
+}
+.product {
+  border: 2px solid purple;
+  padding: 10px;
+  margin: 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.product img {
+  border-radius: 8px;
+}
+
+button {
+  background-color: brown;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: green;
 }
