@@ -1,5 +1,5 @@
 body {
-  background-color: #fffafc; /* soft blush background */
+  background-color: #fffafc; /* soft blush */
   font-family: 'Inter', sans-serif;
   text-align: center;
   margin: 0;
@@ -10,20 +10,31 @@ h1, h2, h3 {
   font-family: 'The Seasons', serif;
 }
 
-h1 {
-  color: #d8a7b1; /* pastel rose pink */
-  margin-top: 20px;
-  font-size: 3em;
+/* Pastel Header Banner */
+.site-header {
+  background: linear-gradient(135deg, #f8d7e3, #e6c9d8, #d8a7b1); /* pastel pink gradient */
+  color: #5c3d4e; /* soft plum text */
+  padding: 30px 0;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 4px 12px rgba(216, 167, 177, 0.3);
 }
 
-p {
-  color: #a67873; /* muted mocha for tagline */
+.site-header h1 {
+  margin: 0;
+  font-size: 3em;
+  color: #5c3d4e;
+}
+
+.site-header .tagline {
+  margin: 8px 0 0;
   font-size: 1.2em;
-  margin-top: 5px;
+  color: #7a5c73;
+  font-family: 'Inter', sans-serif;
 }
 
 h2 {
-  color: #b58db6; /* soft lilac for section titles */
+  color: #b58db6; /* soft lilac */
   margin-top: 40px;
 }
 
@@ -36,7 +47,7 @@ h2 {
 }
 
 .product {
-  border: 2px solid #e6c9d8; /* pastel border */
+  border: 2px solid #e6c9d8;
   padding: 15px;
   width: 220px;
   text-align: center;
@@ -56,7 +67,7 @@ h2 {
 }
 
 button {
-  background-color: #d8a7b1; /* pastel rose button */
+  background-color: #d8a7b1;
   color: white;
   padding: 10px 14px;
   border: none;
@@ -68,5 +79,5 @@ button {
 }
 
 button:hover {
-  background-color: #b58db6; /* soft lilac hover */
+  background-color: #b58db6;
 }
