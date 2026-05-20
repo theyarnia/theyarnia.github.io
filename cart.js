@@ -1,3 +1,4 @@
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(product, price) {
@@ -21,3 +22,4 @@ function removeItem(index) {
   localStorage.setItem("cart", JSON.stringify(cart));
   showCart();
 }
+ 
