@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarnia – Handmade Crochet, Karachi</title>
+  <meta name="description" content="Handmade crochet flowers, amigurumi characters and bags — made with love in Karachi.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <span class="brand-icon">🧶</span>
+        <div class="brand-text">
+          <h1><a href="index.html">Yarnia</a></h1>
+          <p class="tagline">Things made slow, on purpose. Because not everything needs to be mass-produced.</p>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
+      </nav>
+    </div>
+    <div class="filter-bar">
+      <span>Browse</span>
+      <a href="#" class="active" onclick="filterCards('all',this);return false;">All</a>
+      <a href="#" onclick="filterCards('animals',this);return false;">Animals</a>
+      <a href="#" onclick="filterCards('characters',this);return false;">Characters</a>
+      <a href="#" onclick="filterCards('flowers',this);return false;">Flowers</a>
+      <a href="#" onclick="filterCards('bags',this);return false;">Bags</a>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <h2>Every stitch is someone's 2am ♡</h2>
+    <p>No factory. No shortcuts. Just hands, yarn, and a little too much love put into every single piece.</p>
+  </section>
+
+  <main>
+    <h3 class="section-heading">Our Collection</h3>
+    <div class="products-grid" id="products-grid">
+
+      <div class="product-card" data-category="characters">
+        <img src="mike-wazowski.jpg" alt="Crochet Mike Wazowski">
+        <div class="card-inner">
+          <h2>Crochet Mike Wazowski</h2>
+          <p class="price">Rs. 1,500</p>
+          <div class="card-actions">
+            <a href="mike.html" class="btn-view">View Details</a>
+            <button class="btn-cart" onclick="addToCart('Crochet Mike Wazowski', 1500)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="flowers">
+        <img src="lily.jpg" alt="Crochet Lily">
+        <div class="card-inner">
+          <h2>Crochet Lily</h2>
+          <p class="price">Rs. 2,000</p>
+          <div class="card-actions">
+            <a href="lily.html" class="btn-view">View Details</a>
+            <button class="btn-cart" onclick="addToCart('Crochet Lily', 2000)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="animals">
+        <img src="bunny.jpg" alt="Crochet Bunny">
+        <div class="card-inner">
+          <h2>Crochet Bunny</h2>
+          <p class="price">Rs. 3,000</p>
+          <div class="card-actions">
+            <a href="bunny.html" class="btn-view">View Details</a>
+            <button class="btn-cart" onclick="addToCart('Crochet Bunny', 3000)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="flowers">
+        <img src="tulip.jpg" alt="Crochet Tulip">
+        <div class="card-inner">
+          <h2>Crochet Tulip</h2>
+          <p class="price">Rs. 1,500</p>
+          <div class="card-actions">
+            <a href="tulip.html" class="btn-view">View Details</a>
+            <button class="btn-cart" onclick="addToCart('Crochet Tulip', 1500)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product-card" data-category="characters">
+        <img src="mrbean.jpg" alt="Mr. Bean Teddy">
+        <div class="card-inner">
+          <h2>Mr. Bean Teddy</h2>
+          <p class="price">Rs. 2,500</p>
+          <div class="card-actions">
+            <a href="mrbean.html" class="btn-view">View Details</a>
+            <button class="btn-cart" onclick="addToCart('Mr. Bean Teddy', 2500)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="animals">
+        <img src="mrsteddy.jpg" alt="Mrs. Teddy">
+        <div class="card-inner">
+          <h2>Mrs. Teddy</h2>
+          <p class="price">Rs. 2,500</p>
+          <div class="card-actions">
+            <a href="mrsteddy.html" class="btn-view">View Details</a>
+            <button class="btn-cart" onclick="addToCart('Mrs. Teddy', 2500)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- HANDMADE STRIP -->
+  <section style="background:var(--mocha);color:var(--cream);text-align:center;padding:32px 20px;margin-top:40px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;opacity:0.9;letter-spacing:0.5px;">Every piece is one of a kind. Made by hand. Made with intent.</p>
+    <p style="font-size:0.82rem;font-weight:300;margin-top:8px;opacity:0.6;letter-spacing:0.3px;">Custom orders open — DM us on Instagram or WhatsApp</p>
+  </section>
+
+  <!-- WHY CROCHET STRIP -->
+  <section style="background:var(--pink);padding:48px 20px;text-align:center;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--mocha);font-weight:600;margin-bottom:28px;letter-spacing:0.3px;">Why handmade?</p>
+    <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:700px;margin:0 auto;">
+      <div style="max-width:160px;">
+        <div style="font-size:2rem;margin-bottom:8px;">🌿</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--mocha);margin-bottom:4px;">Lasts forever</p>
+        <p style="font-size:0.78rem;font-weight:300;color:var(--mocha2);line-height:1.6;">No wilting. No fading. Real flowers die in a week.</p>
+      </div>
+      <div style="max-width:160px;">
+        <div style="font-size:2rem;margin-bottom:8px;">🤍</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--mocha);margin-bottom:4px;">Made with care</p>
+        <p style="font-size:0.78rem;font-weight:300;color:var(--mocha2);line-height:1.6;">Every stitch placed by hand. No two pieces identical.</p>
+      </div>
+      <div style="max-width:160px;">
+        <div style="font-size:2rem;margin-bottom:8px;">🎁</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--mocha);margin-bottom:4px;">Custom orders</p>
+        <p style="font-size:0.78rem;font-weight:300;color:var(--mocha2);line-height:1.6;">Colours, sizes, characters. Tell us what you want.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="cart.js"></script>
+  <script>
+    function filterCards(cat, el) {
+      document.querySelectorAll('.filter-bar a').forEach(a => a.classList.remove('active'));
+      el.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

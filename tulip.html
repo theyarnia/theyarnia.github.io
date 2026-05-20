@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Tulip – Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <span class="brand-icon">🧶</span>
+        <div class="brand-text"><h1><a href="index.html">Yarnia</a></h1></div>
+      </div>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="product-detail">
+      <div class="product-images">
+        <img src="tulip.jpg" alt="Crochet Tulip">
+      </div>
+      <div class="product-info">
+        <h1>Crochet Tulip</h1>
+        <p class="price">Rs. 1,500</p>
+        <p>A delicate crochet tulip that blooms forever. Handmade in Karachi with care in every stitch.</p>
+        <div class="meta-block">
+          <p><strong>Material:</strong> Soft cotton yarn, wire stem</p>
+          <p><strong>Size:</strong> Approx. 22 cm stem length</p>
+          <p><strong>Made in:</strong> Karachi, by hand</p>
+        </div>
+        <div class="qty-row">
+          <label for="qty">Quantity:</label>
+          <select id="qty">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+        <div class="detail-cta">
+          <button class="btn-cart" onclick="addToCart('Crochet Tulip', 1500)">🛒 Add to Cart</button>
+          <button class="btn-save">♡ Save for Later</button>
+        </div>
+        <a href="index.html" class="btn-back">← Back to Shop</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+  </footer>
+  <script src="cart.js"></script>
+</body>
+</html>

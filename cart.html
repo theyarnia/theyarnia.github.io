@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart – Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div class="brand-group"><h1><a href="index.html">Yarnia</a></h1></div>
+      <nav class="top-nav">
+        <a href="contact.html">📞 Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="cart-box">
+      <h1>Your Cart</h1>
+      <table>
+        <thead>
+          <tr id="cart-header" style="display:none">
+            <th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+      <p class="cart-total" id="cart-total"></p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+        <button class="btn-cart" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+        <button class="btn-cart" style="background:transparent;color:var(--mocha);border:1.5px solid var(--mocha);" onclick="clearCart()">Clear Cart</button>
+      </div>
+      <p style="margin-top:16px;font-size:0.85rem;opacity:0.65;">We'll confirm your order and arrange payment via WhatsApp or bank transfer.</p>
+    </div>
+  </main>
+  <footer>
+    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+  </footer>
+  <script src="cart.js"></script>
+  <script>
+    function checkoutWhatsApp() {
+      const cart = getCart();
+      if (!cart.length) { alert('Your cart is empty!'); return; }
+      const lines = cart.map(i => `• ${i.name} x${i.qty} = Rs. ${(i.price*i.qty).toLocaleString()}`).join('\n');
+      const total = cart.reduce((s,i) => s + i.price*i.qty, 0);
+      const msg = encodeURIComponent(`Hi Yarnia! I'd like to order:\n\n${lines}\n\nTotal: Rs. ${total.toLocaleString()}\n\nPlease confirm availability.`);
+      window.open(`https://wa.me/923328234439?text=${msg}`, '_blank');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = getCart();
+      if (cart.length) document.getElementById('cart-header').style.display = '';
+    });
+  </script>
+</body>
+</html>
