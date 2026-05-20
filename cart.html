@@ -1,19 +1,46 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart - Yarnia</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <div class="header-top">
+      <h1><a href="index.html" style="text-decoration:none;color:inherit;">Yarnia</a></h1>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 View Cart</a>
+        <a href="contact.html">📞 Contact Us</a>
+      </nav>
+    </div>
+  </header>
+ 
   <main>
-    <h1>Your Cart</h1>
-    <div id="cart-items"></div>
-    <h2>Payment Options</h2>
-    <p><input type="radio" name="pay" checked> Cash on Delivery</p>
-    <p><input type="radio" name="pay"> Advance Payment</p>
-    <button onclick="alert('Order placed!')">Checkout</button>
+    <div class="cart-box">
+      <h1>Your Cart</h1>
+      <div id="cart-items"></div>
+ 
+      <div class="payment-options">
+        <h2>Payment Options</h2>
+        <label><input type="radio" name="pay" checked> Cash on Delivery</label>
+        <label><input type="radio" name="pay"> Advance Payment</label>
+      </div>
+ 
+      <button onclick="alert('Order placed! We will contact you shortly ♡')">Checkout</button>
+      <a href="index.html" class="btn-back">← Continue Shopping</a>
+    </div>
   </main>
+ 
+  <footer>
+    <p>© 2025 Yarnia · Made with ♡ in Karachi</p>
+  </footer>
+ 
   <script src="cart.js"></script>
   <script>showCart();</script>
 </body>
 </html>
+ 
