@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Mike Wazowski - Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <h1><a href="index.html" style="text-decoration:none;color:inherit;">Yarnia</a></h1>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 View Cart</a>
+        <a href="contact.html">📞 Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <div class="product-images">
+        <img src="mike-wazowski.jpg" alt="Crochet Mike Wazowski">
+      </div>
+      <div class="product-info">
+        <h1>Crochet Mike Wazowski</h1>
+        <p class="price">Rs. 1500</p>
+        <p>A handmade crochet Mike Wazowski from Monsters Inc. — lovingly crafted with soft yarn, perfect as a gift or décor piece.</p>
+        <label for="qty">Quantity:</label>
+        <select id="qty">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <button onclick="addToCart('Crochet Mike Wazowski', 1500)">Add to Cart</button>
+        <a href="index.html" class="btn-back">← Back to Shop</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Yarnia · Made with ♡ in Karachi</p>
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>

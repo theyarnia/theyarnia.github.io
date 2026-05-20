@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Lily - Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <h1><a href="index.html" style="text-decoration:none;color:inherit;">Yarnia</a></h1>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 View Cart</a>
+        <a href="contact.html">📞 Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <div class="product-images">
+        <img src="lily.jpg" alt="Crochet Lily">
+      </div>
+      <div class="product-info">
+        <h1>Crochet Lily</h1>
+        <p class="price">Rs. 2000</p>
+        <p>A delicate handmade crochet lily — beautifully crafted and perfect as a home accent or a heartfelt gift.</p>
+        <label for="color">Choose a color:</label>
+        <select id="color">
+          <option>Pink</option>
+          <option>White</option>
+          <option>Lavender</option>
+        </select>
+        <button onclick="addToCart('Crochet Lily', 2000)">Add to Cart</button>
+        <a href="index.html" class="btn-back">← Back to Shop</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Yarnia · Made with ♡ in Karachi</p>
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>
