@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=The+Seasons:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
 
 :root {
   --pink:   #FFE5F5;
@@ -54,7 +54,7 @@ header {
 }
 
 .brand-text h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   font-size: 2.6rem;
   font-weight: 600;
   color: var(--mocha);
@@ -149,7 +149,7 @@ header {
 }
 
 .hero-banner h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   font-size: 2.4rem;
   font-weight: 400;
   color: var(--mocha);
@@ -173,7 +173,7 @@ header {
 main { flex: 1; padding: 48px 24px; }
 
 .section-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--mocha);
@@ -229,7 +229,7 @@ main { flex: 1; padding: 48px 24px; }
 }
 
 .product-card h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--mocha);
@@ -316,7 +316,7 @@ main { flex: 1; padding: 48px 24px; }
 }
 
 .product-info h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   color: var(--mocha);
   font-size: 2.1rem;
   font-weight: 600;
@@ -426,7 +426,7 @@ main { flex: 1; padding: 48px 24px; }
 }
 
 .contact-box h1, .cart-box h1 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   color: var(--mocha);
   font-size: 2rem;
   font-weight: 600;
@@ -454,7 +454,7 @@ main { flex: 1; padding: 48px 24px; }
 }
 
 .cart-total {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--mocha);
@@ -563,10 +563,10 @@ footer .sep { opacity: 0.35; }
   background: transparent;
 }
 
-/* ── PACIFICO for Yarnia name ── */
+/* ── The Seasons for Yarnia name ── */
 .brand-text h1 a,
 .brand-text h1 {
-  font-family: 'Pacifico', cursive !important;
+  font-family: 'The Seasons', cursive !important;
   font-size: 2.2rem !important;
   font-weight: 400 !important;
   letter-spacing: 1px !important;
@@ -757,7 +757,7 @@ footer .sep { opacity: 0.35; }
   padding: 36px 20px;
   text-decoration: none;
   color: var(--mocha);
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -813,15 +813,15 @@ footer .sep { opacity: 0.35; }
   padding: 32px 20px;
   margin-top: 0;
 }
-.strip-quote { font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;opacity:0.9;letter-spacing:0.5px; }
+.strip-quote { font-family:'The Seasons',serif;font-size:1.4rem;font-weight:400;opacity:0.9;letter-spacing:0.5px; }
 .strip-sub { font-size:0.82rem;font-weight:300;margin-top:8px;opacity:0.6;letter-spacing:0.3px; }
 
 .why-section { background:var(--pink);padding:48px 20px;text-align:center; }
-.why-heading { font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--mocha);font-weight:600;margin-bottom:28px;letter-spacing:0.3px; }
+.why-heading { font-family:'The Seasons',serif;font-size:1.3rem;color:var(--mocha);font-weight:600;margin-bottom:28px;letter-spacing:0.3px; }
 .why-grid { display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:700px;margin:0 auto; }
 .why-item { max-width:160px; }
 .why-icon { font-size:2rem;margin-bottom:8px; }
-.why-title { font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--mocha);margin-bottom:4px; }
+.why-title { font-family:'The Seasons',serif;font-size:1rem;font-weight:600;color:var(--mocha);margin-bottom:4px; }
 .why-body { font-size:0.78rem;font-weight:300;color:var(--mocha2);line-height:1.6; }
 
 /* ── ABOUT SECTION ── */
@@ -856,7 +856,7 @@ footer .sep { opacity: 0.35; }
 .about-text-col { flex: 1; min-width: 260px; }
 
 .about-heading {
-  font-family: 'Pacifico', cursive;
+  font-family: 'The Seasons', cursive;
   font-size: 2rem;
   font-weight: 400;
   color: var(--mocha);
@@ -929,7 +929,7 @@ footer .sep { opacity: 0.35; }
 }
 #promo-close:hover { opacity: 1; }
 #promo-popup h2 {
-  font-family: 'Pacifico', cursive;
+  font-family: 'The Seasons', cursive;
   color: var(--mocha);
   font-size: 1.7rem;
   font-weight: 400;
@@ -943,7 +943,7 @@ footer .sep { opacity: 0.35; }
   margin: 0 0 14px;
 }
 .promo-code-box p { font-size: 0.82rem; color: var(--mocha2); font-weight: 300; }
-.promo-highlight { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--mocha); display: block; line-height: 1.1; margin: 4px 0; }
+.promo-highlight { font-family: 'The Seasons', serif; font-size: 2.2rem; font-weight: 600; color: var(--mocha); display: block; line-height: 1.1; margin: 4px 0; }
 .promo-code { font-size: 1.3rem; font-weight: 700; letter-spacing: 4px; color: var(--mocha); margin-top: 10px; font-family: monospace; border: 2px dashed rgba(66,43,28,0.25); border-radius: 8px; padding: 6px 12px; display: inline-block; }
 .promo-fine { font-size: 0.72rem; color: #aaa; margin-bottom: 20px; }
 .promo-cta { background: var(--mocha); color: var(--cream); border: none; padding: 13px 36px; border-radius: 30px; font-family: 'Jost',sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.2s; width: 100%; }
@@ -1005,7 +1005,7 @@ footer .sep { opacity: 0.35; }
   text-align: center;
 }
 .reviews-section h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'The Seasons', serif;
   color: var(--mocha);
   font-size: 1.8rem;
   margin-bottom: 30px;
@@ -1036,7 +1036,7 @@ footer .sep { opacity: 0.35; }
   box-shadow: 0 4px 16px rgba(122,92,79,0.1);
   text-align: left;
 }
-.review-form-box h3 { font-family: 'Cormorant Garamond', serif; color: var(--mocha); font-size: 1.3rem; margin-bottom: 6px; }
+.review-form-box h3 { font-family: 'The Seasons', serif; color: var(--mocha); font-size: 1.3rem; margin-bottom: 6px; }
 .review-note { font-size: 0.85rem; color: #888; margin-bottom: 18px; font-style: italic; }
 .review-form input, .review-form textarea {
   width: 100%; padding: 10px 14px; margin-bottom: 12px;
