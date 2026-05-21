@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarnia – Handmade Crochet, Karachi</title>
+  <meta name="description" content="Handmade crochet flowers, amigurumi characters and bags — made with love in Karachi.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ── WELCOME POPUP ── -->
+  <div id="promo-overlay" style="display:none;">
+    <div id="promo-popup">
+      <button id="promo-close" onclick="closePromo()">✕</button>
+      <img src="logo.png" alt="Yarnia" class="promo-logo">
+      <h2>Welcome to Yarnia!</h2>
+      <p class="promo-sub">Handmade with love, just for you.</p>
+      <div class="promo-code-box">
+        <p>Use code at checkout for</p>
+        <span class="promo-highlight">10% OFF</span>
+        <p>your first order</p>
+        <div class="promo-code">YARNIA</div>
+      </div>
+      <p class="promo-fine">Valid once per customer · New orders only</p>
+      <button class="promo-cta" onclick="closePromo()">Shop Now ♡</button>
+    </div>
+  </div>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1><a href="index.html">Yarnia</a></h1>
+          <p class="tagline">Things made slow, on purpose.</p>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
+        <div class="auth-group">
+          <button class="auth-btn" onclick="openAuth('login')">Log In</button>
+          <button class="auth-btn auth-btn--primary" onclick="openAuth('signup')">Sign Up</button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- ── SEARCH BAR ── -->
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search for bunnies, flowers, characters…" oninput="searchProducts()">
+        <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display:none;">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── AUTH MODAL ── -->
+  <div id="auth-overlay" style="display:none;">
+    <div id="auth-modal">
+      <button class="auth-close" onclick="closeAuth()">✕</button>
+      <img src="logo.png" alt="Yarnia" class="promo-logo">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Log In</button>
+        <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+      <div id="auth-login">
+        <input type="email" class="auth-input" placeholder="Email address">
+        <input type="password" class="auth-input" placeholder="Password">
+        <button class="auth-submit" onclick="fakeAuth()">Log In</button>
+      </div>
+      <div id="auth-signup" style="display:none;">
+        <input type="text" class="auth-input" placeholder="Full name">
+        <input type="email" class="auth-input" placeholder="Email address">
+        <input type="password" class="auth-input" placeholder="Create a password">
+        <button class="auth-submit" onclick="fakeAuth()">Create Account</button>
+      </div>
+      <p class="auth-note">Your info is only used to save your order details and discount usage.</p>
+    </div>
+  </div>
+
+  <section class="hero-banner">
+    <h2>Every stitch is someone's 2am ♡</h2>
+    <p>No factory. No shortcuts. Just hands, yarn, and a little too much love put into every single piece.</p>
+  </section>
+
+  <main>
+
+    <!-- ── EXPLORE CATEGORIES ── -->
+    <section class="categories-section">
+      <h3 class="section-heading">Explore the Categories</h3>
+      <div class="categories-grid">
+        <a href="#" class="category-card" onclick="showCategory('animals');return false;">
+          <div class="cat-icon">🐰</div>
+          <span>Animals</span>
+        </a>
+        <a href="#" class="category-card" onclick="showCategory('characters');return false;">
+          <div class="cat-icon">🧸</div>
+          <span>Characters</span>
+        </a>
+        <a href="#" class="category-card" onclick="showCategory('flowers');return false;">
+          <div class="cat-icon">🌸</div>
+          <span>Flowers</span>
+        </a>
+        <a href="#" class="category-card" onclick="showCategory('bags');return false;">
+          <div class="cat-icon">👜</div>
+          <span>Bags</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── PRODUCTS (shown on search or category click) ── -->
+    <section class="products-section" id="products-section" style="display:none;">
+      <div class="products-section-header">
+        <h3 class="section-heading" id="products-heading">All Products</h3>
+        <button class="back-to-cats" onclick="backToCategories()">← Back to Categories</button>
+      </div>
+      <div class="products-grid" id="products-grid">
+
+        <div class="product-card" data-category="characters" data-name="crochet mike wazowski">
+          <img src="mike-wazowski.jpg" alt="Crochet Mike Wazowski">
+          <div class="card-inner">
+            <h2>Crochet Mike Wazowski</h2>
+            <p class="price">Rs. 1,500</p>
+            <div class="card-actions">
+              <a href="mike.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Mike Wazowski', 1500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="flowers" data-name="crochet lily">
+          <img src="lily.jpg" alt="Crochet Lily">
+          <div class="card-inner">
+            <h2>Crochet Lily</h2>
+            <p class="price">Rs. 2,000</p>
+            <div class="card-actions">
+              <a href="lily.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Lily', 2000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="animals" data-name="crochet bunny">
+          <img src="bunny.jpg" alt="Crochet Bunny">
+          <div class="card-inner">
+            <h2>Crochet Bunny</h2>
+            <p class="price">Rs. 3,000</p>
+            <div class="card-actions">
+              <a href="bunny.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Bunny', 3000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="flowers" data-name="crochet tulip">
+          <img src="tulip.jpg" alt="Crochet Tulip">
+          <div class="card-inner">
+            <h2>Crochet Tulip</h2>
+            <p class="price">Rs. 1,500</p>
+            <div class="card-actions">
+              <a href="tulip.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Tulip', 1500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="characters" data-name="mr bean teddy">
+          <img src="mrbean.jpg" alt="Mr. Bean Teddy">
+          <div class="card-inner">
+            <h2>Mr. Bean Teddy</h2>
+            <p class="price">Rs. 2,500</p>
+            <div class="card-actions">
+              <a href="mrbean.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Mr. Bean Teddy', 2500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="animals" data-name="mrs teddy">
+          <img src="mrsteddy.jpg" alt="Mrs. Teddy">
+          <div class="card-inner">
+            <h2>Mrs. Teddy</h2>
+            <p class="price">Rs. 2,500</p>
+            <div class="card-actions">
+              <a href="mrsteddy.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Mrs. Teddy', 2500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p class="no-results" id="no-results" style="display:none;">No products found. Try a different search! ♡</p>
+    </section>
+
+  </main>
+
+  <!-- ── HANDMADE STRIP ── -->
+  <section class="strip-dark">
+    <p class="strip-quote">Every piece is one of a kind. Made by hand. Made with intent.</p>
+    <p class="strip-sub">Custom orders open — DM us on Instagram or WhatsApp</p>
+  </section>
+
+  <!-- ── WHY HANDMADE ── -->
+  <section class="why-section">
+    <p class="why-heading">Why handmade?</p>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">🌿</div><p class="why-title">Lasts forever</p><p class="why-body">No wilting. No fading. Real flowers die in a week.</p></div>
+      <div class="why-item"><div class="why-icon">🤍</div><p class="why-title">Made with care</p><p class="why-body">Every stitch placed by hand. No two pieces identical.</p></div>
+      <div class="why-item"><div class="why-icon">🎁</div><p class="why-title">Custom orders</p><p class="why-body">Colours, sizes, characters. Tell us what you want.</p></div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT US ── -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-logo-col">
+        <img src="logo.png" alt="Yarnia" class="about-logo">
+      </div>
+      <div class="about-text-col">
+        <h2 class="about-heading">About Yarnia</h2>
+        <p>Yarnia started as a late-night hobby and turned into something we never expected — a small shop where every order is made by hand, with care, and with intention.</p>
+        <p>We're based in Karachi, Pakistan. Every bunny, flower, and character is crocheted from scratch — no machines, no factories, no two pieces exactly alike.</p>
+        <p>We believe handmade things carry something mass-produced things never can: the time, the patience, and the love of the person who made it. That's what you get with every Yarnia piece.</p>
+        <p>Custom orders are always welcome. If you have something specific in mind — a colour, a character, a size — reach out on WhatsApp or Instagram and we'll make it happen.</p>
+        <div class="about-links">
+          <a href="contact.html">Get in Touch</a>
+          <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REVIEWS ── -->
+  <section class="reviews-section">
+    <h2>💬 What customers say</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Absolutely love my bunny! So soft and beautifully made. Will definitely order again."</p>
+        <span class="reviewer">— Fatima K.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"The crochet lily is stunning — gifted it to my mum and she adored it. Fast delivery too!"</p>
+        <span class="reviewer">— Sara M.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Mike Wazowski came out so cute. Packaging was lovely. Highly recommend Yarnia!"</p>
+        <span class="reviewer">— Hania R.</span>
+      </div>
+    </div>
+    <div class="review-form-box">
+      <h3>Leave a Review</h3>
+      <p class="review-note">Your review will be shared with us first — we'll post it once approved ♡</p>
+      <div class="review-form">
+        <input type="text" id="reviewer-name" placeholder="Your name">
+        <input type="text" id="reviewer-product" placeholder="Which product did you buy?">
+        <div class="star-picker">
+          <span>Rating:</span>
+          <span class="star-btn" onclick="setRating(1)">★</span>
+          <span class="star-btn" onclick="setRating(2)">★</span>
+          <span class="star-btn" onclick="setRating(3)">★</span>
+          <span class="star-btn" onclick="setRating(4)">★</span>
+          <span class="star-btn" onclick="setRating(5)">★</span>
+        </div>
+        <textarea id="reviewer-message" placeholder="Write your review here..." rows="4"></textarea>
+        <button onclick="submitReview()">Send Review via WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="cart.js"></script>
+  <script>
+    // ── Category & Search ──
+    function showCategory(cat) {
+      document.getElementById('products-section').style.display = '';
+      document.querySelector('.categories-section').style.display = 'none';
+      const label = cat.charAt(0).toUpperCase() + cat.slice(1);
+      document.getElementById('products-heading').textContent = label;
+      document.querySelectorAll('.product-card').forEach(c => {
+        c.style.display = c.dataset.category === cat ? '' : 'none';
+      });
+      document.getElementById('no-results').style.display = 'none';
+      document.getElementById('products-section').scrollIntoView({behavior:'smooth'});
+    }
+
+    function backToCategories() {
+      document.getElementById('products-section').style.display = 'none';
+      document.querySelector('.categories-section').style.display = '';
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-clear').style.display = 'none';
+    }
+
+    function searchProducts() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      document.getElementById('search-clear').style.display = q ? 'inline' : 'none';
+      if (!q) { backToCategories(); return; }
+      document.getElementById('products-section').style.display = '';
+      document.querySelector('.categories-section').style.display = 'none';
+      document.getElementById('products-heading').textContent = `Results for "${q}"`;
+      let found = 0;
+      document.querySelectorAll('.product-card').forEach(c => {
+        const match = c.dataset.name.includes(q) || c.dataset.category.includes(q);
+        c.style.display = match ? '' : 'none';
+        if (match) found++;
+      });
+      document.getElementById('no-results').style.display = found === 0 ? 'block' : 'none';
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-clear').style.display = 'none';
+      backToCategories();
+    }
+
+    // ── Auth Modal ──
+    function openAuth(tab) {
+      document.getElementById('auth-overlay').style.display = 'flex';
+      switchTab(tab);
+    }
+    function closeAuth() { document.getElementById('auth-overlay').style.display = 'none'; }
+    function switchTab(tab) {
+      document.getElementById('auth-login').style.display  = tab === 'login'  ? '' : 'none';
+      document.getElementById('auth-signup').style.display = tab === 'signup' ? '' : 'none';
+      document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+      document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+    }
+    function fakeAuth() {
+      closeAuth();
+      alert('Account features coming soon! For now, place orders via WhatsApp ♡');
+    }
+
+    // ── Promo popup ──
+    function closePromo() {
+      document.getElementById('promo-overlay').style.display = 'none';
+      sessionStorage.setItem('yarnia-promo-seen', '1');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!sessionStorage.getItem('yarnia-promo-seen')) {
+        setTimeout(() => { document.getElementById('promo-overlay').style.display = 'flex'; }, 800);
+      }
+    });
+
+    // ── Reviews ──
+    let selectedRating = 0;
+    function setRating(val) {
+      selectedRating = val;
+      document.querySelectorAll('.star-btn').forEach((s,i) => { s.style.color = i < val ? '#c9a84c' : '#ccc'; });
+    }
+    function submitReview() {
+      const name = document.getElementById('reviewer-name').value.trim();
+      const product = document.getElementById('reviewer-product').value.trim();
+      const message = document.getElementById('reviewer-message').value.trim();
+      if (!name || !message || selectedRating === 0) { alert('Please fill in your name, rating, and review!'); return; }
+      const stars = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+      const text = `*New Yarnia Review*\n\n👤 Name: ${name}\n🛍️ Product: ${product || 'Not specified'}\n⭐ Rating: ${stars}\n\n💬 "${message}"`;
+      window.open(`https://wa.me/923328234439?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
+</body>
+</html>

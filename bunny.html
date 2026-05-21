@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Bunny – Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <div class="brand-text"><h1><a href="index.html">Yarnia</a></h1></div>
+      </div>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="product-detail">
+      <div class="product-images">
+        <img src="bunny.jpg" alt="Crochet Bunny">
+      </div>
+      <div class="product-info">
+        <h1>Crochet Bunny</h1>
+        <p class="price" id="bunny-price">Rs. 3,000</p>
+        <p>An adorable crochet bunny, stuffed with love and polyfill. A perfect companion or gift for someone who appreciates things made by hand.</p>
+        <div class="meta-block">
+          <p><strong>Material:</strong> Soft cotton yarn, polyfill stuffing</p>
+          <p><strong>Size:</strong> Approx. 20 cm tall</p>
+          <p><strong>Made in:</strong> Karachi, by hand</p>
+        </div>
+
+        <div class="custom-options">
+          <div class="option-row">
+            <label for="color">🎨 Colour:</label>
+            <select id="color">
+              <option>Pink</option>
+              <option>White</option>
+              <option>Brown</option>
+              <option>Cream</option>
+              <option>Grey</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label for="yarn">🧶 Yarn type:</label>
+            <select id="yarn">
+              <option>Acrylic</option>
+              <option>Chenille</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label for="flower">🌸 Add a flower?</label>
+            <select id="flower">
+              <option>With flower</option>
+              <option>Without flower</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="qty-row">
+          <label for="qty">Quantity:</label>
+          <select id="qty">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+        <div class="detail-cta">
+          <button class="btn-cart" onclick="addBunnyToCart()">🛒 Add to Cart</button>
+          <button class="btn-save">♡ Save for Later</button>
+        </div>
+        <a href="index.html" class="btn-back">← Back to Shop</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+  </footer>
+  <script src="cart.js"></script>
+  <script>
+    function addBunnyToCart() {
+      const color = document.getElementById('color').value;
+      const yarn = document.getElementById('yarn').value;
+      const flower = document.getElementById('flower').value;
+      const price = yarn === 'Chenille' ? 4000 : 3000;
+      const name = `Crochet Bunny (${color}, ${yarn}, ${flower})`;
+      document.getElementById('bunny-price').textContent = `Rs. ${price.toLocaleString()}`;
+      addToCart(name, price);
+    }
+
+    // Update price display on yarn change
+    document.getElementById('yarn').addEventListener('change', function() {
+      const price = this.value === 'Chenille' ? 4000 : 3000;
+      document.getElementById('bunny-price').textContent = `Rs. ${price.toLocaleString()}`;
+    });
+  </script>
+</body>
+</html>
