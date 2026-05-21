@@ -571,6 +571,7 @@ footer .sep { opacity: 0.35; }
   font-weight: 400 !important;
   letter-spacing: 1px !important;
   color: var(--mocha);
+  font-style: italic;
 }
 
 /* ── SEARCH BAR ── */
