@@ -562,15 +562,14 @@ footer .sep { opacity: 0.35; }
   background: transparent;
 }
 
-/* ── The Seasons for Yarnia name ── */
+/* ── PACIFICO for Yarnia name ── */
 .brand-text h1 a,
 .brand-text h1 {
-  font-family: 'Playfair Display', cursive !important;
+  font-family: 'Pacifico', cursive !important;
   font-size: 2.2rem !important;
   font-weight: 400 !important;
   letter-spacing: 1px !important;
   color: var(--mocha);
-  font-style: italic;
 }
 
 /* ── SEARCH BAR ── */
@@ -855,7 +854,7 @@ footer .sep { opacity: 0.35; }
 .about-text-col { flex: 1; min-width: 260px; }
 
 .about-heading {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Pacifico', cursive;
   font-size: 2rem;
   font-weight: 400;
   color: var(--mocha);
@@ -928,7 +927,7 @@ footer .sep { opacity: 0.35; }
 }
 #promo-close:hover { opacity: 1; }
 #promo-popup h2 {
-  font-family: 'Playfair Display', cursive;
+  font-family: 'Pacifico', cursive;
   color: var(--mocha);
   font-size: 1.7rem;
   font-weight: 400;
@@ -1035,7 +1034,7 @@ footer .sep { opacity: 0.35; }
   box-shadow: 0 4px 16px rgba(122,92,79,0.1);
   text-align: left;
 }
-.review-form-box h3 { font-family: 'The Seasons', serif; color: var(--mocha); font-size: 1.3rem; margin-bottom: 6px; }
+.review-form-box h3 { font-family: 'Playfair Display', serif; color: var(--mocha); font-size: 1.3rem; margin-bottom: 6px; }
 .review-note { font-size: 0.85rem; color: #888; margin-bottom: 18px; font-style: italic; }
 .review-form input, .review-form textarea {
   width: 100%; padding: 10px 14px; margin-bottom: 12px;
@@ -1053,3 +1052,55 @@ footer .sep { opacity: 0.35; }
   font-size: 0.95rem; transition: background 0.2s; width: 100%;
 }
 .review-form button:hover { background: var(--green); }
+
+/* ── SCROLLING BANNER ── */
+.scroll-banner {
+  background: var(--mocha);
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  border-bottom: 2px solid rgba(255,229,245,0.15);
+}
+
+.scroll-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: scrollLeft 30s linear infinite;
+}
+
+.scroll-banner:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.scroll-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 28px;
+  border-right: 1px solid rgba(255,229,245,0.1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.scroll-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(255,229,245,0.3);
+}
+
+.scroll-item span {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--pink);
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
