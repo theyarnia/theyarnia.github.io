@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact – Yarnia</title>
+  <title>Cart – Yarnia</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
 </head>
@@ -17,30 +17,120 @@
         </div>
       </div>
       <nav class="top-nav">
-        <a href="cart.html">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="contact-box">
-      <h1>Get in Touch</h1>
-      <p>All orders are made to order. DM us on Instagram or WhatsApp to place an order, ask about customisation, or just say hello.</p>
-      <p>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/923328234439">0332-8234439</a></p>
-      <p>📧 <strong>Email:</strong> <a href="mailto:the.yarnia@gmail.com">the.yarnia@gmail.com</a></p>
-      <p>📸 <strong>Instagram:</strong> <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a></p>
-      <p>📍 <strong>Based in:</strong> Karachi, Pakistan</p>
-      <p style="margin-top:20px;font-size:0.9rem;opacity:0.75;">Custom orders welcome — colours, sizes, and characters can be tailored to your request.</p>
+    <div class="cart-box">
+      <h1>Your Cart</h1>
+      <table id="cart-items-table">
+        <thead>
+          <tr id="cart-header" style="display:none">
+            <th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+      <p class="cart-total" id="cart-total"></p>
+
+      <!-- ── PROMO CODE ── -->
+      <div class="promo-input-row">
+        <input type="text" id="promo-input" placeholder="Have a promo code? Enter it here" oninput="this.value=this.value.toUpperCase()">
+        <button onclick="applyPromo()">Apply</button>
+      </div>
+      <p id="promo-msg" style="font-size:0.85rem;margin:6px 0 0;"></p>
+      <p class="cart-total" id="cart-total-discounted" style="display:none;color:var(--green);font-weight:600;"></p>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
+        <button class="btn-cart" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+        <button class="btn-cart" style="background:transparent;color:var(--mocha);border:1.5px solid var(--mocha);" onclick="clearCart()">Clear Cart</button>
+      </div>
+      <p style="margin-top:16px;font-size:0.85rem;opacity:0.65;">We'll confirm your order and arrange payment via WhatsApp or bank transfer.</p>
     </div>
   </main>
 
   <footer>
     <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
     <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
     <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
   </footer>
 
   <div class="toast" id="toast"></div>
   <script src="cart.js"></script>
+  <script>
+    let discountApplied = false;
+    let discountAmount = 0;
+
+    function applyPromo() {
+      const code = document.getElementById('promo-input').value.trim().toUpperCase();
+      const msg = document.getElementById('promo-msg');
+
+      if (code !== 'YARNIA') {
+        msg.style.color = '#c0392b';
+        msg.textContent = '✕ Invalid promo code.';
+        return;
+      }
+
+      const usedNumbers = JSON.parse(localStorage.getItem('yarnia-promo-used-phones') || '[]');
+      const usedEmails  = JSON.parse(localStorage.getItem('yarnia-promo-used-emails')  || '[]');
+
+      const cart = getCart();
+      if (!cart.length) {
+        msg.style.color = '#c0392b';
+        msg.textContent = '✕ Your cart is empty!';
+        return;
+      }
+
+      if (discountApplied) {
+        msg.style.color = '#c0392b';
+        msg.textContent = '✕ Code already applied.';
+        return;
+      }
+
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      discountAmount = Math.round(subtotal * 0.10);
+      discountApplied = true;
+
+      msg.style.color = '#27ae60';
+      msg.textContent = '✓ Code applied! You save Rs. ' + discountAmount.toLocaleString();
+
+      const discountedTotal = subtotal - discountAmount;
+      const totalEl = document.getElementById('cart-total');
+      totalEl.style.textDecoration = 'line-through';
+      totalEl.style.opacity = '0.5';
+      const discountedEl = document.getElementById('cart-total-discounted');
+      discountedEl.style.display = '';
+      discountedEl.textContent = 'Total after discount: Rs. ' + discountedTotal.toLocaleString();
+    }
+
+    function checkoutWhatsApp() {
+      const cart = getCart();
+      if (!cart.length) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      const lines = cart.map(function(i) {
+        return '• ' + i.name + ' x' + i.qty + ' = Rs. ' + (i.price * i.qty).toLocaleString();
+      }).join('\n');
+
+      const subtotal = cart.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
+      const finalTotal = discountApplied ? subtotal - discountAmount : subtotal;
+      const discountLine = discountApplied ? '\nDiscount (YARNIA 10%): -Rs. ' + discountAmount.toLocaleString() : '';
+
+      const message = 'Hi Yarnia! I would like to order:\n\n' + lines + '\n\nSubtotal: Rs. ' + subtotal.toLocaleString() + discountLine + '\nTotal: Rs. ' + finalTotal.toLocaleString() + '\n\nPlease confirm availability.';
+
+      window.open('https://wa.me/923328234439?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = getCart();
+      if (cart.length) document.getElementById('cart-header').style.display = '';
+    });
+  </script>
 </body>
 </html>
