@@ -28,6 +28,25 @@
     </div>
   </div>
 
+  <!-- ── SCROLLING BANNER ── -->
+  <div class="scroll-banner">
+    <div class="scroll-track">
+      <div class="scroll-item"><img src="bunny.jpg" alt="Crochet Bunny"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="lily.jpg" alt="Crochet Lily"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="mike-wazowski.jpg" alt="Mike Wazowski"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="tulip.jpg" alt="Crochet Tulip"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="mrbean.jpg" alt="Mr Bean Teddy"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="mrsteddy.jpg" alt="Mrs Teddy"><span>New Arrivals Dropping Soon ✨</span></div>
+      <!-- duplicate for seamless loop -->
+      <div class="scroll-item"><img src="bunny.jpg" alt="Crochet Bunny"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="lily.jpg" alt="Crochet Lily"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="mike-wazowski.jpg" alt="Mike Wazowski"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="tulip.jpg" alt="Crochet Tulip"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="mrbean.jpg" alt="Mr Bean Teddy"><span>New Arrivals Dropping Soon ✨</span></div>
+      <div class="scroll-item"><img src="mrsteddy.jpg" alt="Mrs Teddy"><span>New Arrivals Dropping Soon ✨</span></div>
+    </div>
+  </div>
+
   <!-- ── HEADER ── -->
   <header>
     <div class="header-top">
@@ -41,10 +60,7 @@
       <nav class="top-nav">
         <a href="cart.html">🛒 Cart</a>
         <a href="contact.html">📞 Contact</a>
-        <div class="auth-group">
-          <button class="auth-btn" onclick="openAuth('login')">Log In</button>
-          <button class="auth-btn auth-btn--primary" onclick="openAuth('signup')">Sign Up</button>
-        </div>
+
       </nav>
     </div>
 
@@ -58,29 +74,6 @@
     </div>
   </header>
 
-  <!-- ── AUTH MODAL ── -->
-  <div id="auth-overlay" style="display:none;">
-    <div id="auth-modal">
-      <button class="auth-close" onclick="closeAuth()">✕</button>
-      <img src="logo.png" alt="Yarnia" class="promo-logo">
-      <div class="auth-tabs">
-        <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Log In</button>
-        <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
-      </div>
-      <div id="auth-login">
-        <input type="email" class="auth-input" placeholder="Email address">
-        <input type="password" class="auth-input" placeholder="Password">
-        <button class="auth-submit" onclick="fakeAuth()">Log In</button>
-      </div>
-      <div id="auth-signup" style="display:none;">
-        <input type="text" class="auth-input" placeholder="Full name">
-        <input type="email" class="auth-input" placeholder="Email address">
-        <input type="password" class="auth-input" placeholder="Create a password">
-        <button class="auth-submit" onclick="fakeAuth()">Create Account</button>
-      </div>
-      <p class="auth-note">Your info is only used to save your order details and discount usage.</p>
-    </div>
-  </div>
 
   <section class="hero-banner">
     <h2>Every stitch is someone's 2am ♡</h2>
@@ -325,23 +318,6 @@
       document.getElementById('search-input').value = '';
       document.getElementById('search-clear').style.display = 'none';
       backToCategories();
-    }
-
-    // ── Auth Modal ──
-    function openAuth(tab) {
-      document.getElementById('auth-overlay').style.display = 'flex';
-      switchTab(tab);
-    }
-    function closeAuth() { document.getElementById('auth-overlay').style.display = 'none'; }
-    function switchTab(tab) {
-      document.getElementById('auth-login').style.display  = tab === 'login'  ? '' : 'none';
-      document.getElementById('auth-signup').style.display = tab === 'signup' ? '' : 'none';
-      document.getElementById('tab-login').classList.toggle('active', tab === 'login');
-      document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
-    }
-    function fakeAuth() {
-      closeAuth();
-      alert('Account features coming soon! For now, place orders via WhatsApp ♡');
     }
 
     // ── Promo popup ──
