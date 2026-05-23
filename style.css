@@ -845,9 +845,10 @@ footer .sep { opacity: 0.35; }
 .about-text-col { flex: 1; min-width: 260px; }
 
 .about-heading {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 400;
+  font-style: italic;
   color: var(--mocha);
   margin-bottom: 20px;
   letter-spacing: 1px;
@@ -918,7 +919,8 @@ footer .sep { opacity: 0.35; }
 }
 #promo-close:hover { opacity: 1; }
 #promo-popup h2 {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
   color: var(--mocha);
   font-size: 1.7rem;
   font-weight: 400;
