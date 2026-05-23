@@ -5,17 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact – Yarnia</title>
   <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="header-top">
-      <div class="brand-group"><h1><a href="index.html">Yarnia</a></h1></div>
+      <div class="brand-group">
+        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1><a href="index.html">Yarnia</a></h1>
+        </div>
+      </div>
       <nav class="top-nav">
         <a href="cart.html">🛒 Cart</a>
       </nav>
     </div>
   </header>
+
   <main>
     <div class="contact-box">
       <h1>Get in Touch</h1>
@@ -27,11 +33,14 @@
       <p style="margin-top:20px;font-size:0.9rem;opacity:0.75;">Custom orders welcome — colours, sizes, and characters can be tailored to your request.</p>
     </div>
   </main>
+
   <footer>
     <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
     <span class="sep">·</span>
     <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
   </footer>
+
+  <div class="toast" id="toast"></div>
   <script src="cart.js"></script>
 </body>
 </html>
