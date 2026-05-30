@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Bear – Yarnia</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <div class="brand-text"><h1><a href="index.html">Yarnia</a></h1></div>
+      </div>
+      <nav class="top-nav">
+        <a href="cart.html">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="product-detail">
+      <div class="product-images">
+        <img src="bear.png" alt="Crochet Bear">
+      </div>
+      <div class="product-info">
+        <h1>Crochet Bear</h1>
+        <p class="price" id="bear-price">Rs. 3,000</p>
+        <p>Squishy ears, a tiny button nose, and made entirely by hand with more love than should probably fit into something this small. The kind of cozy companion you'd want sitting on your pillow or wrapped up in a gift box. Choose chenille for that extra cloud-soft, almost unreal kind of softness.</p>
+        <div class="meta-block">
+          <p><strong>Material:</strong> Soft cotton yarn or chenille, polyfill stuffing</p>
+          <p><strong>Size:</strong> Approx. 20 cm tall</p>
+          <p><strong>Made in:</strong> Karachi, by hand</p>
+        </div>
+        <div class="custom-options">
+          <div class="option-row">
+            <label for="color">🎨 Colour:</label>
+            <select id="color">
+              <option>Pink</option>
+              <option>White</option>
+              <option>Brown</option>
+              <option>Cream</option>
+              <option>Grey</option>
+              <option>other</option>
+            </select>
+          </div>
+          <div class="option-row">
+            <label for="yarn">🧶 Yarn type:</label>
+            <select id="yarn">
+              <option>Acrylic</option>
+              <option>Chenille (+Rs. 1,000)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fyi-block">
+          <p>🌿 <strong>FYI:</strong> Since every piece is made entirely by hand, slight variations in size and colour are part of what makes yours one of a kind.</p>
+        </div>
+        <div class="made-to-order">
+          <p>🕐 <strong>Made to Order:</strong> This item is crafted fresh just for you. Please allow 5–7 days for production before dispatch.</p>
+        </div>
+        <div class="qty-row">
+          <label for="qty">Quantity:</label>
+          <select id="qty">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </div>
+        <div class="detail-cta">
+          <button class="btn-cart" onclick="addBearToCart()">🛒 Add to Cart</button>
+          <button class="btn-save">♡ Save for Later</button>
+        </div>
+        <a href="index.html" class="btn-back">← Back to Shop</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <span class="sep">·</span>
+    <a href="contact.html">Contact Us</a>
+    <span class="sep">·</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+  </footer>
+  <script src="cart.js"></script>
+  <script>
+    function addBearToCart() {
+      const color = document.getElementById('color').value;
+      const yarn = document.getElementById('yarn').value;
+      const flower = document.getElementById('flower').value;
+      const isChenille = yarn.includes('Chenille');
+      const price = isChenille ? 4000 : 3000;
+      const name = 'Crochet Bear (' + color + ', ' + (isChenille ? 'Chenille' : 'Acrylic') + ', ' + flower + ')';
+      addToCart(name, price);
+    }
+    document.getElementById('yarn').addEventListener('change', function() {
+      const price = this.value.includes('Chenille') ? 4000 : 3000;
+      document.getElementById('bear-price').textContent = 'Rs. ' + price.toLocaleString();
+    });
+  </script>
+</body>
+</html>
