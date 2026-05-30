@@ -1,4 +1,6 @@
 // ── Yarnia Cart ──
+const DELIVERY_CHARGE = 300;
+
 function getCart() {
   try { return JSON.parse(localStorage.getItem('yarnia_cart') || '[]'); }
   catch { return []; }
@@ -30,7 +32,7 @@ function addToCart(name, price) {
   else { cart.push({ name, price, qty }); }
   saveCart(cart);
   updateCartBadge();
-  showToast(`✓ ${name} added to cart`);
+  showToast('✓ ' + name + ' added to cart');
 }
 
 function updateCartBadge() {
@@ -43,29 +45,60 @@ function updateCartBadge() {
   });
 }
 
+function updateQty(index, newQty) {
+  const cart = getCart();
+  if (newQty < 1) { removeItem(index); return; }
+  cart[index].qty = newQty;
+  saveCart(cart);
+  renderCart();
+}
+
+function removeItem(index) {
+  const cart = getCart();
+  cart.splice(index, 1);
+  saveCart(cart);
+  updateCartBadge();
+  renderCart();
+}
+
 function renderCart() {
   const cart = getCart();
   const tbody = document.getElementById('cart-items');
   const totalEl = document.getElementById('cart-total');
+  const headerEl = document.getElementById('cart-header');
   if (!tbody) return;
 
   if (cart.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:#888;">Your cart is empty.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#888;">Your cart is empty.</td></tr>';
     if (totalEl) totalEl.textContent = '';
+    if (headerEl) headerEl.style.display = 'none';
     return;
   }
+
+  if (headerEl) headerEl.style.display = '';
 
   tbody.innerHTML = cart.map((item, i) => `
     <tr>
       <td>${item.name}</td>
       <td>Rs. ${item.price.toLocaleString()}</td>
-      <td>${item.qty}</td>
+      <td>
+        <div class="qty-control">
+          <button onclick="updateQty(${i}, ${item.qty - 1})">−</button>
+          <span>${item.qty}</span>
+          <button onclick="updateQty(${i}, ${item.qty + 1})">+</button>
+        </div>
+      </td>
       <td>Rs. ${(item.price * item.qty).toLocaleString()}</td>
+      <td><button class="remove-btn" onclick="removeItem(${i})">✕</button></td>
     </tr>
   `).join('');
 
-  const grand = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  if (totalEl) totalEl.textContent = `Total: Rs. ${grand.toLocaleString()}`;
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const grandTotal = subtotal + DELIVERY_CHARGE;
+  if (totalEl) totalEl.innerHTML =
+    '<span style="font-size:0.85rem;opacity:0.65;">Subtotal: Rs. ' + subtotal.toLocaleString() + '</span><br>' +
+    '<span style="font-size:0.85rem;opacity:0.65;">Delivery: Rs. ' + DELIVERY_CHARGE.toLocaleString() + '</span><br>' +
+    'Total: Rs. ' + grandTotal.toLocaleString();
 }
 
 function clearCart() {
