@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crochet Bunny – Yarnia</title>
+  <title>Bunny – Yarnia</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -11,7 +11,7 @@
   <header>
     <div class="header-top">
       <div class="brand-group">
-        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <span class="brand-mark" role="img" aria-label="Yarnia">🧶</span>
         <div class="brand-text"><h1><a href="index.html">Yarnia</a></h1></div>
       </div>
       <nav class="top-nav">
@@ -23,15 +23,18 @@
   <main>
     <div class="product-detail">
       <div class="product-images">
-        <img src="bunny.png" alt="Crochet Bunny">
+        <img id="bunny-main" src="bunny.png" alt="Bunny ">
+        <div class="product-thumbs">
+          <img src="bunny.png" class="active" onclick="setBunnyImg(this,'bunny.png')" alt="bunny">
+          </div>
       </div>
       <div class="product-info">
-        <h1>Crochet Bunny</h1>
+        <h1>Bunny</h1>
         <p class="price" id="bunny-price">Rs. 3,000</p>
         <p>Squishy ears, a tiny button nose, and made entirely by hand with more love than should probably fit into something this small. The kind of cozy companion you'd want sitting on your pillow or wrapped up in a gift box. Choose chenille for that extra cloud-soft, almost unreal kind of softness.</p>
         <div class="meta-block">
-          <p><strong>Material:</strong> Soft cotton yarn or chenille, polyfill stuffing</p>
-          <p><strong>Size:</strong> Approx. 20 cm tall</p>
+          <p><strong>Material:</strong> Soft chenille, polyfill stuffing</p>
+          <p><strong>Size:</strong> Approx. 30.2 cm tall</p>
           <p><strong>Made in:</strong> Karachi, by hand</p>
         </div>
         <div class="custom-options">
@@ -43,21 +46,17 @@
               <option>Brown</option>
               <option>Cream</option>
               <option>Grey</option>
-              <option>other</option>
+              <option>Other</option>
             </select>
-          </div>
-          <div class="option-row">
-            <label for="yarn">🧶 Yarn type:</label>
-            <select id="yarn">
-              <option>Acrylic</option>
-              <option>Chenille (+Rs. 1,000)</option>
-            </select>
-          </div>
+            </div>
+               <div class="Note-block">
+               <p>🩷 <strong>Note:</strong> If you have opted for the "others" option, please clarify what you want that bag to say while ordering.</p>
+            </div>
           <div class="option-row">
             <label for="flower">🌸 Add a flower?</label>
             <select id="flower">
-              <option>With flower</option>
-              <option>Without flower</option>
+              <option>Yes</option>
+              <option>No</option>
             </select>
           </div>
         </div>
@@ -82,26 +81,24 @@
     </div>
   </main>
   <footer>
-    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">📸 Instagram</a>
     <span class="sep">·</span>
-    <a href="contact.html">Contact Us</a>
+    <a href="https://wa.me/923328234439" target="_blank" rel="noopener">💬 WhatsApp</a>
     <span class="sep">·</span>
-    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+    <span>Made with ♡ in Karachi · 2026</span>
   </footer>
   <script src="cart.js"></script>
   <script>
+    function setBunnyImg(thumb, src) {
+      document.getElementById('bunny-main').src = src;
+      document.querySelectorAll('.product-thumbs img').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    }
     function addBunnyToCart() {
-      const color = document.getElementById('color').value;
-      const yarn = document.getElementById('yarn').value;
       const flower = document.getElementById('flower').value;
-      const isChenille = yarn.includes('Chenille');
-      const price = isChenille ? 4000 : 3000;
-      const name = 'Crochet Bunny (' + color + ', ' + (isChenille ? 'Chenille' : 'Acrylic') + ', ' + flower + ')';
+      const name = 'Bunny (' + color + ', ' + flower + ')';
       addToCart(name, price);
     }
-    document.getElementById('yarn').addEventListener('change', function() {
-      const price = this.value.includes('Chenille') ? 4000 : 3000;
-      document.getElementById('bunny-price').textContent = 'Rs. ' + price.toLocaleString();
     });
   </script>
 </body>
