@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crochet Bear – Yarnia</title>
+  <title>Bear – Yarnia</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -11,7 +11,7 @@
   <header>
     <div class="header-top">
       <div class="brand-group">
-        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <span class="brand-mark" role="img" aria-label="Yarnia">🧶</span>
         <div class="brand-text"><h1><a href="index.html">Yarnia</a></h1></div>
       </div>
       <nav class="top-nav">
@@ -23,15 +23,15 @@
   <main>
     <div class="product-detail">
       <div class="product-images">
-        <img src="bear.png" alt="Crochet Bear">
+        <img src="bear.png" alt="Bear">
       </div>
       <div class="product-info">
-        <h1>Crochet Bear</h1>
+        <h1>Bear</h1>
         <p class="price" id="bear-price">Rs. 3,000</p>
-        <p>Warning: Extreme levels of cuteness ahead! This chubby little crochet bear is ready to move in and live rent-free on your desk or bed. Snag him in classic acrylic or go all-out plush with our velvety Chenille yarn option. He doesn't say much, but he's an excellent listener.</p>
+        <p>Warning: Extreme levels of cuteness ahead! This chubby little crochet bear is ready to move in and live rent-free on your desk or bed. He doesn't say much, but he's an excellent listener.</p>
         <div class="meta-block">
-          <p><strong>Material:</strong> Soft acrylic yarn or chenille, polyfill stuffing</p>
-          <p><strong>Size:</strong> Approx. 20 cm tall</p>
+          <p><strong>Material:</strong> Soft chenille, polyfill stuffing</p>
+          <p><strong>Size:</strong> Approx. 20.9 cm tall</p>
           <p><strong>Made in:</strong> Karachi, by hand</p>
         </div>
         <div class="custom-options">
@@ -46,13 +46,9 @@
               <option>other</option>
             </select>
           </div>
-          <div class="option-row">
-            <label for="yarn">🧶 Yarn type:</label>
-            <select id="yarn">
-              <option>Acrylic</option>
-              <option>Chenille (+Rs. 1,000)</option>
-            </select>
-          </div>
+         </div>
+            <div class="Note-block">
+            <p>🩷 <strong>Note:</strong> If you have opted for the "others" option, please clarify what you want that bag to say while ordering.</p>
         </div>
         <div class="fyi-block">
           <p>🌿 <strong>FYI:</strong> Since every piece is made entirely by hand, slight variations in size and colour are part of what makes yours one of a kind.</p>
@@ -75,26 +71,19 @@
     </div>
   </main>
   <footer>
-    <span>© 2026 Yarnia · Made with ♡ in Karachi</span>
+    <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">📸 Instagram</a>
     <span class="sep">·</span>
-    <a href="contact.html">Contact Us</a>
+    <a href="https://wa.me/923328234439" target="_blank" rel="noopener">💬 WhatsApp</a>
     <span class="sep">·</span>
-    <a href="https://instagram.com/the.yarnia_" target="_blank">@the.yarnia_</a>
+    <span>Made with ♡ in Karachi · 2026</span>
   </footer>
   <script src="cart.js"></script>
   <script>
     function addBearToCart() {
       const color = document.getElementById('color').value;
-      const yarn = document.getElementById('yarn').value;
-      const flower = document.getElementById('flower').value;
-      const isChenille = yarn.includes('Chenille');
-      const price = isChenille ? 4000 : 3000;
-      const name = 'Crochet Bear (' + color + ', ' + (isChenille ? 'Chenille' : 'Acrylic') + ', ' + flower + ')';
+      const name = 'Bear (' + color + ', ') + ')';
       addToCart(name, price);
     }
-    document.getElementById('yarn').addEventListener('change', function() {
-      const price = this.value.includes('Chenille') ? 4000 : 3000;
-      document.getElementById('bear-price').textContent = 'Rs. ' + price.toLocaleString();
     });
   </script>
 </body>
