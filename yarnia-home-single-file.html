@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarnia – Handmade Crochet, Karachi</title>
+  <meta name="description" content="Handmade crochet flowers, amigurumi characters and bags — made slow, by hand, in Karachi.">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  --pink:   #FFE5F5;
+  --cream:  #F9F1E8;
+  --green:  #909D7B;
+  --mocha:  #422B1C;
+  --mocha2: #6B3F28;
+  --text:   #2E1A10;
+  --white:  #fff;
+  --shadow: rgba(66,43,28,0.09);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER (sticky + translucent) ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(255,229,245,0.82);
+  -webkit-backdrop-filter: saturate(135%) blur(12px);
+  backdrop-filter: saturate(135%) blur(12px);
+  border-bottom: 1.5px solid rgba(66,43,28,0.12);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+header.scrolled {
+  background: rgba(255,229,245,0.93);
+  box-shadow: 0 6px 26px rgba(66,43,28,0.13);
+  border-bottom-color: rgba(66,43,28,0.06);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  flex-wrap: wrap;
+  gap: 12px;
+  transition: padding 0.3s ease;
+}
+
+header.scrolled .header-top { padding: 9px 48px; }
+header.scrolled .brand-logo { width: 46px; height: 46px; }
+
+/* ── CART BADGE ── */
+.top-nav a.cart-link { position: relative; }
+.cart-badge {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  background: var(--green);
+  color: var(--white);
+  border: 2px solid var(--pink);
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: content-box;
+}
+.cart-badge.bump { animation: badgeBump 0.45s ease; }
+@keyframes badgeBump {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.55); }
+  100% { transform: scale(1); }
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text h1 {
+  font-family:'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--mocha);
+  letter-spacing: 3px;
+  line-height: 1;
+}
+
+.brand-text h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: var(--mocha2);
+  font-style: italic;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+  max-width: 300px;
+}
+
+.top-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.top-nav a {
+  background: var(--mocha);
+  color: var(--cream);
+  padding: 8px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.top-nav a:hover {
+  background: var(--green);
+  transform: translateY(-1px);
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  background: var(--mocha);
+  padding: 10px 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+}
+
+.filter-bar span {
+  color: var(--cream);
+  opacity: 0.6;
+  margin-right: 4px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.filter-bar a {
+  color: var(--pink);
+  text-decoration: none;
+  font-weight: 400;
+  padding: 4px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,229,245,0.25);
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.3px;
+}
+
+.filter-bar a:hover,
+.filter-bar a.active {
+  background: var(--pink);
+  color: var(--mocha);
+}
+
+/* ── HERO (stop-motion flipbook) ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: clamp(460px, 82vh, 760px);
+  overflow: hidden;
+  background: linear-gradient(140deg, var(--pink) 0%, #f3dcea 55%, var(--cream) 100%);
+}
+
+.hero-stage { position: absolute; inset: 0; }
+
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  /* hard cut — no transition, true stop-motion feel */
+}
+.hero-frame.active { opacity: 1; }
+
+/* readability scrim — keeps overlay legible on any photo */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(66,43,28,0.04) 0%, rgba(66,43,28,0.30) 62%, rgba(66,43,28,0.52) 100%);
+  z-index: 2;
+}
+
+.hero-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 0 24px clamp(40px, 8vh, 76px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--cream);
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--white);
+  font-size: clamp(2.1rem, 5.4vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: 0.5px;
+  max-width: 16ch;
+  text-shadow: 0 2px 28px rgba(40,22,10,0.45);
+  text-wrap: balance;
+}
+
+.hero-sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--cream);
+  font-size: clamp(0.92rem, 1.6vw, 1.08rem);
+  line-height: 1.7;
+  max-width: 46ch;
+  margin: 18px auto 0;
+  opacity: 0.94;
+  text-shadow: 0 1px 14px rgba(40,22,10,0.4);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  background: var(--cream);
+  color: var(--mocha);
+  border: none;
+  padding: 16px 40px;
+  border-radius: 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 10px 34px rgba(40,22,10,0.34);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+.hero-cta:hover {
+  transform: translateY(-3px);
+  background: var(--white);
+  box-shadow: 0 16px 40px rgba(40,22,10,0.4);
+}
+.hero-cta .arrow { transition: transform 0.22s ease; }
+.hero-cta:hover .arrow { transform: translateY(3px); }
+
+/* tiny stop-motion frame counter, bottom-right of hero */
+.hero-flip-dots {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  z-index: 3;
+  display: flex;
+  gap: 6px;
+}
+.hero-flip-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(249,241,232,0.45);
+  transition: background 0.1s linear, transform 0.1s linear;
+}
+.hero-flip-dots i.on { background: var(--cream); transform: scale(1.35); }
+
+/* ── MAIN ── */
+main { flex: 1; padding: 48px 24px; }
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--mocha);
+  margin: 0 auto 32px;
+  max-width: 1060px;
+  padding-left: 14px;
+  border-left: 3px solid var(--green);
+  letter-spacing: 0.3px;
+}
+
+/* ── PRODUCT GRID ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* ── PRODUCT CARD ── */
+.product-card {
+  background: var(--white);
+  border-radius: 18px;
+  box-shadow: 0 2px 18px var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(66,43,28,0.05);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 42px rgba(66,43,28,0.16);
+  border-color: rgba(144,157,123,0.4);
+}
+
+.product-card img,
+.product-card .img-placeholder {
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  display: block;
+  background: var(--cream);
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.product-card:hover img,
+.product-card:hover .img-placeholder { transform: scale(1.07); }
+
+/* all text + buttons inside one wrapper */
+.card-inner {
+  padding: 20px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.product-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--mocha);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.price {
+  font-family: 'Jost', sans-serif;
+  color: var(--green);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-view {
+  display: block;
+  background: var(--pink);
+  color: var(--mocha);
+  padding: 9px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.btn-view:hover { background: var(--green); color: var(--white); }
+
+.btn-cart {
+  background: var(--mocha);
+  color: var(--white);
+  border: none;
+  padding: 9px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: 'Jost', sans-serif;
+  transition: background 0.2s;
+  width: 100%;
+  letter-spacing: 0.2px;
+}
+
+.btn-cart:hover { background: var(--green); }
+
+/* ── PRODUCT DETAIL ── */
+.product-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 22px;
+  padding: 48px;
+  box-shadow: 0 4px 28px var(--shadow);
+}
+
+.product-images img {
+  width: 320px;
+  max-width: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 18px var(--shadow);
+  display: block;
+}
+
+.product-info {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.product-info h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--mocha);
+  font-size: 2.1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.product-info .price { font-size: 1.25rem; }
+
+.product-info p {
+  line-height: 1.75;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  background: var(--cream);
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.meta-block p { font-weight: 300; color: var(--mocha2); }
+.meta-block strong { font-weight: 500; color: var(--mocha); }
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.qty-row label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--mocha2);
+}
+
+.product-info select {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(66,43,28,0.15);
+  font-size: 0.9rem;
+  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  cursor: pointer;
+}
+
+.product-info select:focus { outline: 2px solid var(--green); border-color: transparent; }
+
+.detail-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-cta .btn-cart {
+  padding: 13px 20px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.btn-save {
+  background: transparent;
+  color: var(--mocha);
+  border: 1.5px solid rgba(66,43,28,0.25);
+  padding: 11px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-family: 'Jost', sans-serif;
+  transition: all 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.btn-save:hover { background: var(--pink); border-color: var(--pink); }
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--mocha2);
+  text-decoration: none;
+  font-size: 0.82rem;
+  border-bottom: 1px dashed rgba(66,43,28,0.3);
+  padding-bottom: 1px;
+  width: fit-content;
+  transition: color 0.2s;
+  margin-top: 4px;
+}
+
+.btn-back:hover { color: var(--green); border-color: var(--green); }
+
+/* ── CONTACT ── */
+.contact-box, .cart-box {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 22px;
+  padding: 48px;
+  box-shadow: 0 4px 28px var(--shadow);
+}
+
+.contact-box h1, .cart-box h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--mocha);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.contact-box p { margin-bottom: 14px; line-height: 1.75; font-size: 0.9rem; font-weight: 300; }
+.contact-box a { color: var(--mocha); font-weight: 500; }
+.contact-box a:hover { color: var(--green); }
+
+/* ── CART ── */
+#cart-items { width: 100%; border-collapse: collapse; margin-bottom: 22px; }
+#cart-items th, #cart-items td {
+  text-align: left;
+  padding: 11px 10px;
+  border-bottom: 1px solid rgba(66,43,28,0.07);
+  font-size: 0.88rem;
+}
+#cart-items th {
+  color: var(--mocha2);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.cart-total {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--mocha);
+  margin: 18px 0;
+}
+
+.cart-box .btn-cart {
+  width: auto;
+  padding: 12px 36px;
+  font-size: 0.92rem;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--mocha);
+  color: var(--white);
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-family: 'Jost', sans-serif;
+  box-shadow: 0 4px 22px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 9999;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--mocha);
+  color: var(--pink);
+  text-align: center;
+  padding: 22px 48px;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+
+footer a { color: var(--pink); text-decoration: none; opacity: 0.75; transition: opacity 0.2s; }
+footer a:hover { opacity: 1; }
+footer .sep { opacity: 0.35; }
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .header-top { padding: 14px 20px; flex-direction: column; align-items: center; text-align: center; }
+  .brand-group { flex-direction: column; align-items: center; }
+  .tagline { text-align: center; }
+  .filter-bar { padding: 10px 20px; }
+  .hero-banner { padding: 40px 20px 32px; }
+  .hero-banner h2 { font-size: 1.7rem; }
+  main { padding: 32px 16px; }
+  .product-detail { padding: 28px 20px; gap: 28px; }
+  .contact-box, .cart-box { padding: 32px 20px; }
+  footer { padding: 18px 20px; flex-direction: column; gap: 6px; }
+}
+
+/* ── Custom Options (bunny, bear, mrs teddy) ── */
+.custom-options {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-row label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--mocha);
+  min-width: 140px;
+}
+
+.option-row select {
+  padding: 7px 12px;
+  border: 1px solid var(--pink, #f4c2c2);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--mocha);
+  background: var(--cream, #fdf6ec);
+  cursor: pointer;
+}
+
+/* ── BRAND LOGO ── */
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  background: transparent;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* ── Playfair Display for Yarnia name ── */
+.brand-text h1 a,
+.brand-text h1 {
+  font-family: 'Playfair Display', cursive !important;
+  font-size: 2.2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  color: var(--mocha);
+}
+
+/* ── SEARCH BAR ── */
+.search-bar-wrap {
+  background: var(--mocha);
+  padding: 12px 48px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,229,245,0.3);
+  border-radius: 30px;
+  padding: 8px 18px;
+  gap: 10px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.search-icon { font-size: 0.9rem; opacity: 0.6; }
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  width: 100%;
+  font-weight: 300;
+}
+
+.search-bar input::placeholder { color: rgba(249,241,232,0.5); }
+
+.search-clear {
+  background: transparent;
+  border: none;
+  color: var(--pink);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.search-clear:hover { opacity: 1; }
+
+/* ── AUTH BUTTONS ── */
+.auth-group {
+  display: flex;
+  gap: 8px;
+}
+
+.auth-btn {
+  background: transparent;
+  border: 1.5px solid var(--mocha);
+  color: var(--mocha);
+  padding: 7px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.auth-btn:hover { background: var(--mocha); color: var(--cream); }
+.auth-btn--primary { background: var(--mocha); color: var(--cream); }
+.auth-btn--primary:hover { background: var(--mocha2); }
+
+/* ── AUTH MODAL ── */
+#auth-overlay {
+  position: fixed; inset: 0;
+  background: rgba(66,43,28,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+#auth-modal {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px 36px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 48px rgba(66,43,28,0.2);
+}
+
+.auth-close {
+  position: absolute; top: 14px; right: 18px;
+  background: none; border: none; font-size: 1.1rem;
+  cursor: pointer; color: var(--mocha2); opacity: 0.6;
+}
+.auth-close:hover { opacity: 1; }
+
+.auth-tabs {
+  display: flex;
+  gap: 0;
+  border: 1.5px solid rgba(66,43,28,0.15);
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 18px 0 22px;
+}
+
+.auth-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 9px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--mocha2);
+  transition: all 0.2s;
+}
+.auth-tab.active { background: var(--mocha); color: var(--cream); }
+
+.auth-input {
+  display: block;
+  width: 100%;
+  padding: 11px 16px;
+  margin-bottom: 12px;
+  border: 1.5px solid rgba(66,43,28,0.15);
+  border-radius: 12px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--cream);
+  text-align: left;
+}
+.auth-input:focus { outline: 2px solid var(--green); border-color: transparent; }
+
+.auth-submit {
+  width: 100%;
+  background: var(--mocha);
+  color: var(--cream);
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+.auth-submit:hover { background: var(--green); }
+
+.auth-note {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* ── CATEGORIES ── */
+.categories-section { padding: 48px 48px 40px; }
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 28px auto 0;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--white);
+  border: 2px solid rgba(66,43,28,0.08);
+  border-radius: 20px;
+  padding: 36px 20px;
+  text-decoration: none;
+  color: var(--mocha);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 16px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px var(--shadow);
+  border-color: var(--pink);
+}
+.cat-icon { font-size: 2.6rem; }
+
+/* ── PRODUCTS SECTION ── */
+.products-section { padding: 32px 48px 48px; }
+
+.products-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.back-to-cats {
+  background: transparent;
+  border: 1.5px solid rgba(66,43,28,0.2);
+  color: var(--mocha2);
+  padding: 7px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+}
+.back-to-cats:hover { background: var(--mocha); color: var(--cream); border-color: var(--mocha); }
+
+.no-results {
+  text-align: center;
+  color: var(--mocha2);
+  font-style: italic;
+  padding: 40px;
+  font-size: 0.95rem;
+}
+
+/* ── STRIPS ── */
+.strip-dark {
+  background: var(--mocha);
+  color: var(--cream);
+  text-align: center;
+  padding: 32px 20px;
+  margin-top: 0;
+}
+.strip-quote { font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;opacity:0.9;letter-spacing:0.5px; }
+.strip-sub { font-size:0.82rem;font-weight:300;margin-top:8px;opacity:0.6;letter-spacing:0.3px; }
+
+.why-section { background:var(--pink);padding:48px 20px;text-align:center; }
+.why-heading { font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--mocha);font-weight:600;margin-bottom:28px;letter-spacing:0.3px; }
+.why-grid { display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:700px;margin:0 auto; }
+.why-item { max-width:160px; }
+.why-icon { font-size:2rem;margin-bottom:8px; }
+.why-title { font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--mocha);margin-bottom:4px; }
+.why-body { font-size:0.78rem;font-weight:300;color:var(--mocha2);line-height:1.6; }
+
+/* ── ABOUT SECTION ── */
+.about-section {
+  background: var(--cream);
+  padding: 64px 48px;
+  border-top: 1px solid rgba(66,43,28,0.08);
+}
+
+.about-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-logo-col {
+  flex-shrink: 0;
+}
+
+.about-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: var(--pink);
+  padding: 10px;
+}
+
+.about-text-col { flex: 1; min-width: 260px; }
+
+.about-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--mocha);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.about-text-col p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--mocha2);
+  margin-bottom: 14px;
+}
+
+.about-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.about-links a {
+  background: var(--mocha);
+  color: var(--cream);
+  padding: 9px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.about-links a:hover { background: var(--green); }
+
+/* ── PROMO LOGO ── */
+.promo-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: var(--pink);
+  padding: 6px;
+}
+
+/* ── PROMO POPUP (if not already defined) ── */
+#promo-overlay {
+  position: fixed; inset: 0;
+  background: rgba(66,43,28,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+#promo-popup {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 44px 36px 36px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+}
+#promo-close {
+  position: absolute; top: 14px; right: 18px;
+  background: none; border: none; font-size: 1.1rem;
+  cursor: pointer; color: var(--mocha2); opacity: 0.5;
+}
+#promo-close:hover { opacity: 1; }
+#promo-popup h2 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--mocha);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.promo-sub { font-size: 0.85rem; color: var(--mocha2); margin-bottom: 20px; font-weight: 300; }
+.promo-code-box {
+  background: var(--pink);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin: 0 0 14px;
+}
+.promo-code-box p { font-size: 0.82rem; color: var(--mocha2); font-weight: 300; }
+.promo-highlight { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; color: var(--mocha); display: block; line-height: 1.1; margin: 4px 0; }
+.promo-code { font-size: 1.3rem; font-weight: 700; letter-spacing: 4px; color: var(--mocha); margin-top: 10px; font-family: monospace; border: 2px dashed rgba(66,43,28,0.25); border-radius: 8px; padding: 6px 12px; display: inline-block; }
+.promo-fine { font-size: 0.72rem; color: #aaa; margin-bottom: 20px; }
+.promo-cta { background: var(--mocha); color: var(--cream); border: none; padding: 13px 36px; border-radius: 30px; font-family: 'Jost',sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: background 0.2s; width: 100%; }
+.promo-cta:hover { background: var(--green); }
+
+/* ── MOBILE UPDATES ── */
+@media (max-width: 640px) {
+  .search-bar-wrap { padding: 10px 16px; }
+  .auth-group { gap: 6px; }
+  .auth-btn { padding: 6px 10px; font-size: 0.72rem; }
+  .categories-section { padding: 32px 20px; }
+  .products-section { padding: 24px 16px 40px; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .about-section { padding: 40px 20px; }
+  .about-inner { flex-direction: column; gap: 28px; }
+  .about-logo { width: 100px; height: 100px; }
+}
+
+/* ── PROMO INPUT (cart page) ── */
+.promo-input-row {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 4px;
+  flex-wrap: wrap;
+}
+
+.promo-input-row input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1.5px solid rgba(66,43,28,0.15);
+  border-radius: 30px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  background: var(--cream);
+  color: var(--text);
+  min-width: 180px;
+}
+.promo-input-row input:focus { outline: 2px solid var(--green); border-color: transparent; }
+
+.promo-input-row button {
+  background: var(--mocha);
+  color: var(--cream);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.promo-input-row button:hover { background: var(--green); }
+
+/* ── REVIEWS (if not already defined) ── */
+.reviews-section {
+  background: var(--pink);
+  padding: 50px 48px;
+  text-align: center;
+}
+.reviews-section h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--mocha);
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+.review-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 24px 20px;
+  box-shadow: 0 3px 12px rgba(122,92,79,0.1);
+  text-align: left;
+}
+.stars { color: #c9a84c; font-size: 1.2rem; margin-bottom: 10px; }
+.review-card p { font-style: italic; line-height: 1.6; margin-bottom: 12px; color: var(--text); }
+.reviewer { font-size: 0.85rem; color: var(--mocha); font-weight: bold; }
+.review-form-box {
+  background: var(--white);
+  max-width: 560px;
+  margin: 0 auto;
+  border-radius: 16px;
+  padding: 34px;
+  box-shadow: 0 4px 16px rgba(122,92,79,0.1);
+  text-align: left;
+}
+.review-form-box h3 { font-family: 'Playfair Display', serif; color: var(--mocha); font-size: 1.3rem; margin-bottom: 6px; }
+.review-note { font-size: 0.85rem; color: #888; margin-bottom: 18px; font-style: italic; }
+.review-form input, .review-form textarea {
+  width: 100%; padding: 10px 14px; margin-bottom: 12px;
+  border: 1px solid var(--pink); border-radius: 10px;
+  font-family: 'Jost', sans-serif; font-size: 0.95rem;
+  color: var(--text); background: var(--cream);
+}
+.review-form textarea { resize: vertical; }
+.star-picker { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; font-size: 0.95rem; }
+.star-btn { font-size: 1.6rem; color: #ccc; cursor: pointer; transition: color 0.15s; }
+.star-btn:hover { color: #c9a84c; }
+.review-form button {
+  background: var(--mocha); color: var(--cream); border: none;
+  padding: 10px 24px; border-radius: 20px; cursor: pointer;
+  font-size: 0.95rem; transition: background 0.2s; width: 100%;
+}
+.review-form button:hover { background: var(--green); }
+
+/* ── SCROLLING BANNER ── */
+.scroll-banner {
+  background: var(--mocha);
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  border-bottom: 2px solid rgba(255,229,245,0.15);
+}
+
+.scroll-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: scrollLeft 30s linear infinite;
+}
+
+.scroll-banner:hover .scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.scroll-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 28px;
+  border-right: 1px solid rgba(255,229,245,0.1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.scroll-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(255,229,245,0.3);
+}
+
+.scroll-item span {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--pink);
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+/* ── DREAMY BANNER ── */
+.dreamy-banner {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  background: linear-gradient(160deg, #fce4f0 0%, #f9f1e8 50%, #e8f0e4 100%);
+  overflow: hidden;
+}
+
+.db-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.7);
+  box-shadow: 0 8px 32px rgba(122,92,79,0.18);
+}
+
+.db-img1 { width: 170px; height: 170px; top: 30px;  left: 5%;   transform: rotate(-8deg); z-index: 3; }
+.db-img2 { width: 130px; height: 130px; top: 140px; left: 14%;  transform: rotate(5deg);  z-index: 4; }
+.db-img3 { width: 155px; height: 155px; top: 20px;  left: 26%;  transform: rotate(4deg);  z-index: 2; }
+.db-img4 { width: 120px; height: 120px; top: 160px; left: 35%;  transform: rotate(-6deg); z-index: 5; }
+.db-img5 { width: 160px; height: 160px; top: 40px;  left: 50%;  transform: rotate(7deg);  z-index: 3; }
+.db-img6 { width: 140px; height: 140px; top: 150px; left: 62%;  transform: rotate(-4deg); z-index: 4; }
+.db-img7 { width: 180px; height: 180px; top: 15px;  left: 76%;  transform: rotate(6deg);  z-index: 2; }
+
+@media (max-width: 640px) {
+  .dreamy-banner { height: 220px; }
+  .db-img1 { width: 100px; height: 100px; top: 20px;  left: 2%;  }
+  .db-img2 { width: 80px;  height: 80px;  top: 110px; left: 10%; }
+  .db-img3 { width: 95px;  height: 95px;  top: 15px;  left: 25%; }
+  .db-img4 { width: 75px;  height: 75px;  top: 120px; left: 35%; }
+  .db-img5 { width: 100px; height: 100px; top: 20px;  left: 50%; }
+  .db-img6 { width: 85px;  height: 85px;  top: 115px; left: 62%; }
+  .db-img7 { width: 110px; height: 110px; top: 10px;  left: 76%; }
+}
+
+/* ── FYI & MADE TO ORDER BLOCKS ── */
+.fyi-block, .made-to-order {
+  background: var(--cream);
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--mocha2);
+  line-height: 1.6;
+}
+
+.fyi-block strong, .made-to-order strong {
+  font-weight: 600;
+  color: var(--mocha);
+}
+
+/* ── QTY CONTROLS IN CART ── */
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-control button {
+  background: var(--pink);
+  border: none;
+  color: var(--mocha);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-control button:hover { background: var(--green); color: var(--white); }
+.qty-control span { font-weight: 500; min-width: 20px; text-align: center; }
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  padding: 4px;
+}
+.remove-btn:hover { color: #e74c3c; }
+
+/* ════════════════════════════════════════════
+   REDESIGN ADDITIONS
+   ════════════════════════════════════════════ */
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ── STITCHED DIVIDER MOTIF ── */
+.stitch-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 30px 24px;
+}
+.stitch-divider::before,
+.stitch-divider::after {
+  content: "";
+  flex: 1;
+  height: 0;
+  border-top: 2.5px dashed rgba(144,157,123,0.55);
+}
+.stitch-divider span {
+  flex-shrink: 0;
+  color: var(--green);
+  font-size: 1.05rem;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+.stitch-divider.on-dark::before,
+.stitch-divider.on-dark::after { border-top-color: rgba(255,229,245,0.4); }
+.stitch-divider.on-dark span { color: var(--pink); }
+
+/* ── FLOATING / SWAY DECORATIONS ── */
+.deco-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.deco {
+  position: absolute;
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0.16;
+  color: var(--mocha);
+  animation: sway 7s ease-in-out infinite;
+  will-change: transform;
+}
+.deco.yarn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.13;
+  box-shadow: inset -6px -6px 0 rgba(0,0,0,0.06);
+}
+@keyframes sway {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-14px) rotate(5deg); }
+}
+.about-section, .why-section, .reviews-section { position: relative; }
+.about-section > *, .why-section > *, .reviews-section > * { position: relative; z-index: 1; }
+
+/* ── SHOP TOOLBAR (filters as refinements over a visible grid) ── */
+.shop-intro {
+  max-width: 1060px;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+.shop-eyebrow {
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+.shop-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--mocha);
+  letter-spacing: 0.5px;
+}
+.shop-note {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--mocha2);
+  margin-top: 8px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1060px;
+  margin: 26px auto 34px;
+  padding: 0 12px;
+}
+.chip {
+  background: var(--white);
+  border: 1.5px solid rgba(66,43,28,0.16);
+  color: var(--mocha2);
+  padding: 9px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+}
+.chip:hover { transform: translateY(-2px); border-color: var(--green); }
+.chip.active {
+  background: var(--mocha);
+  color: var(--cream);
+  border-color: var(--mocha);
+}
+
+/* ── REVIEWS: REAL-SCREENSHOT LAYOUT ── */
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+  max-width: 1000px;
+  margin: 0 auto 44px;
+}
+.proof-card {
+  background: var(--white);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 6px 26px rgba(66,43,28,0.1);
+  border: 1px solid rgba(66,43,28,0.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.proof-card:hover { transform: translateY(-6px); box-shadow: 0 16px 38px rgba(66,43,28,0.15); }
+.proof-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--green);
+}
+.proof-card.ig .proof-head { background: var(--mocha); }
+.proof-head .src-dot {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+}
+.proof-head .src-handle { opacity: 0.85; margin-left: auto; font-weight: 300; }
+.proof-shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background:
+    repeating-linear-gradient(45deg, #f4e7dc 0 14px, #efe0d3 14px 28px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proof-shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.proof-shot .ph-label {
+  font-family: 'Jost', monospace, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.5px;
+  color: var(--mocha2);
+  background: rgba(249,241,232,0.85);
+  border: 1px dashed rgba(66,43,28,0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.5;
+}
+.proof-foot {
+  padding: 12px 16px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--mocha2);
+}
+.proof-foot .stars { font-size: 0.95rem; margin: 0; }
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 950;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 26px rgba(66,43,28,0.32);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wa-float svg { width: 30px; height: 30px; display: block; }
+.wa-float::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  animation: waPulse 2.6s ease-out infinite;
+}
+.wa-float:hover { transform: scale(1.08); box-shadow: 0 12px 32px rgba(66,43,28,0.4); }
+.wa-tip {
+  position: absolute;
+  right: 72px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: var(--mocha);
+  color: var(--cream);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  border-radius: 22px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 16px rgba(66,43,28,0.2);
+}
+.wa-float:hover .wa-tip { opacity: 1; }
+@keyframes waPulse {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* ── TOAST: recentre so it doesn't sit under the WA float ── */
+.toast {
+  left: 50%;
+  right: auto;
+  bottom: 30px;
+  transform: translateX(-50%) translateY(10px);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── REFINED RHYTHM ── */
+.about-section { padding-top: 72px; padding-bottom: 72px; }
+.section-heading { font-size: 1.8rem; margin-bottom: 26px; }
+
+@media (max-width: 640px) {
+  .header-top { padding: 12px 18px; flex-direction: row; }
+  header.scrolled .header-top { padding: 8px 18px; }
+  .brand-group { flex-direction: row; gap: 10px; }
+  .brand-text h1 a, .brand-text h1 { font-size: 1.7rem !important; }
+  .tagline { display: none; }
+  .top-nav a { padding: 7px 14px; font-size: 0.76rem; }
+  .hero { height: 78vh; min-height: 440px; }
+  .filter-chips { gap: 8px; margin: 20px auto 26px; }
+  .chip { padding: 8px 16px; font-size: 0.8rem; }
+  .wa-float { width: 54px; height: 54px; right: 16px; bottom: 16px; }
+  .shop-title { font-size: 1.6rem; }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .hero-frame { opacity: 1; }
+  .hero-frame.breathing { animation: none !important; }
+  #intro-overlay { display: none !important; }
+}
+
+/* ════════════════════════════════════════════
+   v3 ADDITIONS — yarn-emoji logo, photos, intro, motion
+   ════════════════════════════════════════════ */
+
+/* ── YARN-EMOJI BRAND MARK (replaces logo.png) ── */
+.brand-mark{
+  font-size:2.4rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;
+  width:58px;height:58px;
+  transition:width .3s,height .3s,font-size .3s;
+}
+header.scrolled .brand-mark{width:46px;height:46px;font-size:1.9rem}
+.about-mark{
+  font-size:5rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;
+  width:140px;height:140px;border-radius:50%;background:var(--pink);
+}
+.promo-mark{
+  font-size:2.6rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;
+  width:70px;height:70px;border-radius:50%;background:var(--pink);margin:0 auto 10px;
+}
+
+/* ── UNIFORM PRODUCT DETAIL IMAGE ── */
+.product-images img{
+  width:340px;max-width:100%;aspect-ratio:4/5;height:auto;
+  border-radius:16px;object-fit:cover;box-shadow:0 4px 18px var(--shadow);display:block;
+}
+.product-thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.product-thumbs img{
+  width:72px;height:90px;object-fit:cover;border-radius:10px;cursor:pointer;
+  border:2px solid transparent;box-shadow:0 2px 10px var(--shadow);transition:border-color .2s,transform .2s;
+}
+.product-thumbs img:hover{transform:translateY(-2px)}
+.product-thumbs img.active{border-color:var(--green)}
+
+/* ── HERO BREATHING ZOOM (single-image mode) ── */
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.03)}}
+.hero-frame.breathing{animation:breathe 8s ease-in-out infinite alternate}
+
+/* ── STOP-MOTION INTRO OVERLAY ── */
+#intro-overlay{
+  position:fixed;inset:0;z-index:11000;background:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .35s ease;
+}
+#intro-overlay.fade{opacity:0;pointer-events:none}
+.intro-stage{position:relative;width:300px;height:300px}
+.intro-bit{
+  position:absolute;left:50%;top:50%;font-size:2.6rem;line-height:1;
+  opacity:0;transform:translate(-50%,-50%);
+}
+.intro-bit.show{opacity:1}
+.intro-bit img,img.intro-bit{}
+img.intro-bit{width:74px;height:92px;object-fit:cover;border-radius:12px;box-shadow:0 6px 18px rgba(66,43,28,.22)}
+.intro-yarn{font-size:5.5rem}
+.intro-word{
+  position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);
+  font-family:'Playfair Display',serif;font-style:italic;font-size:2.4rem;color:var(--mocha);
+  letter-spacing:2px;opacity:0;white-space:nowrap;
+}
+.intro-word.show{opacity:1}
+
+@media (max-width:640px){
+  .brand-mark{width:46px;height:46px;font-size:1.9rem}
+  .about-mark{width:104px;height:104px;font-size:3.8rem}
+  .product-card img,
+  .product-card .img-placeholder{height:200px}
+  .product-images img{width:100%;aspect-ratio:4/5}
+  .intro-stage{width:230px;height:230px}
+  .intro-yarn{font-size:4.4rem}
+}
+
+</style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- ════════════════════════════════════════════════════════════════
+       IMAGE FILES THE SITE EXPECTS  (logo is now the 🧶 emoji — no logo.png needed)
+       ────────────────────────────────────────────────────────────────
+       HERO:
+         hero-new.png  – large landing flat-lay (hero + stop-motion fallback)
+         frame1.png … frame8.png – OPTIONAL stop-motion hero frames (drop in 4–8;
+                                fewer than 2 → falls back to hero-collection.png)
+       REVIEWS (real screenshots):
+         review1.png  review2.png  review3.png
+       PRODUCT PHOTOS (supplied):
+         bag.png  bear.png  bee.png  bunny.png  bun.png (bunny alt colour)
+         lily.png  tulip.png  oneeye.png  mrbean.png  mrsteddy.png
+         kittycat.png  penguin.png  sunflower.png  turtle.png  dino.png  infinite.png
+       ════════════════════════════════════════════════════════════════ -->
+</head>
+<body>
+
+<!-- ── STOP-MOTION INTRO (first visit per session; skipped for reduced-motion) ── -->
+<div id="intro-overlay">
+  <div class="intro-stage">
+    <img class="intro-bit" data-base="translate(calc(-50% - 95px), calc(-50% - 55px))" src="bunny.png" alt="">
+    <img class="intro-bit" data-base="translate(calc(-50% + 95px), calc(-50% - 55px))" src="bee.png" alt="">
+    <img class="intro-bit" data-base="translate(calc(-50% - 100px), calc(-50% + 60px))" src="tulip.png" alt="">
+    <img class="intro-bit" data-base="translate(calc(-50% + 100px), calc(-50% + 60px))" src="penguin.png" alt="">
+    <img class="intro-bit" data-base="translate(calc(-50%), calc(-50% - 110px))" src="kittycat.png" alt="">
+    <span class="intro-bit intro-yarn" role="img" aria-label="Yarnia">🧶</span>
+    <span class="intro-word">Yarnia</span>
+  </div>
+</div>
+
+  <!-- ── WELCOME / DISCOUNT POPUP (fires on exit-intent OR after scrolling past the first product row — never on load) ── -->
+  <div id="promo-overlay" style="display:none;">
+    <div id="promo-popup">
+      <button id="promo-close" onclick="closePromo()" aria-label="Close">✕</button>
+      <span class="promo-mark" role="img" aria-label="Yarnia">🧶</span>
+      <h2>A little thank-you ♡</h2>
+      <p class="promo-sub">You've been browsing the pieces I lose sleep over — here's 10% off your first one.</p>
+      <div class="promo-code-box">
+        <p>Use this code at checkout</p>
+        <span class="promo-highlight">10% OFF</span>
+        <p>your first order</p>
+        <div class="promo-code">YARNIA</div>
+      </div>
+      <p class="promo-fine">Valid once per customer · New orders only</p>
+      <button class="promo-cta" onclick="closePromo()">Keep Shopping ♡</button>
+    </div>
+  </div>
+
+  <!-- ── HEADER (sticky, translucent) ── -->
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <span class="brand-mark" role="img" aria-label="Yarnia">🧶</span>
+        <div class="brand-text">
+          <h1><a href="index.html">Yarnia</a></h1>
+          <p class="tagline">Things made slow, on purpose.</p>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="cart.html" class="cart-link">🛒 Cart</a>
+        <a href="contact.html">📞 Contact</a>
+      </nav>
+    </div>
+
+    <!-- ── SEARCH BAR ── -->
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search for bunnies, flowers, characters…" oninput="searchProducts()">
+        <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display:none;">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── HERO (stop-motion flipbook) ── -->
+  <section class="hero" id="hero" data-screen-label="Hero">
+    <div class="hero-stage" id="hero-stage">
+      <!-- Stop-motion frames (optional). Supply frame1.png … frame8.png. -->
+      <img class="hero-frame" data-frame src="frame1.png" alt="">
+      <img class="hero-frame" data-frame src="frame2.png" alt="">
+      <img class="hero-frame" data-frame src="frame3.png" alt="">
+      <img class="hero-frame" data-frame src="frame4.png" alt="">
+      <img class="hero-frame" data-frame src="frame5.png" alt="">
+      <img class="hero-frame" data-frame src="frame6.png" alt="">
+      <img class="hero-frame" data-frame src="frame7.png" alt="">
+      <img class="hero-frame" data-frame src="frame8.png" alt="">
+      <!-- Always-present fallback / base image -->
+      <img class="hero-frame" data-fallback src="hero-new.png" alt="A handmade Yarnia crochet collection laid out on soft fabric">
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-flip-dots" id="hero-dots" aria-hidden="true"></div>
+    <div class="hero-overlay">
+      <p class="hero-eyebrow">Handmade · One pair of hands · Karachi</p>
+      <h1 class="hero-title">Every stitch is someone's 2am ♡</h1>
+      <p class="hero-sub">No factory. No shortcuts. Just hands, yarn, and a little too much love put into every single piece.</p>
+      <a class="hero-cta" href="#shop" onclick="scrollToShop(event)">Shop the Collection <span class="arrow">↓</span></a>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ── SHOP — products visible immediately; chips + search refine ── -->
+    <section class="products-section" id="shop" data-screen-label="Shop">
+      <div class="shop-intro reveal">
+        <p class="shop-eyebrow">The Collection</p>
+        <h2 class="shop-title">Made fresh, just for you</h2>
+        <p class="shop-note">Browse everything below — filter or search to narrow it down.</p>
+      </div>
+
+      <div class="filter-chips reveal" id="filter-chips">
+        <button class="chip active" data-cat="all" onclick="filterCategory('all', this)">All</button>
+        <button class="chip" data-cat="animals" onclick="filterCategory('animals', this)">🐰 Animals</button>
+        <button class="chip" data-cat="characters" onclick="filterCategory('characters', this)">🧸 Characters</button>
+        <button class="chip" data-cat="flowers" onclick="filterCategory('flowers', this)">🌸 Flowers</button>
+        <button class="chip" data-cat="bags" onclick="filterCategory('bags', this)">👜 Bags</button>
+        <button class="chip" data-cat="home" onclick="filterCategory('home', this)">🖼️ Home / Wall Art</button>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+
+        <div class="product-card reveal" data-category="characters" data-name="one-eye monster">
+          <img src="oneeye.png" alt="One-Eye Monster crochet plush">
+          <div class="card-inner">
+            <h2>One-Eye Monster</h2>
+            <p class="price">Rs. 1,500</p>
+            <div class="card-actions">
+              <a href="oneeye.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('One-Eye Monster', 1500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="flowers" data-name="crochet lily">
+          <img src="lily.png" alt="Crochet Lily">
+          <div class="card-inner">
+            <h2>Crochet Lily</h2>
+            <p class="price">Rs. 2,000</p>
+            <div class="card-actions">
+              <a href="lily.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Lily', 2000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="animals" data-name="crochet bunny">
+          <img src="bunny.png" alt="Crochet Bunny">
+          <div class="card-inner">
+            <h2>Crochet Bunny</h2>
+            <p class="price">Rs. 3,000</p>
+            <div class="card-actions">
+              <a href="bunny.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Bunny', 3000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="animals" data-name="crochet bee">
+          <img src="bee.png" alt="Crochet Bee">
+          <div class="card-inner">
+            <h2>Crochet Bee</h2>
+            <p class="price">Rs. 2,500</p>
+            <div class="card-actions">
+              <a href="bee.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Bee', 2500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="animals" data-name="crochet bear">
+          <img src="bear.png" alt="Crochet Bear">
+          <div class="card-inner">
+            <h2>Crochet Bear</h2>
+            <p class="price">Rs. 3,000</p>
+            <div class="card-actions">
+              <a href="bear.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Bear', 3000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="flowers" data-name="crochet tulip">
+          <img src="tulip.png" alt="Crochet Tulip">
+          <div class="card-inner">
+            <h2>Crochet Tulip</h2>
+            <p class="price">Rs. 1,500</p>
+            <div class="card-actions">
+              <a href="tulip.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Crochet Tulip', 1500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="characters" data-name="mr bean teddy">
+          <img src="mrbean.png" alt="Mr. Bean Teddy">
+          <div class="card-inner">
+            <h2>Mr. Bean Teddy</h2>
+            <p class="price">Rs. 2,500</p>
+            <div class="card-actions">
+              <a href="mrbean.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Mr. Bean Teddy', 2500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="characters" data-name="mrs teddy">
+          <img src="mrsteddy.png" alt="Mrs. Teddy">
+          <div class="card-inner">
+            <h2>Mrs. Teddy</h2>
+            <p class="price">Rs. 2,500</p>
+            <div class="card-actions">
+              <a href="mrsteddy.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Mrs. Teddy', 2500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="bags" data-name="i love me bag">
+          <img src="bag.png" alt="I ♡ Me Bag">
+          <div class="card-inner">
+            <h2>I ♡ Me Bag</h2>
+            <p class="price">Rs. 4,000</p>
+            <div class="card-actions">
+              <a href="bag.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('I ♡ Me Bag', 4000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="characters" data-name="kitty cat kitten">
+          <img src="kittycat.png" alt="Kitty Cat crochet plush with red bow">
+          <div class="card-inner">
+            <h2>Kitty Cat</h2>
+            <p class="price">Rs. 2,500</p>
+            <div class="card-actions">
+              <a href="kittycat.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Kitty Cat', 2500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="animals" data-name="pocket penguin">
+          <img src="penguin.png" alt="Pocket Penguin mini crochet plush">
+          <div class="card-inner">
+            <h2>Pocket Penguin</h2>
+            <p class="price">Rs. 1,200</p>
+            <div class="card-actions">
+              <a href="penguin.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Pocket Penguin', 1200)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="flowers" data-name="sunflower in a pot">
+          <img src="sunflower.png" alt="Crochet Sunflower in a Pot">
+          <div class="card-inner">
+            <h2>Sunflower in a Pot</h2>
+            <p class="price">Rs. 2,800</p>
+            <div class="card-actions">
+              <a href="sunflower.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Sunflower in a Pot', 2800)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="animals" data-name="little turtle mini">
+          <img src="turtle.png" alt="Little Turtle mini crochet">
+          <div class="card-inner">
+            <h2>Little Turtle</h2>
+            <p class="price">Rs. 1,000</p>
+            <div class="card-actions">
+              <a href="turtle.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Little Turtle', 1000)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="home" data-name="tired or bored dino wall hanging">
+          <img src="dino.png" alt="Tired-or-Bored Dino crochet wall hanging">
+          <div class="card-inner">
+            <h2>Tired-or-Bored Dino Wall Hanging</h2>
+            <p class="price">Rs. 3,500</p>
+            <div class="card-actions">
+              <a href="dino.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('Tired-or-Bored Dino Wall Hanging', 3500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card reveal" data-category="home" data-name="we were infinite wall piece">
+          <img src="infinite.png" alt="&ldquo;We Were Infinite&rdquo; crochet wall piece">
+          <div class="card-inner">
+            <h2>&ldquo;We Were Infinite&rdquo; Wall Piece</h2>
+            <p class="price">Rs. 3,500</p>
+            <div class="card-actions">
+              <a href="infinite.html" class="btn-view">View Details</a>
+              <button class="btn-cart" onclick="addToCart('We Were Infinite Wall Piece', 3500)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p class="no-results" id="no-results" style="display:none;">No pieces match that yet. Try another search ♡</p>
+    </section>
+
+    <!-- stitched divider -->
+    <div class="stitch-divider" aria-hidden="true"><span>♡</span></div>
+
+    <!-- ── ABOUT (moved high — right after the collection) ── -->
+    <section class="about-section" data-screen-label="About">
+      <div class="deco-layer" aria-hidden="true">
+        <span class="deco" style="top:12%;left:6%;font-size:2.4rem;">✿</span>
+        <span class="deco yarn" style="top:60%;left:9%;animation-delay:1.2s;"></span>
+        <span class="deco" style="top:74%;right:7%;font-size:2rem;animation-delay:.6s;">❀</span>
+        <span class="deco yarn" style="top:18%;right:11%;animation-delay:2s;"></span>
+      </div>
+      <div class="about-inner reveal">
+        <div class="about-logo-col">
+          <span class="about-mark" role="img" aria-label="Yarnia">🧶</span>
+        </div>
+        <div class="about-text-col">
+          <h2 class="about-heading">The hands behind Yarnia</h2>
+          <p>No factories, no shortcuts. Just my hands, some yarn, and a little too much love.</p>
+          <p>I started Yarnia right here in Karachi as a creative escape, and today it's a tiny, one-person shop dedicated to the art of handmade crochet. From squishy animals to custom bags and flowers that stay fresh forever, every single piece is stitched from scratch — by me.</p>
+          <p>When you buy from me, you're getting a unique creation that took hours of quiet patience to make. Slight wobbles and one-of-a-kind quirks aren't flaws — they're the proof a human made it.</p>
+          <p>Have a custom design in mind? I love bringing your ideas to life. Message me on Instagram or WhatsApp to customise your colours, sizes, or characters.</p>
+          <div class="about-links">
+            <a href="contact.html">Get in Touch</a>
+            <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">@the.yarnia_</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HANDMADE STRIP ── -->
+    <section class="strip-dark reveal">
+      <p class="strip-quote">Every piece is one of a kind. Made by hand. Made with intent.</p>
+      <p class="strip-sub">Custom orders open — DM us on Instagram or WhatsApp</p>
+    </section>
+
+    <!-- ── WHY HANDMADE ── -->
+    <section class="why-section" data-screen-label="Why handmade">
+      <div class="deco-layer" aria-hidden="true">
+        <span class="deco" style="top:20%;left:8%;font-size:2rem;">❀</span>
+        <span class="deco yarn" style="top:64%;right:10%;animation-delay:1.5s;"></span>
+      </div>
+      <p class="why-heading reveal">Why handmade?</p>
+      <div class="why-grid reveal">
+        <div class="why-item"><div class="why-icon">🌿</div><p class="why-title">Lasts forever</p><p class="why-body">No wilting. No fading. Real flowers die in a week.</p></div>
+        <div class="why-item"><div class="why-icon">🤍</div><p class="why-title">Made with care</p><p class="why-body">Every stitch placed by hand. No two pieces identical.</p></div>
+        <div class="why-item"><div class="why-icon">🎁</div><p class="why-title">Custom orders</p><p class="why-body">Colours, sizes, characters. Tell us what you want.</p></div>
+      </div>
+    </section>
+
+    <!-- stitched divider -->
+    <div class="stitch-divider" aria-hidden="true"><span>✁ ✁ ✁</span></div>
+
+    <!-- ── REVIEWS — real WhatsApp / Instagram screenshots ── -->
+    <section class="reviews-section" data-screen-label="Reviews">
+      <div class="deco-layer" aria-hidden="true">
+        <span class="deco" style="top:14%;right:8%;font-size:2.2rem;">✿</span>
+        <span class="deco yarn" style="top:70%;left:7%;animation-delay:1s;"></span>
+      </div>
+      <h2 class="reveal">Straight from your messages 💬</h2>
+      <p class="reveal" style="max-width:520px;margin:-12px auto 34px;font-weight:300;color:var(--mocha2);font-size:0.95rem;line-height:1.7;">The kindest words arrive as little chats and comments. Here are a few, exactly as they came in.</p>
+
+      <div class="proof-grid">
+        <figure class="proof-card reveal">
+          <figcaption class="proof-head"><span class="src-dot">💬</span> WhatsApp <span class="src-handle">order chat</span></figcaption>
+          <div class="proof-shot">
+            <img src="review1.png" alt="" onerror="this.style.display='none'">
+            <span class="ph-label">review1.png<br>screenshot of a real WhatsApp message</span>
+          </div>
+          <figcaption class="proof-foot"><span>Verified order</span><span class="stars">★★★★★</span></figcaption>
+        </figure>
+
+        <figure class="proof-card ig reveal">
+          <figcaption class="proof-head"><span class="src-dot">📸</span> Instagram <span class="src-handle">@the.yarnia_</span></figcaption>
+          <div class="proof-shot">
+            <img src="review2.png" alt="" onerror="this.style.display='none'">
+            <span class="ph-label">review2.png<br>screenshot of a real Instagram comment</span>
+          </div>
+          <figcaption class="proof-foot"><span>Comment</span><span class="stars">★★★★★</span></figcaption>
+        </figure>
+
+        <figure class="proof-card reveal">
+          <figcaption class="proof-head"><span class="src-dot">💬</span> WhatsApp <span class="src-handle">order chat</span></figcaption>
+          <div class="proof-shot">
+            <img src="review3.png" alt="" onerror="this.style.display='none'">
+            <span class="ph-label">review3.png<br>screenshot of a real chat or comment</span>
+          </div>
+          <figcaption class="proof-foot"><span>Verified order</span><span class="stars">★★★★★</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="review-form-box reveal">
+        <h3>Loved your piece? Tell me ♡</h3>
+        <p class="review-note">Send it over and — with your okay — it might land in the gallery above.</p>
+        <div class="review-form">
+          <input type="text" id="reviewer-name" placeholder="Your name">
+          <input type="text" id="reviewer-product" placeholder="Which piece did you buy?">
+          <div class="star-picker">
+            <span>Rating:</span>
+            <span class="star-btn" onclick="setRating(1)">★</span>
+            <span class="star-btn" onclick="setRating(2)">★</span>
+            <span class="star-btn" onclick="setRating(3)">★</span>
+            <span class="star-btn" onclick="setRating(4)">★</span>
+            <span class="star-btn" onclick="setRating(5)">★</span>
+          </div>
+          <textarea id="reviewer-message" placeholder="Write your review here…" rows="4"></textarea>
+          <button onclick="submitReview()">Send Review via WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">📸 Instagram</a>
+    <span class="sep">·</span>
+    <a href="https://wa.me/923328234439" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <span class="sep">·</span>
+    <span>Made with ♡ in Karachi · 2026</span>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script>
+// ── Yarnia Cart ──
+const DELIVERY_CHARGE = 300;
+
+function getCart() {
+  try { return JSON.parse(localStorage.getItem('yarnia_cart') || '[]'); }
+  catch { return []; }
+}
+
+function saveCart(cart) {
+  localStorage.setItem('yarnia_cart', JSON.stringify(cart));
+}
+
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.className = 'toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function addToCart(name, price) {
+  const qtyEl = document.getElementById('qty');
+  const qty = qtyEl ? parseInt(qtyEl.value) : 1;
+  const cart = getCart();
+  const existing = cart.find(i => i.name === name);
+  if (existing) { existing.qty += qty; }
+  else { cart.push({ name, price, qty }); }
+  saveCart(cart);
+  updateCartBadge(true);
+  showToast('✓ ' + name + ' added to cart');
+}
+
+function updateCartBadge(bump) {
+  const cart = getCart();
+  const total = cart.reduce((sum, i) => sum + i.qty, 0);
+  // make sure every cart link carries a badge
+  document.querySelectorAll('a[href$="cart.html"]').forEach(link => {
+    link.classList.add('cart-link');
+    let b = link.querySelector('.cart-badge');
+    if (!b) {
+      b = document.createElement('span');
+      b.className = 'cart-badge';
+      link.appendChild(b);
+    }
+  });
+  const badges = document.querySelectorAll('.cart-badge');
+  badges.forEach(b => {
+    b.textContent = total > 0 ? total : '';
+    b.style.display = total > 0 ? 'inline-flex' : 'none';
+    if (bump && total > 0) {
+      b.classList.remove('bump');
+      void b.offsetWidth; // restart animation
+      b.classList.add('bump');
+    }
+  });
+}
+
+function updateQty(index, newQty) {
+  const cart = getCart();
+  if (newQty < 1) { removeItem(index); return; }
+  cart[index].qty = newQty;
+  saveCart(cart);
+  renderCart();
+}
+
+function removeItem(index) {
+  const cart = getCart();
+  cart.splice(index, 1);
+  saveCart(cart);
+  updateCartBadge();
+  renderCart();
+}
+
+function renderCart() {
+  const cart = getCart();
+  const tbody = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  const headerEl = document.getElementById('cart-header');
+  if (!tbody) return;
+
+  if (cart.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:#888;">Your cart is empty.</td></tr>';
+    if (totalEl) totalEl.textContent = '';
+    if (headerEl) headerEl.style.display = 'none';
+    return;
+  }
+
+  if (headerEl) headerEl.style.display = '';
+
+  tbody.innerHTML = cart.map((item, i) => `
+    <tr>
+      <td>${item.name}</td>
+      <td>Rs. ${item.price.toLocaleString()}</td>
+      <td>
+        <div class="qty-control">
+          <button onclick="updateQty(${i}, ${item.qty - 1})">−</button>
+          <span>${item.qty}</span>
+          <button onclick="updateQty(${i}, ${item.qty + 1})">+</button>
+        </div>
+      </td>
+      <td>Rs. ${(item.price * item.qty).toLocaleString()}</td>
+      <td><button class="remove-btn" onclick="removeItem(${i})">✕</button></td>
+    </tr>
+  `).join('');
+
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const grandTotal = subtotal + DELIVERY_CHARGE;
+  if (totalEl) totalEl.innerHTML =
+    '<span style="font-size:0.85rem;opacity:0.65;">Subtotal: Rs. ' + subtotal.toLocaleString() + '</span><br>' +
+    '<span style="font-size:0.85rem;opacity:0.65;">Delivery: Rs. ' + DELIVERY_CHARGE.toLocaleString() + '</span><br>' +
+    'Total: Rs. ' + grandTotal.toLocaleString();
+}
+
+function clearCart() {
+  if (confirm('Clear your entire cart?')) {
+    localStorage.removeItem('yarnia_cart');
+    updateCartBadge();
+    renderCart();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartBadge();
+  renderCart();
+  initStickyHeader();
+  injectWhatsAppFloat();
+});
+
+// ── Sticky header soft-shadow on scroll (all pages) ──
+function initStickyHeader() {
+  const header = document.querySelector('header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+// ── Persistent WhatsApp float button (all pages) ──
+function injectWhatsAppFloat() {
+  if (document.querySelector('.wa-float')) return;
+  const a = document.createElement('a');
+  a.className = 'wa-float';
+  a.href = 'https://wa.me/923328234439?text=' +
+    encodeURIComponent("Hi Yarnia! I have a question about your handmade pieces \u2661");
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.setAttribute('aria-label', 'Chat with Yarnia on WhatsApp');
+  a.innerHTML =
+    '<span class="wa-tip">Questions? Message me \u2661</span>' +
+    '<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">' +
+    '<path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9 1 1-4.7-.3-.4A9.7 9.7 0 016.3 15c0-5.4 4.4-9.8 9.7-9.8s9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8zm5.4-7.3c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/>' +
+    '</svg>';
+  document.body.appendChild(a);
+}
+</script>
+  <script>
+    /* ── Category chips + search (refine an always-visible grid) ── */
+    const grid = () => document.querySelectorAll('.product-card');
+    let activeCat = 'all';
+
+    function applyFilter() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      let found = 0;
+      grid().forEach(c => {
+        const catOk = activeCat === 'all' || c.dataset.category === activeCat;
+        const qOk = !q || c.dataset.name.includes(q) || c.dataset.category.includes(q);
+        const show = catOk && qOk;
+        c.style.display = show ? '' : 'none';
+        if (show) found++;
+      });
+      document.getElementById('no-results').style.display = found === 0 ? 'block' : 'none';
+    }
+
+    function filterCategory(cat, btn) {
+      activeCat = cat;
+      document.querySelectorAll('.chip').forEach(ch => ch.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter();
+    }
+
+    function searchProducts() {
+      const q = document.getElementById('search-input').value.trim();
+      document.getElementById('search-clear').style.display = q ? 'inline' : 'none';
+      applyFilter();
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-clear').style.display = 'none';
+      applyFilter();
+    }
+
+    /* ── Smooth scroll to shop (respects reduced motion) ── */
+    function scrollToShop(e) {
+      if (e) e.preventDefault();
+      const el = document.getElementById('shop');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const top = el.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    /* ── Hero stop-motion flipbook ── */
+    function initHero() {
+      const frames = Array.from(document.querySelectorAll('.hero-frame[data-frame]'));
+      const fallback = document.querySelector('.hero-frame[data-fallback]');
+      const dots = document.getElementById('hero-dots');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const loaded = frames.filter(f => f.complete && f.naturalWidth > 0);
+
+      if (loaded.length >= 2 && !reduce) {
+        let i = 0;
+        loaded[0].classList.add('active');
+        // build frame dots
+        dots.innerHTML = loaded.map((_, n) => '<i' + (n === 0 ? ' class="on"' : '') + '></i>').join('');
+        const dotEls = Array.from(dots.children);
+        setInterval(() => {
+          loaded[i].classList.remove('active');
+          if (dotEls[i]) dotEls[i].classList.remove('on');
+          i = (i + 1) % loaded.length;
+          loaded[i].classList.add('active');      // hard cut — stop-motion feel
+          if (dotEls[i]) dotEls[i].classList.add('on');
+        }, 420);
+      } else {
+        // graceful fallback: single hero image + gentle breathing zoom
+        const base = (loaded[0] || fallback);
+        base.classList.add('active');
+        base.classList.add('breathing');
+        dots.style.display = 'none';
+      }
+    }
+
+    /* ── Scroll reveal ── */
+    function initReveal() {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const items = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('in'));
+        return;
+      }
+      // gentle stagger for product cards within a row
+      let n = 0;
+      document.querySelectorAll('#products-grid .product-card').forEach((c, i) => {
+        c.style.transitionDelay = (i % 4) * 70 + 'ms';
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(el => io.observe(el));
+    }
+
+    /* ── Discount popup: exit-intent OR scrolled past first product row (never on load) ── */
+    function initPromo() {
+      if (sessionStorage.getItem('yarnia-promo-seen')) return;
+      let fired = false;
+      const fire = () => {
+        if (fired || sessionStorage.getItem('yarnia-promo-seen')) return;
+        fired = true;
+        document.getElementById('promo-overlay').style.display = 'flex';
+      };
+      // scroll trigger: past the first product row (~1.15× hero height)
+      const onScroll = () => {
+        const heroH = document.getElementById('hero').offsetHeight || 500;
+        if (window.scrollY > heroH * 1.15) { fire(); cleanup(); }
+      };
+      // exit-intent: cursor leaves toward the top of the viewport
+      const onLeave = (e) => { if (e.clientY <= 0) { fire(); cleanup(); } };
+      function cleanup() {
+        window.removeEventListener('scroll', onScroll);
+        document.removeEventListener('mouseout', onLeave);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      document.addEventListener('mouseout', onLeave);
+    }
+
+    function closePromo() {
+      document.getElementById('promo-overlay').style.display = 'none';
+      sessionStorage.setItem('yarnia-promo-seen', '1');
+    }
+
+    /* ── Reviews form → WhatsApp ── */
+    let selectedRating = 0;
+    function setRating(val) {
+      selectedRating = val;
+      document.querySelectorAll('.star-btn').forEach((s, i) => { s.style.color = i < val ? '#c9a84c' : '#ccc'; });
+    }
+    function submitReview() {
+      const name = document.getElementById('reviewer-name').value.trim();
+      const product = document.getElementById('reviewer-product').value.trim();
+      const message = document.getElementById('reviewer-message').value.trim();
+      if (!name || !message || selectedRating === 0) { alert('Please fill in your name, rating, and review!'); return; }
+      const stars = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+      const text = '*New Yarnia Review*\n\n👤 Name: ' + name + '\n🛍️ Product: ' + (product || 'Not specified') + '\n⭐ Rating: ' + stars + '\n\n💬 "' + message + '"';
+      window.open('https://wa.me/923328234439?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    /* ── Graceful product-image placeholders (until photos are supplied) ── */
+    function initImgFallback() {
+      document.querySelectorAll('#products-grid img').forEach(img => {
+        const swap = () => {
+          if (img.dataset.phDone) return;
+          img.dataset.phDone = '1';
+          const d = document.createElement('div');
+          d.className = 'img-placeholder';
+          d.style.cssText = 'display:flex;align-items:center;justify-content:center;';
+          d.innerHTML = '<span style="font-family:monospace;font-size:0.72rem;color:var(--mocha2);' +
+            'background:rgba(249,241,232,0.85);padding:6px 10px;border-radius:8px;' +
+            'border:1px dashed rgba(66,43,28,0.3);text-align:center;line-height:1.5;">' +
+            (img.getAttribute('alt') || 'product photo') + '</span>';
+          img.replaceWith(d);
+        };
+        if (img.complete && img.naturalWidth === 0) swap();
+        img.addEventListener('error', swap);
+      });
+    }
+
+    /* ── Stop-motion intro (once per session; skipped for reduced motion) ── */
+    function initIntro() {
+      const ov = document.getElementById('intro-overlay');
+      if (!ov) return;
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || sessionStorage.getItem('yarnia-intro-seen')) { ov.remove(); return; }
+      sessionStorage.setItem('yarnia-intro-seen', '1');
+
+      const yarn = ov.querySelector('.intro-yarn');
+      const thumbs = [...ov.querySelectorAll('img.intro-bit')];
+      const word = ov.querySelector('.intro-word');
+      const jit = () => (Math.random() * 16 - 8);          // ±8deg
+      const js  = () => (0.88 + Math.random() * 0.28);     // scale jitter
+      const jitterYarn = () => { yarn.style.transform = 'translate(-50%,-50%) rotate(' + jit() + 'deg) scale(' + js() + ')'; };
+
+      yarn.classList.add('show'); jitterYarn();
+
+      const steps = [];
+      thumbs.forEach(t => steps.push(() => {            // pop each thumbnail in, hard cut + jitter
+        t.classList.add('show');
+        t.style.transform = t.dataset.base + ' rotate(' + jit() + 'deg) scale(' + js() + ')';
+        jitterYarn();
+      }));
+      steps.push(() => { thumbs.forEach(t => t.style.transform = t.dataset.base + ' rotate(' + jit() + 'deg) scale(' + js() + ')'); jitterYarn(); });
+      steps.push(() => jitterYarn());
+      steps.push(() => {                                 // settle into the logo
+        thumbs.forEach(t => t.classList.remove('show'));
+        yarn.style.transform = 'translate(-50%,-50%) rotate(0deg) scale(1.12)';
+        word.classList.add('show');
+      });
+
+      let s = 0;
+      const iv = setInterval(() => {
+        if (s >= steps.length) {
+          clearInterval(iv);
+          setTimeout(() => { ov.classList.add('fade'); setTimeout(() => ov.remove(), 420); }, 360);
+          return;
+        }
+        steps[s++]();
+      }, 120);
+    }
+
+    /* ── Boot ── */
+    window.addEventListener('load', initHero);
+    document.addEventListener('DOMContentLoaded', () => {
+      initIntro();
+      initReveal();
+      initPromo();
+      initImgFallback();
+    });
+  </script>
+</body>
+</html>
