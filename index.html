@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
 
   <!-- ════════════════════════════════════════════════════════════════
-       IMAGE FILES THE SITE EXPECTS  (logo is now the 🧶 emoji — no logo.png needed)
+       IMAGE FILES THE SITE EXPECTS  (logo.png)
        ────────────────────────────────────────────────────────────────
        HERO:
          hero-new.png  – large landing flat-lay (hero + stop-motion fallback)
@@ -18,9 +18,9 @@
        REVIEWS (real screenshots):
          review1.jpeg  review2.jpeg  review3.jpeg
        PRODUCT PHOTOS (supplied):
-         bag.png  bear.png  bee.png  bunny.png  bun.png (bunny alt colour)
-         lily.png  tulip.png  oneeye.png  mrbean.png  mrsteddy.png
-         kittycat.png  penguin.png  sunflower.png  turtle.png  dino.png  infinite.png
+         bag.png  bear.png  bee.png  bunny.png  bun.png 
+         lily.png  tulip.png  mike.png  mrbean.png  mrsteddy.png
+        hellokitty.png  penguin.png  sunflowerinpot.png  pascal.png  dino.png  infinite.png
        ════════════════════════════════════════════════════════════════ -->
 </head>
 <body>
@@ -33,7 +33,7 @@
     <img class="intro-bit" data-base="translate(calc(-50% - 100px), calc(-50% + 60px))" src="tulip.png" alt="">
     <img class="intro-bit" data-base="translate(calc(-50% + 100px), calc(-50% + 60px))" src="penguin.png" alt="">
     <img class="intro-bit" data-base="translate(calc(-50%), calc(-50% - 110px))" src="hellokitty.png" alt="">
-    <span class="intro-bit intro-yarn" role="img" aria-label="Yarnia">🧶</span>
+    <span class="intro-bit intro-yarn" role="img" aria-label="Yarnia">logo.png</span>
     <span class="intro-word">Yarnia</span>
   </div>
 </div>
@@ -42,7 +42,7 @@
   <div id="promo-overlay" style="display:none;">
     <div id="promo-popup">
       <button id="promo-close" onclick="closePromo()" aria-label="Close">✕</button>
-      <span class="promo-mark" role="img" aria-label="Yarnia">🧶</span>
+      <span class="promo-mark" role="img" aria-label="Yarnia">logo.png</span>
       <h2>A little thank-you ♡</h2>
       <p class="promo-sub">You've been browsing the pieces I lose sleep over — here's 10% off your first one.</p>
       <div class="promo-code-box">
@@ -60,7 +60,7 @@
   <header>
     <div class="header-top">
       <div class="brand-group">
-        <span class="brand-mark" role="img" aria-label="Yarnia">🧶</span>
+        <span class="brand-mark" role="img" aria-label="Yarnia">logo.png</span>
         <div class="brand-text">
           <h1><a href="index.html">Yarnia</a></h1>
           <p class="tagline">Things made slow, on purpose.</p>
@@ -76,7 +76,7 @@
     <div class="search-bar-wrap">
       <div class="search-bar">
         <span class="search-icon">🔍</span>
-        <input type="text" id="search-input" placeholder="Search for bunnies, flowers, characters…" oninput="searchProducts()">
+        <input type="text" id="search-input" placeholder="Search for animals, flowers, characters…" oninput="searchProducts()">
         <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display:none;">✕</button>
       </div>
     </div>
@@ -325,13 +325,13 @@
       </div>
       <div class="about-inner reveal">
         <div class="about-logo-col">
-          <span class="about-mark" role="img" aria-label="Yarnia">🧶</span>
+          <span class="about-mark" role="img" aria-label="Yarnia">logo.png</span>
         </div>
         <div class="about-text-col">
           <h2 class="about-heading">The hands behind Yarnia</h2>
           <p>No factories, no shortcuts. Just my hands, some yarn, and a little too much love.</p>
           <p>I started Yarnia right here in Karachi as a creative escape, and today it's a tiny, one-person shop dedicated to the art of handmade crochet. From squishy animals to custom bags and flowers that stay fresh forever, every single piece is stitched from scratch — by me.</p>
-          <p>When you buy from me, you're getting a unique creation that took hours of quiet patience to make. Slight wobbles and one-of-a-kind quirks aren't flaws — they're the proof a human made it.</p>
+          <p>When you buy from me, you're getting a unique creation that took hours of quiet patience to make. Slight wobbles and one-of-a-kind quirks aren't flaws; they're the proof a human made it.</p>
           <p>Have a custom design in mind? I love bringing your ideas to life. Message me on Instagram or WhatsApp to customise your colours, sizes, or characters.</p>
           <div class="about-links">
             <a href="contact.html">Get in Touch</a>
@@ -402,10 +402,10 @@
         </figure>
       </div>
 
-      <div class="-form-box reveal">
+      <div class="review-form-box reveal">
         <h3>Loved your piece? Tell me ♡</h3>
-        <p class="-note">Send it over and — with your okay — it might land in the gallery above.</p>
-        <div class="-form">
+        <p class="review-note">Send it over and — with your okay — it might land in the gallery above.</p>
+        <div class="review-form">
           <input type="text" id="reviewer-name" placeholder="Your name">
           <input type="text" id="reviewer-product" placeholder="Which piece did you buy?">
           <div class="star-picker">
@@ -429,7 +429,7 @@
     <span class="sep">·</span>
     <a href="https://wa.me/923328234439" target="_blank" rel="noopener">💬 WhatsApp</a>
     <span class="sep">·</span>
-    <span>Made with care in Karachi · 2026</span>
+    <span>Stitched with intention, delivered with love. In Karachi · 2026</span>
   </footer>
 
   <div class="toast" id="toast"></div>
