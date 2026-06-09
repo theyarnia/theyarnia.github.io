@@ -1718,3 +1718,157 @@ img.intro-bit{width:74px;height:92px;object-fit:cover;border-radius:12px;box-sha
   .intro-stage{width:230px;height:230px}
   .intro-yarn{font-size:4.4rem}
 }
+/* ===== Base Styles ===== */
+body {
+  background-color: #fffafc;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'The Seasons', serif;
+}
+
+h1 {
+  color: #d8a7b1;
+  margin-top: 20px;
+  font-size: 3em;
+}
+
+p {
+  color: #a67873;
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+/* ===== Announcement Bar ===== */
+.announcement {
+  background-color: #f8d7e3; /* pastel pink */
+  color: #5c3d4e;           /* deep mauve text */
+  text-align: center;
+  padding: 8px;
+  font-size: 0.9em;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 30px;
+  border-bottom: 2px solid #e6c9d8;
+}
+
+.navbar .logo {
+  font-family: 'The Seasons', serif;
+  color: #d8a7b1;
+  font-size: 2em;
+  margin: 0;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #a67873;
+  font-weight: 600;
+}
+
+.navbar a:hover {
+  color: #b58db6;
+}
+
+/* ===== Product Grid ===== */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.product {
+  border: 2px solid #e6c9d8;
+  padding: 15px;
+  width: 220px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(216, 167, 177, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(216, 167, 177, 0.35);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* ===== Buttons ===== */
+button {
+  background-color: #d8a7b1;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #b58db6;
+  transform: scale(1.05);
+}
+
+/* ===== Cart Page ===== */
+#cart-items p {
+  font-size: 1em;
+  color: #5c3d4e;
+}
+
+#cart-items button {
+  background-color: #f8d7e3;
+  color: #5c3d4e;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#cart-items button:hover {
+  background-color: #d8a7b1;
+  color: #fff;
+}
+
+/* ===== Customization Checkbox ===== */
+#customize {
+  margin-right: 8px;
+}
+
+/* ===== FAQ Page ===== */
+main h2 {
+  color: #b58db6;
+  margin-top: 30px;
+}
+
+main p {
+  color: #5c3d4e;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
