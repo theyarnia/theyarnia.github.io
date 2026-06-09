@@ -95,11 +95,11 @@
       thumb.classList.add('active');
     }
     function addBunnyToCart() {
+      const color = document.getElementById('color').value;
       const flower = document.getElementById('flower').value;
-      const name = 'Bunny (' + color + ', ' + flower + ')';
-      addToCart(name, price);
+      const name = 'Bunny (' + color + ', Flower: ' + flower + ')';
+      addToCart(name, 3000);
     }
-    });
   </script>
 </body>
 </html>
