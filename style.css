@@ -1112,7 +1112,7 @@ footer .sep { opacity: 0.35; }
 
 /* ── ABOUT SECTION ── */
 .about-section {
-  background: var(--cream);
+  background: var(--pink);
   padding: 64px 48px;
   border-top: 1px solid rgba(66,43,28,0.08);
 }
