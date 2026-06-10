@@ -56,7 +56,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
 /* ── CART BADGE ── */
 .top-nav a.cart-link { position: relative; }
 .cart-badge {
-  display: none;
+  display: block;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -1186,7 +1186,7 @@ footer .sep { opacity: 0.35; }
 
 /* ── REVIEWS ── */
 .reviews-section {
-  background: var(--cream);
+  background: var(--pink);
   padding: 64px 48px;
   text-align: center;
 }
@@ -1209,7 +1209,7 @@ footer .sep { opacity: 0.35; }
 }
 
 .proof-card {
-  background: var(--white);
+  background: var(--pink);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 2px 14px var(--shadow);
