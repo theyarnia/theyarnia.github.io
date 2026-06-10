@@ -638,9 +638,7 @@ footer .sep { opacity: 0.35; }
 
 /* ── SEARCH BAR ── */
 .search-bar-wrap {
-  background: rgba(255,229,245,0.82);
-  -webkit-backdrop-filter: saturate(135%) blur(12px);
-  backdrop-filter: saturate(135%) blur(12px);
+  background: var(--mocha);
   padding: 12px 48px;
   display: flex;
   align-items: center;
@@ -906,8 +904,8 @@ footer .sep { opacity: 0.35; }
 
 /* ── ANNOUNCEMENT BAR ── */
 .announcement-bar {
-  background: var(--pink);
-  color: var(--mocha);
+  background: var(--mocha);
+  color: var(--pink);
   text-align: center;
   padding: 10px 20px;
   font-size: 0.85rem;
