@@ -807,17 +807,20 @@ footer .sep { opacity: 0.35; }
 
 .menu-btn {
   display: none;
-  background: transparent;
+  background: var(--mocha);
   border: none;
-  color: var(--mocha);
+  color: #ffffff;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 0;
+  padding: 10px 20px;
+  border-radius: 30px;
+  }
 }
-
 @media (max-width: 768px) {
   .menu-btn {
-    display: block;
+    display: inline-flex;
+    align-items:center;
+    gap:8px;
   }
 }
 
