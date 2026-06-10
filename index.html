@@ -12,8 +12,7 @@
 
   <!-- ── ANNOUNCEMENT BAR ── -->
   <div class="announcement-bar">
-    ✨ Free shipping on orders over Rs. 5,000 &nbsp;·&nbsp; Use code <strong>YARNIA</strong> for 10% off your first order ♡
-  </div>
+    ✨ Free shipping on orders over Rs. 5,000 &nbsp;·&nbsp;
 
   <!-- ── PROMO POPUP ── -->
   <div id="promo-overlay" style="display:none;">
@@ -132,9 +131,6 @@
 
       <!-- ANIMALS SECTION -->
       <div class="category-section" id="animals">
-        <div class="category-heading reveal">
-          <h3>🐰 Animals</h3>
-        </div>
         <div class="products-grid" id="animals-grid">
           <div class="product-card reveal" data-category="animals" data-name="bunny">
             <img src="bunny.png" alt="Bunny">
@@ -181,9 +177,6 @@
 
       <!-- CHARACTERS SECTION -->
       <div class="category-section" id="characters">
-        <div class="category-heading reveal">
-          <h3>🧸 Characters</h3>
-        </div>
         <div class="products-grid">
           <div class="product-card reveal" data-category="characters" data-name="mike wazowski">
             <img src="mike.png" alt="Mike Wazowski">
@@ -240,9 +233,6 @@
 
       <!-- FLOWERS SECTION -->
       <div class="category-section" id="flowers">
-        <div class="category-heading reveal">
-          <h3>🌸 Flowers</h3>
-        </div>
         <div class="products-grid">
           <div class="product-card reveal" data-category="flowers" data-name="lily">
             <img src="lily.png" alt="Lily">
@@ -279,9 +269,6 @@
 
       <!-- BAGS SECTION -->
       <div class="category-section" id="bags">
-        <div class="category-heading reveal">
-          <h3>👜 Bags</h3>
-        </div>
         <div class="products-grid">
           <div class="product-card reveal" data-category="bags" data-name="i love me bag">
             <img src="bag.png" alt="I ♡ Me Bag">
@@ -298,9 +285,6 @@
 
       <!-- WALL ART SECTION -->
       <div class="category-section" id="home">
-        <div class="category-heading reveal">
-          <h3>🖼️ Wall Art</h3>
-        </div>
         <div class="products-grid">
           <div class="product-card reveal" data-category="home" data-name="tired or bored dino wall hanging">
             <img src="dino.png" alt="Tired-or-Bored Dino wall hanging">
@@ -325,16 +309,6 @@
         </div>
       </div>
 
-      <!-- KEYCHAINS TEASER -->
-      <div class="category-section">
-        <div class="category-heading reveal">
-          <h3>🔑 Keychains</h3>
-        </div>
-        <div class="keychain-teaser reveal">
-          <p>Mini handmade charms — penguins, flowers, characters, and more.</p>
-          <a href="keychains.html" class="btn-view" style="display:inline-block;margin-top:12px;">Shop Keychains →</a>
-        </div>
-      </div>
 
       <p class="no-results" id="no-results" style="display:none;">No pieces match that yet. Try another search ♡</p>
     </section>
@@ -396,6 +370,25 @@
           <div class="proof-shot"><img src="review3.jpeg" alt="" onerror="this.style.display='none'"><span class="ph-label">review3.jpeg</span></div>
           <figcaption class="proof-foot"><span>Verified order</span><span class="stars">★★★★★</span></figcaption>
         </figure>
+      </div>
+
+      <div class="review-form-box reveal">
+        <h3>Loved your piece? Tell me ♡</h3>
+        <p class="review-note">Send it over and — with your okay — it might land in the gallery above.</p>
+        <div class="review-form">
+          <input type="text" id="reviewer-name" placeholder="Your name">
+          <input type="text" id="reviewer-product" placeholder="Which piece did you buy?">
+          <div class="star-picker">
+            <span>Rating:</span>
+            <span class="star-btn" onclick="setRating(1)">★</span>
+            <span class="star-btn" onclick="setRating(2)">★</span>
+            <span class="star-btn" onclick="setRating(3)">★</span>
+            <span class="star-btn" onclick="setRating(4)">★</span>
+            <span class="star-btn" onclick="setRating(5)">★</span>
+          </div>
+          <textarea id="reviewer-message" placeholder="Write your review here…" rows="4"></textarea>
+          <button onclick="submitReview()">Send Review via WhatsApp</button>
+        </div>
       </div>
     </section>
 
@@ -534,6 +527,30 @@
     function closePromo() {
       document.getElementById('promo-overlay').style.display = 'none';
       sessionStorage.setItem('yarnia-promo-seen', '1');
+    }
+
+    /* ── Reviews form → WhatsApp ── */
+    let selectedRating = 0;
+    function setRating(val) {
+      selectedRating = val;
+      document.querySelectorAll('.star-btn').forEach((s, i) => {
+        s.style.color = i < val ? '#c9a84c' : '#ccc';
+      });
+    }
+    function submitReview() {
+      const name = document.getElementById('reviewer-name').value.trim();
+      const product = document.getElementById('reviewer-product').value.trim();
+      const message = document.getElementById('reviewer-message').value.trim();
+      if (!name || !message || selectedRating === 0) {
+        alert('Please fill in your name, a rating, and your review!');
+        return;
+      }
+      const stars = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+      const text = '*New Yarnia Review* ♡\n\n👤 Name: ' + name +
+        '\n🛍️ Product: ' + (product || 'Not specified') +
+        '\n⭐ Rating: ' + stars +
+        '\n\n💬 "' + message + '"';
+      window.open('https://wa.me/923328234439?text=' + encodeURIComponent(text), '_blank');
     }
 
     window.addEventListener('load', initHero);
