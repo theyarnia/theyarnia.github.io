@@ -809,10 +809,11 @@ footer .sep { opacity: 0.35; }
   display: block;
   background: var(--mocha);
   border: none;
-  color: #ffffff;
-  font-size: 1.2rem;
+  color: #F9F1E8;
+  font-size: 0.82rem;
+  font-weight: 500;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 8px 22px;
   border-radius: 30px;
   }
 }
