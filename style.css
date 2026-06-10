@@ -806,7 +806,7 @@ footer .sep { opacity: 0.35; }
 }
 
 .menu-btn {
-  display: none;
+  display: block;
   background: var(--mocha);
   border: none;
   color: #ffffff;
