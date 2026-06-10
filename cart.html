@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="announcement-bar">
+    ✨ Free shipping on orders over Rs. 5,000 &nbsp;·&nbsp; Use code <strong>YARNIA</strong> for 10% off ♡
+  </div>
   <header>
     <div class="header-top">
       <div class="brand-group">
@@ -17,10 +20,35 @@
         </div>
       </div>
       <nav class="top-nav">
-        <a href="contact.html">📞 Contact</a>
+        <button class="menu-btn" onclick="openDrawer()" aria-label="Open menu">☰ Menu</button>
+        <a href="index.html" class="cart-link">← Shop</a>
       </nav>
     </div>
   </header>
+
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+  <nav class="drawer" id="drawer">
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    <div class="drawer-logo"><img src="logo.png" alt="Yarnia"><span>Yarnia</span></div>
+    <ul class="drawer-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="index.html#shop">🛍️ Shop All</a></li>
+      <li class="drawer-section">Categories</li>
+      <li><a href="index.html#animals">🐰 Animals</a></li>
+      <li><a href="index.html#characters">🧸 Characters</a></li>
+      <li><a href="index.html#flowers">🌸 Flowers</a></li>
+      <li><a href="index.html#bags">👜 Bags</a></li>
+      <li><a href="keychains.html">🔑 Keychains</a></li>
+      <li><a href="index.html#home">🖼️ Wall Art</a></li>
+      <li class="drawer-section">Info</li>
+      <li><a href="faqs.html">❓ FAQs</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="https://instagram.com/the.yarnia_" target="_blank">📸 @the.yarnia_</a>
+      <a href="https://wa.me/923328234439" target="_blank">💬 WhatsApp</a>
+    </div>
+  </nav>
 
   <main>
     <div class="cart-box">
@@ -41,6 +69,21 @@
       </div>
       <p id="promo-msg" style="font-size:0.85rem;margin:6px 0 0;"></p>
       <p class="cart-total" id="cart-total-discounted" style="display:none;color:var(--green);font-weight:600;"></p>
+
+      <!-- ── CUSTOMISATION CHECKBOX ── -->
+      <div class="custom-request-box" id="custom-request-box" style="display:none;">
+        <label class="custom-check-label">
+          <input type="checkbox" id="custom-check" onchange="toggleCustomNote()">
+          <span class="custom-check-text">
+            🎨 <strong>I'd like to customise my order</strong>
+            <span class="custom-check-sub">e.g. different colour, size, character, or a personal touch</span>
+          </span>
+        </label>
+        <div class="custom-note-wrap" id="custom-note-wrap" style="display:none;">
+          <textarea id="custom-note" placeholder="Describe what you'd like — colour preferences, special requests, a name to add, etc. I'll follow up to confirm details and let you know if there's an additional charge." rows="3"></textarea>
+          <p class="custom-charge-note">🩷 Note: Custom requests may have an additional charge depending on complexity. I'll confirm this with you before starting.</p>
+        </div>
+      </div>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
         <button class="btn-cart" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
@@ -64,19 +107,45 @@
     let discountApplied = false;
     let discountAmount = 0;
 
+    function openDrawer() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('drawer-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('drawer-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function toggleCustomNote() {
+      const checked = document.getElementById('custom-check').checked;
+      document.getElementById('custom-note-wrap').style.display = checked ? 'block' : 'none';
+    }
+
+    // Show customisation box only when cart has items
+    function showCustomBox() {
+      const cart = getCart();
+      document.getElementById('custom-request-box').style.display = cart.length > 0 ? 'block' : 'none';
+    }
+
+    // Override renderCart to also toggle custom box
+    const _origRenderCart = renderCart;
+    document.addEventListener('DOMContentLoaded', () => {
+      showCustomBox();
+    });
+    // Patch: after any cart render, update custom box too
+    const origRender = window.renderCart;
+    window.renderCart = function() {
+      if (origRender) origRender();
+      showCustomBox();
+    };
+
     function applyPromo() {
       const code = document.getElementById('promo-input').value.trim().toUpperCase();
       const msg = document.getElementById('promo-msg');
-      if (code !== 'YARNIA') {
-        msg.style.color = '#c0392b';
-        msg.textContent = '✕ Invalid promo code.';
-        return;
-      }
-      if (discountApplied) {
-        msg.style.color = '#c0392b';
-        msg.textContent = '✕ Code already applied.';
-        return;
-      }
+      if (code !== 'YARNIA') { msg.style.color = '#c0392b'; msg.textContent = '✕ Invalid promo code.'; return; }
+      if (discountApplied) { msg.style.color = '#c0392b'; msg.textContent = '✕ Code already applied.'; return; }
       const cart = getCart();
       if (!cart.length) { msg.style.color = '#c0392b'; msg.textContent = '✕ Your cart is empty!'; return; }
       const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
@@ -95,13 +164,25 @@
     function checkoutWhatsApp() {
       const cart = getCart();
       if (!cart.length) { alert('Your cart is empty!'); return; }
-      const lines = cart.map(function(i) {
-        return '• ' + i.name + ' x' + i.qty + ' = Rs. ' + (i.price * i.qty).toLocaleString();
-      }).join('\n');
-      const subtotal = cart.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
+      const lines = cart.map(i => '• ' + i.name + ' x' + i.qty + ' = Rs. ' + (i.price * i.qty).toLocaleString()).join('\n');
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
       const finalTotal = subtotal + DELIVERY_CHARGE - (discountApplied ? discountAmount : 0);
       const discountLine = discountApplied ? '\nDiscount (YARNIA 10%): -Rs. ' + discountAmount.toLocaleString() : '';
-      const message = 'Hi Yarnia! I would like to order:\n\n' + lines + '\n\nSubtotal: Rs. ' + subtotal.toLocaleString() + '\nDelivery: Rs. 300' + discountLine + '\nTotal: Rs. ' + finalTotal.toLocaleString() + '\n\nPlease confirm!';
+
+      // Customisation
+      const wantsCustom = document.getElementById('custom-check').checked;
+      const customNote = document.getElementById('custom-note').value.trim();
+      let customLine = '';
+      if (wantsCustom) {
+        customLine = '\n\n🎨 *Customisation requested:* ' + (customNote || 'Customer will share details shortly');
+      }
+
+      const message = 'Hi Yarnia! I would like to order:\n\n' + lines +
+        '\n\nSubtotal: Rs. ' + subtotal.toLocaleString() +
+        '\nDelivery: Rs. 300' + discountLine +
+        '\nTotal: Rs. ' + finalTotal.toLocaleString() +
+        customLine +
+        '\n\nPlease confirm!';
       window.open('https://wa.me/923328234439?text=' + encodeURIComponent(message), '_blank');
     }
   </script>
