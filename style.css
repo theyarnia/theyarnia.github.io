@@ -8,7 +8,8 @@
   --mocha:  #5B2A41;   /* Amaranth, — headings, dark buttons, text */
   --mocha2: #93475F;   /* Thulian Pink, — secondary text/links */
   --text:   #3A2433;   /* near-mocha plum — body copy */
-  --white:  #fff;
+  --black:  #000000;
+  --white:  #FFFFFF;
   --shadow: rgba(91,42,65,0.10);
 }
 
@@ -67,8 +68,8 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   height: 20px;
   padding: 0 5px;
   background: var(--green);
-  color: var(--white);
-  border: 2px solid var(--pink);
+  color: var(--cream);
+  border: 2px solid var(--black);
   border-radius: 20px;
   font-size: 0.68rem;
   font-weight: 700;
@@ -112,7 +113,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   font-family: 'Jost', sans-serif;
   font-size: 0.72rem;
   font-weight: 300;
-  color: var(--mocha2);
+  color: var(--mocha);
   font-style: italic;
   margin-top: 4px;
   letter-spacing: 0.3px;
@@ -126,7 +127,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
 }
 
 .top-nav a {
-  background: var(--mocha);
+  background: var(--green);
   color: var(--cream);
   padding: 8px 22px;
   border-radius: 30px;
@@ -149,7 +150,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   width: 100%;
   height: clamp(460px, 82vh, 760px);
   overflow: hidden;
-  background: linear-gradient(140deg, var(--pink) 0%, #f3dcea 55%, var(--cream) 100%);
+  background: linear-gradient(140deg, var(--mocha2) 0%, #f3dcea 55%, var(--cream) 100%);
 }
 
 .hero-stage { position: absolute; inset: 0; }
@@ -1068,7 +1069,7 @@ footer .sep { opacity: 0.35; }
 
 .promo-sub {
   font-size: 0.9rem;
-  color: var(--mocha2);
+  color: var(--cream);
   font-weight: 300;
   line-height: 1.7;
   margin-bottom: 24px;
@@ -1083,7 +1084,7 @@ footer .sep { opacity: 0.35; }
 
 .promo-code-box p {
   font-size: 0.75rem;
-  color: var(--mocha2);
+  color: var(--cream);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.8px;
