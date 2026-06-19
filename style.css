@@ -4,9 +4,9 @@
   /* Coastal-floral palette: Amaranth · Thulian Pink · Brook Green · Chalk · Pomelo Olive */
   --pink:   #F3E3E8;   /* Chalk-tinted blush — light backgrounds */
   --cream:  #F8F1E2;   /* Chalk — main background */
-  --green:  #8FA189;   /* Brook Green, deepened — buttons/accents */
-  --mocha:  #5B2A41;   /* Amaranth, darkened — headings, dark buttons, text */
-  --mocha2: #93475F;   /* Thulian Pink, deepened — secondary text/links */
+  --green:  #8FA189;   /* Brook Green, — buttons/accents */
+  --mocha:  #5B2A41;   /* Amaranth, — headings, dark buttons, text */
+  --mocha2: #93475F;   /* Thulian Pink, — secondary text/links */
   --text:   #3A2433;   /* near-mocha plum — body copy */
   --white:  #fff;
   --shadow: rgba(91,42,65,0.10);
