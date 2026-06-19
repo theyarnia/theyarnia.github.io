@@ -1011,7 +1011,7 @@ footer .sep { opacity: 0.35; }
 }
 
 #promo-popup {
-  background: var(--white);
+  background: var(--green);
   border-radius: 24px;
   padding: 40px 32px;
   max-width: 380px;
@@ -1041,7 +1041,7 @@ footer .sep { opacity: 0.35; }
   border: none;
   font-size: 1.3rem;
   cursor: pointer;
-  color: var(--mocha2);
+  color: var(--pink);
   opacity: 0.6;
   transition: opacity 0.2s;
 }
@@ -1093,7 +1093,7 @@ footer .sep { opacity: 0.35; }
 .promo-highlight {
   display: block;
   font-size: 1.1rem;
-  color: var(--green);
+  color: var(--mocha);
   font-weight: 600;
   margin: 8px 0;
   letter-spacing: 0.5px;
