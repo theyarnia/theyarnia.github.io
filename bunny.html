@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bunny – Yarnia</title>
+  <title>Tired-or-Bored Dino Wall Hanging – Yarnia</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
         <div class="brand-text"><h1><a href="index.html">Yarnia</a></h1></div>
       </div>
       <nav class="top-nav">
-        <a href="cart.html">🛒 Cart</a>
+        <a href="cart.html" class="cart-link">🛒 Cart</a>
         <a href="contact.html">📞 Contact</a>
       </nav>
     </div>
@@ -23,42 +23,16 @@
   <main>
     <div class="product-detail">
       <div class="product-images">
-        <img id="bunny-main" src="bunny.png" alt="Bunny ">
-        <div class="product-thumbs">
-          <img src="bunny.png" class="active" onclick="setBunnyImg(this,'bunny.png')" alt="bunny">
-          </div>
+        <img src="dino.png" alt="Tired-or-Bored Dino crochet wall hanging">
       </div>
       <div class="product-info">
-        <h1>Bunny</h1>
-        <p class="price" id="bunny-price">Rs. 3,000</p>
-        <p>Squishy ears, a tiny button nose, and made entirely by hand with more love than should probably fit into something this small. The kind of cozy companion you'd want sitting on your pillow or wrapped up in a gift box. Choose chenille for that extra cloud-soft, almost unreal kind of softness.</p>
+        <h1>Tired-or-Bored Dino Wall Hanging</h1>
+        <p class="price">Rs. 3,500</p>
+        <p>"Not sure if I'm tired or bored" — a whole mood, crocheted stitch by stitch into a wall hanging. This one's tapestry crochet, which means every letter and that little orange dino are worked right into the fabric, no shortcuts. It comes ready to hang on its own cord.</p>
         <div class="meta-block">
-          <p><strong>Material:</strong> Soft chenille, polyfill stuffing</p>
-          <p><strong>Size:</strong> Approx. 30.2 cm tall</p>
+          <p><strong>Material:</strong> Acrylic yarn, tapestry crochet, hanging cord</p>
+          <p><strong>Size:</strong> Approx. 30 × 20 cm</p>
           <p><strong>Made in:</strong> Karachi, by hand</p>
-        </div>
-        <div class="custom-options">
-          <div class="option-row">
-            <label for="color">🎨 Colour:</label>
-            <select id="color">
-              <option>Pink</option>
-              <option>White</option>
-              <option>Brown</option>
-              <option>Cream</option>
-              <option>Grey</option>
-              <option>Other</option>
-            </select>
-            </div>
-               <div class="Note-block">
-               <p>🩷 <strong>Note:</strong> If you have opted for the "others" option, please clarify what you color do you want while ordering.</p>
-            </div>
-          <div class="option-row">
-            <label for="flower">🌸 Add a flower?</label>
-            <select id="flower">
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
         </div>
         <div class="fyi-block">
           <p>🌿 <strong>FYI:</strong> Since every piece is made entirely by hand, slight variations in size and colour are part of what makes yours one of a kind.</p>
@@ -73,7 +47,7 @@
           </select>
         </div>
         <div class="detail-cta">
-          <button class="btn-cart" onclick="addBunnyToCart()">🛒 Add to Cart</button>
+          <button class="btn-cart" onclick="addToCart('Tired-or-Bored Dino Wall Hanging', 3500)">🛒 Add to Cart</button>
           <button class="btn-save">♡ Save for Later</button>
         </div>
         <a href="index.html" class="btn-back">← Back to Shop</a>
@@ -88,18 +62,5 @@
     <span>Made with ♡ in Karachi · 2026</span>
   </footer>
   <script src="cart.js"></script>
-  <script>
-    function setBunnyImg(thumb, src) {
-      document.getElementById('bunny-main').src = src;
-      document.querySelectorAll('.product-thumbs img').forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-    }
-    function addBunnyToCart() {
-      const color = document.getElementById('color').value;
-      const flower = document.getElementById('flower').value;
-      const name = 'Bunny (' + color + ', Flower: ' + flower + ')';
-      addToCart(name, 3000);
-    }
-  </script>
 </body>
 </html>
