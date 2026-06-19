@@ -129,7 +129,21 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCart();
   initStickyHeader();
   injectWhatsAppFloat();
+  initReveal();
 });
+
+// ── Scroll reveal (fades in .reveal elements as they enter view) ──
+function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) { items.forEach(el => el.classList.add('in')); return; }
+  document.querySelectorAll('.product-card').forEach((c, i) => { c.style.transitionDelay = (i % 4) * 70 + 'ms'; });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(el => io.observe(el));
+}
 
 // ── Sticky header soft-shadow on scroll (all pages) ──
 function initStickyHeader() {
