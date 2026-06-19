@@ -67,9 +67,9 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   min-width: 20px;
   height: 20px;
   padding: 0 5px;
-  background: var(--green);
+  background: var(--mocha);
   color: var(--cream);
-  border: 2px solid var(--black);
+  border: 2px solid var(--cream);
   border-radius: 20px;
   font-size: 0.68rem;
   font-weight: 700;
