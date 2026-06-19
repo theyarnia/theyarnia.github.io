@@ -5,7 +5,7 @@
   --pink:   #F3E3E8;   /* Chalk-tinted blush — light backgrounds */
   --cream:  #F8F1E2;   /* Chalk — main background */
   --green:  #8FA189;   /* Brook Green, — buttons/accents */
-  --mocha:  #5B2A41;   /* Amaranth, — headings, dark buttons, text */
+  --mocha:  #5B2A41;   /* Amaranth, — headings, buttons, text */
   --mocha2: #93475F;   /* Thulian Pink, — secondary text/links */
   --text:   #3A2433;   /* near-mocha plum — body copy */
   --black:  #000000;
@@ -639,7 +639,7 @@ footer .sep { opacity: 0.35; }
 }
 
 /* ── SEARCH BAR ── */
-.search-bar-wrap {
+.search-bar-wrap.scrolled {
   background: var(--mocha);
   padding: 12px 48px;
   display: flex;
@@ -825,6 +825,9 @@ footer .sep { opacity: 0.35; }
     align-items:center;
     gap:8px;
   }
+  .menu:hover {
+  background: var(--green);
+  transform: translateY(-1px);
 }
 
 /* ── SCROLL REVEAL ── */
