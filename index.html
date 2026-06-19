@@ -6,7 +6,7 @@
   <title>Yarnia – Handmade Crochet, Karachi</title>
   <meta name="description" content="Handmade crochet flowers, amigurumi characters and bags — made slow, by hand, in Karachi.">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -74,9 +74,8 @@
       <li><a href="#animals" onclick="closeDrawer(); filterCategory('animals', null)">🐰 Animals</a></li>
       <li><a href="#characters" onclick="closeDrawer(); filterCategory('characters', null)">🧸 Characters</a></li>
       <li><a href="#flowers" onclick="closeDrawer(); filterCategory('flowers', null)">🌸 Flowers</a></li>
-      <li><a href="#bags" onclick="closeDrawer(); filterCategory('bags', null)">👜 Bags</a></li>
+      <li><a href="#home" onclick="closeDrawer(); filterCategory('home', null)">👜 Bags &amp; Décor</a></li>
       <li><a href="keychains.html" onclick="closeDrawer()">🔑 Keychains</a></li>
-      <li><a href="#home" onclick="closeDrawer(); filterCategory('home', null)">🖼️ Wall Art</a></li>
       <li class="drawer-section">More</li>
       <li><a href="faqs.html" onclick="closeDrawer()">❓ FAQs</a></li>
       <li><a href="contact.html" onclick="closeDrawer()">📞 Contact</a></li>
@@ -117,7 +116,10 @@
       <div class="shop-intro reveal">
         <p class="shop-eyebrow">The Collection</p>
         <h2 class="shop-title">Made fresh, just for you</h2>
-        <p class="shop-note">Browse everything below — filter or search to narrow it down.</p>
+        <svg class="whimsy-squiggle" viewBox="0 0 90 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 8 Q 13 2, 24 8 T 46 8 T 68 8 T 88 8"/>
+        </svg>
+        <p class="shop-note">A peek at each little world — search or filter to see everything.</p>
       </div>
 
       <div class="filter-chips reveal" id="filter-chips">
@@ -125,174 +127,228 @@
         <button class="chip" data-cat="animals" onclick="filterCategory('animals', this)">🐰 Animals</button>
         <button class="chip" data-cat="characters" onclick="filterCategory('characters', this)">🧸 Characters</button>
         <button class="chip" data-cat="flowers" onclick="filterCategory('flowers', this)">🌸 Flowers</button>
-        <button class="chip" data-cat="bags" onclick="filterCategory('bags', this)">👜 Bags</button>
-        <button class="chip" data-cat="home" onclick="filterCategory('home', this)">🖼️ Wall Art</button>
+        <button class="chip" data-cat="home" onclick="filterCategory('home', this)">👜 Bags &amp; Décor</button>
         <a href="keychains.html" class="chip chip-link">🔑 Keychains</a>
       </div>
 
-      <!-- ANIMALS SECTION -->
+      <!-- ANIMALS -->
       <div class="category-section" id="animals">
-        <div class="products-grid" id="animals-grid">
-          <div class="product-card reveal" data-category="animals" data-name="bunny">
-            <img src="bunny.png" alt="Bunny">
-            <div class="card-inner">
-              <h2>Bunny</h2><p class="price">Rs. 3,000</p>
-              <div class="card-actions">
-                <a href="bunny.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Bunny', 3000)">Add to Cart</button>
-              </div>
-            </div>
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>🐰 Animals</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('animals', event)">View all →</a>
           </div>
-          <div class="product-card reveal" data-category="animals" data-name="bee">
-            <img src="bee.png" alt="Bee">
-            <div class="card-inner">
-              <h2>Bee</h2><p class="price">Rs. 3,000</p>
-              <div class="card-actions">
-                <a href="bee.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Bee', 3000)">Add to Cart</button>
+          <div class="products-grid capped" id="animals-grid">
+            <div class="product-card reveal" data-category="animals" data-name="bunny">
+              <img src="bunny.png" alt="Bunny">
+              <div class="card-inner">
+                <h2>Bunny</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="bunny.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Bunny', 3000)">Add to Cart</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="product-card reveal" data-category="animals" data-name="bear">
-            <img src="bear.png" alt="Bear">
-            <div class="card-inner">
-              <h2>Bear</h2><p class="price">Rs. 3,000</p>
-              <div class="card-actions">
-                <a href="bear.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Bear', 3000)">Add to Cart</button>
+            <div class="product-card reveal" data-category="animals" data-name="bee">
+              <img src="bee.png" alt="Bee">
+              <div class="card-inner">
+                <h2>Bee</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="bee.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Bee', 3000)">Add to Cart</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="product-card reveal" data-category="animals" data-name="penguin">
-            <img src="penguin.png" alt="Penguin">
-            <div class="card-inner">
-              <h2>Pocket Penguin</h2><p class="price">Rs. 800</p>
-              <div class="card-actions">
-                <a href="penguin.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Pocket Penguin', 800)">Add to Cart</button>
+            <div class="product-card reveal" data-category="animals" data-name="bear">
+              <img src="bear.png" alt="Bear">
+              <div class="card-inner">
+                <h2>Bear</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="bear.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Bear', 3000)">Add to Cart</button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="product-card reveal" data-category="characters" data-name="mike wazowski">
-            <img src="mike.png" alt="mike wazowski">
-            <div class="card-inner">
-              <h2>mike wazowski</h2><p class="price">Rs. 1,500</p>
-              <div class="card-actions">
-                <a href="mike.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('mike wazowski', 1500)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card reveal" data-category="characters" data-name="mr bean's teddy">
-            <img src="mrbean.png" alt="mr bean's teddy">
-            <div class="card-inner">
-              <h2>Mr Bean's Teddy</h2><p class="price">Rs. 3,000</p>
-              <div class="card-actions">
-                <a href="mrbean.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart(&quot;Mr. Bean's Teddy&quot;, 3000)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          
-       
-          <div class="product-card reveal" data-category="characters" data-name="mrs teddy">
-            <img src="mrsteddy.png" alt="Mrs. Teddy">
-            <div class="card-inner">
-              <h2>Mrs. Teddy</h2><p class="price">Rs. 3,000</p>
-              <div class="card-actions">
-                <a href="mrsteddy.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Mrs. Teddy', 3000)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card reveal" data-category="characters" data-name="hello kitty">
-            <img src="hellokitty.png" alt="Hello Kitty">
-            <div class="card-inner">
-              <h2>Hello Kitty</h2><p class="price">Rs. 2,500</p>
-              <div class="card-actions">
-                <a href="hellokitty.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Hello Kitty', 2500)">Add to Cart</button>
-              </div>
-            </div>
-          </div>
-          <div class="product-card reveal" data-category="characters" data-name="pascal">
-            <img src="pascal.png" alt="Pascal">
-            <div class="card-inner">
-              <h2>Pascal</h2><p class="price">Rs. 800</p>
-              <div class="card-actions">
-                <a href="pascal.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Pascal', 800)">Add to Cart</button>
-              </div>
-            </div>
-         </div>
-         <div class="product-card reveal" data-category="flowers" data-name="lily">
-            <img src="lily.png" alt="Lily">
-            <div class="card-inner">
-              <h2>Lily</h2><p class="price">Rs. 2,000</p>
-              <div class="card-actions">
-                <a href="lily.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Lily', 2000)">Add to Cart</button>
-              </div>
-            </div>
-         </div>
-         <div class="product-card reveal" data-category="flowers" data-name="tulip">
-            <img src="tulip.png" alt="Tulip">
-            <div class="card-inner">
-              <h2>Tulip</h2><p class="price">Rs. 1,500</p>
-              <div class="card-actions">
-                <a href="tulip.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Tulip', 1,500)">Add to Cart</button>
-              </div>
-            </div>
-         </div>
-         <div class="product-card reveal" data-category="flowers" data-name="sunflower in a pot">
-            <img src="sunflowerinpot.png" alt="Sunflower in a Pot">
-            <div class="card-inner">
-              <h2>Sunflower in a Pot</h2><p class="price">Rs. 2,500</p>
-              <div class="card-actions">
-                <a href="sunflowerinpot.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Sunflower in a Pot', 2500)">Add to Cart</button>
-              </div>
-            </div>
-         </div>          
-         <div class="product-card reveal" data-category="bags" data-name="i love me bag">
-           <img src="bag.png" alt="I ♡ Me Bag">
-           <div class="card-inner">
-              <h2>I ♡ Me Bag</h2><p class="price">Rs. 4,000</p>
-              <div class="card-actions">
-                <a href="bag.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('I ♡ Me Bag', 4000)">Add to Cart</button>
-              </div>
-            </div>
-         </div>       
-         <div class="product-card reveal" data-category="home" data-name="tired or bored dino wall hanging">
-           <img src="dino.png" alt="Tired-or-Bored Dino wall hanging">
-           <div class="card-inner">
-             <h2>Tired-or-Bored Dino Wall Hanging</h2><p class="price">Rs. 3,500</p>
-             <div class="card-actions">
-                <a href="dino.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('Tired-or-Bored Dino Wall Hanging', 3500)">Add to Cart</button>
-             </div>
-           </div>
-        </div>
-        <div class="product-card reveal" data-category="home" data-name="we were infinite wall piece">
-           <img src="infinite.png" alt="We Were Infinite wall piece">
-           <div class="card-inner">
-              <h2>We Were Infinite Wall Piece</h2><p class="price">Rs. 3,500</p>
-              <div class="card-actions">
-                <a href="infinite.html" class="btn-view">View Details</a>
-                <button class="btn-cart" onclick="addToCart('We Were Infinite Wall Piece', 3500)">Add to Cart</button>
+            <div class="product-card reveal" data-category="animals" data-name="penguin">
+              <img src="penguin.png" alt="Penguin">
+              <div class="card-inner">
+                <h2>Pocket Penguin</h2><p class="price">Rs. 800</p>
+                <div class="card-actions">
+                  <a href="penguin.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Pocket Penguin', 800)">Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- CHARACTERS -->
+      <div class="category-section" id="characters">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>🧸 Characters</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('characters', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="characters-grid">
+            <div class="product-card reveal" data-category="characters" data-name="mike wazowski">
+              <img src="mike.png" alt="mike wazowski">
+              <div class="card-inner">
+                <h2>mike wazowski</h2><p class="price">Rs. 1,500</p>
+                <div class="card-actions">
+                  <a href="mike.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('mike wazowski', 1500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="mr bean's teddy">
+              <img src="mrbean.png" alt="mr bean's teddy">
+              <div class="card-inner">
+                <h2>Mr Bean's Teddy</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="mrbean.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart(&quot;Mr. Bean's Teddy&quot;, 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="mrs teddy">
+              <img src="mrsteddy.png" alt="Mrs. Teddy">
+              <div class="card-inner">
+                <h2>Mrs. Teddy</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="mrsteddy.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Mrs. Teddy', 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="hello kitty">
+              <img src="hellokitty.png" alt="Hello Kitty">
+              <div class="card-inner">
+                <h2>Hello Kitty</h2><p class="price">Rs. 2,500</p>
+                <div class="card-actions">
+                  <a href="hellokitty.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Hello Kitty', 2500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="pascal">
+              <img src="pascal.png" alt="Pascal">
+              <div class="card-inner">
+                <h2>Pascal</h2><p class="price">Rs. 800</p>
+                <div class="card-actions">
+                  <a href="pascal.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Pascal', 800)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLOWERS -->
+      <div class="category-section" id="flowers">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>🌸 Flowers</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('flowers', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="flowers-grid">
+            <div class="product-card reveal" data-category="flowers" data-name="lily">
+              <img src="lily.png" alt="Lily">
+              <div class="card-inner">
+                <h2>Lily</h2><p class="price">Rs. 2,000</p>
+                <div class="card-actions">
+                  <a href="lily.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Lily', 2000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="flowers" data-name="tulip">
+              <img src="tulip.png" alt="Tulip">
+              <div class="card-inner">
+                <h2>Tulip</h2><p class="price">Rs. 1,500</p>
+                <div class="card-actions">
+                  <a href="tulip.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Tulip', 1500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="flowers" data-name="sunflower in a pot">
+              <img src="sunflowerinpot.png" alt="Sunflower in a Pot">
+              <div class="card-inner">
+                <h2>Sunflower in a Pot</h2><p class="price">Rs. 2,500</p>
+                <div class="card-actions">
+                  <a href="sunflowerinpot.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Sunflower in a Pot', 2500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAGS & DÉCOR -->
+      <div class="category-section" id="home">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>👜 Bags &amp; Décor</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('home', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="home-grid">
+            <div class="product-card reveal" data-category="home" data-name="i love me bag">
+              <img src="bag.png" alt="I ♡ Me Bag">
+              <div class="card-inner">
+                <h2>I ♡ Me Bag</h2><p class="price">Rs. 4,000</p>
+                <div class="card-actions">
+                  <a href="bag.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('I ♡ Me Bag', 4000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="home" data-name="tired or bored dino wall hanging">
+              <img src="dino.png" alt="Tired-or-Bored Dino wall hanging">
+              <div class="card-inner">
+                <h2>Tired-or-Bored Dino Wall Hanging</h2><p class="price">Rs. 3,500</p>
+                <div class="card-actions">
+                  <a href="dino.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Tired-or-Bored Dino Wall Hanging', 3500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="home" data-name="we were infinite wall piece">
+              <img src="infinite.png" alt="We Were Infinite wall piece">
+              <div class="card-inner">
+                <h2>We Were Infinite Wall Piece</h2><p class="price">Rs. 3,500</p>
+                <div class="card-actions">
+                  <a href="infinite.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('We Were Infinite Wall Piece', 3500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEYCHAINS TEASER -->
+      <div class="keychain-block reveal">
+        <div>
+          <h3>🔑 Don't forget the keychains</h3>
+          <p>Tiny pieces, big personality — the full keychain lineup lives on its own page.</p>
+        </div>
+        <a href="keychains.html" class="btn-cart" style="width:auto;padding:12px 30px;">Shop Keychains</a>
+      </div>
 
       <p class="no-results" id="no-results" style="display:none;">No pieces match that yet. Try another search ♡</p>
     </section>
 
-    <div class="stitch-divider" aria-hidden="true"><span>♡</span></div>
+    <div class="yarn-divider" aria-hidden="true">
+      <span class="yarn-line"></span>
+      <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--mocha2)">
+        <circle cx="13" cy="13" r="8"/>
+        <path d="M6 13c2-3 5-3 7 0s5 3 7 0M6 13c2 3 5 3 7 0s5-3 7 0" stroke-width="1.1"/>
+      </svg>
+      <span class="yarn-line"></span>
+    </div>
 
     <!-- ABOUT -->
     <section class="about-section">
@@ -327,7 +383,14 @@
       </div>
     </section>
 
-    <div class="stitch-divider" aria-hidden="true"><span>✁ ✁ ✁</span></div>
+    <div class="yarn-divider" aria-hidden="true">
+      <span class="yarn-line"></span>
+      <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--mocha2)">
+        <circle cx="13" cy="13" r="8"/>
+        <path d="M6 13c2-3 5-3 7 0s5 3 7 0M6 13c2 3 5 3 7 0s5-3 7 0" stroke-width="1.1"/>
+      </svg>
+      <span class="yarn-line"></span>
+    </div>
 
     <!-- REVIEWS -->
     <section class="reviews-section">
@@ -412,7 +475,22 @@
           sec.style.display = hasMatch ? '' : 'none';
         }
       });
+      // show full preview grid (capped) on "All", expand the single grid otherwise
+      document.querySelectorAll('.products-grid').forEach(g => {
+        g.classList.toggle('capped', cat === 'all');
+      });
+      document.querySelectorAll('.cat-head .view-all-link').forEach(a => {
+        a.style.display = cat === 'all' ? '' : 'none';
+      });
+      document.querySelector('.keychain-block').style.display = cat === 'all' ? '' : 'none';
       applySearchFilter();
+    }
+
+    function viewAllCategory(cat, e) {
+      if (e) e.preventDefault();
+      const btn = document.querySelector('.chip[data-cat="' + cat + '"]');
+      filterCategory(cat, btn);
+      document.getElementById('shop').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function applySearchFilter() {
@@ -431,15 +509,18 @@
     function searchProducts() {
       const q = document.getElementById('search-input').value.trim();
       document.getElementById('search-clear').style.display = q ? 'inline' : 'none';
-      // show all sections when searching
+      // show all sections, uncap every grid, and hide view-all links while searching
       document.querySelectorAll('.category-section').forEach(s => s.style.display = '');
+      document.querySelectorAll('.products-grid').forEach(g => g.classList.toggle('capped', !q));
+      document.querySelectorAll('.cat-head .view-all-link').forEach(a => { a.style.display = q ? 'none' : ''; });
+      document.querySelector('.keychain-block').style.display = q ? 'none' : '';
       applySearchFilter();
     }
 
     function clearSearch() {
       document.getElementById('search-input').value = '';
       document.getElementById('search-clear').style.display = 'none';
-      filterCategory(activeCat, null);
+      filterCategory(activeCat, document.querySelector('.chip[data-cat="' + activeCat + '"]'));
     }
 
     function scrollToShop(e) {
@@ -474,18 +555,6 @@
         base.classList.add('active', 'breathing');
         dots.style.display = 'none';
       }
-    }
-
-    /* ── Scroll reveal ── */
-    function initReveal() {
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const items = document.querySelectorAll('.reveal');
-      if (reduce || !('IntersectionObserver' in window)) { items.forEach(el => el.classList.add('in')); return; }
-      document.querySelectorAll('.product-card').forEach((c, i) => { c.style.transitionDelay = (i % 4) * 70 + 'ms'; });
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      items.forEach(el => io.observe(el));
     }
 
     /* ── Promo popup ── */
@@ -534,7 +603,6 @@
 
     window.addEventListener('load', initHero);
     document.addEventListener('DOMContentLoaded', () => {
-      initReveal();
       initPromo();
       // apply saved filter from drawer navigation
       const saved = sessionStorage.getItem('yarnia-filter');
