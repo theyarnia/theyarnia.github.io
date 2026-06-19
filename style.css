@@ -4,12 +4,11 @@
   /* Coastal-floral palette: Amaranth · Thulian Pink · Brook Green · Chalk · Pomelo Olive */
   --pink:   #F3E3E8;   /* Chalk-tinted blush — light backgrounds */
   --cream:  #F8F1E2;   /* Chalk — main background */
-  --green:  #8FA189;   /* Brook Green, — buttons/accents */
-  --mocha:  #5B2A41;   /* Amaranth, — headings, buttons, text */
-  --mocha2: #93475F;   /* Thulian Pink, — secondary text/links */
+  --green:  #8FA189;   /* Brook Green, deepened — buttons/accents */
+  --mocha:  #5B2A41;   /* Amaranth, darkened — headings, dark buttons, text */
+  --mocha2: #93475F;   /* Thulian Pink, deepened — secondary text/links */
   --text:   #3A2433;   /* near-mocha plum — body copy */
-  --black:  #000000;
-  --white:  #FFFFFF;
+  --white:  #fff;
   --shadow: rgba(91,42,65,0.10);
 }
 
@@ -67,9 +66,9 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   min-width: 20px;
   height: 20px;
   padding: 0 5px;
-  background: var(--mocha);
-  color: var(--cream);
-  border: 2px solid var(--cream);
+  background: var(--green);
+  color: var(--white);
+  border: 2px solid var(--pink);
   border-radius: 20px;
   font-size: 0.68rem;
   font-weight: 700;
@@ -113,7 +112,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   font-family: 'Jost', sans-serif;
   font-size: 0.72rem;
   font-weight: 300;
-  color: var(--mocha);
+  color: var(--mocha2);
   font-style: italic;
   margin-top: 4px;
   letter-spacing: 0.3px;
@@ -150,7 +149,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
   width: 100%;
   height: clamp(460px, 82vh, 760px);
   overflow: hidden;
-  background: linear-gradient(140deg, var(--mocha2) 0%, #f3dcea 55%, var(--cream) 100%);
+  background: linear-gradient(140deg, var(--pink) 0%, #f3dcea 55%, var(--cream) 100%);
 }
 
 .hero-stage { position: absolute; inset: 0; }
@@ -639,7 +638,7 @@ footer .sep { opacity: 0.35; }
 }
 
 /* ── SEARCH BAR ── */
-.search-bar-wrap.scrolled {
+.search-bar-wrap {
   background: var(--mocha);
   padding: 12px 48px;
   display: flex;
@@ -825,9 +824,6 @@ footer .sep { opacity: 0.35; }
     align-items:center;
     gap:8px;
   }
-  .menu:hover {
-  background: var(--green);
-  transform: translateY(-1px);
 }
 
 /* ── SCROLL REVEAL ── */
@@ -1015,7 +1011,7 @@ footer .sep { opacity: 0.35; }
 }
 
 #promo-popup {
-  background: var(--green);
+  background: var(--white);
   border-radius: 24px;
   padding: 40px 32px;
   max-width: 380px;
@@ -1045,7 +1041,7 @@ footer .sep { opacity: 0.35; }
   border: none;
   font-size: 1.3rem;
   cursor: pointer;
-  color: var(--pink);
+  color: var(--mocha2);
   opacity: 0.6;
   transition: opacity 0.2s;
 }
@@ -1072,7 +1068,7 @@ footer .sep { opacity: 0.35; }
 
 .promo-sub {
   font-size: 0.9rem;
-  color: var(--cream);
+  color: var(--mocha2);
   font-weight: 300;
   line-height: 1.7;
   margin-bottom: 24px;
@@ -1097,7 +1093,7 @@ footer .sep { opacity: 0.35; }
 .promo-highlight {
   display: block;
   font-size: 1.1rem;
-  color: var(--mocha);
+  color: var(--green);
   font-weight: 600;
   margin: 8px 0;
   letter-spacing: 0.5px;
@@ -1118,7 +1114,7 @@ footer .sep { opacity: 0.35; }
 
 .promo-fine {
   font-size: 0.72rem;
-  color: var(--cream);
+  color: var(--mocha2);
   font-weight: 300;
   opacity: 0.7;
   margin: 14px 0;
