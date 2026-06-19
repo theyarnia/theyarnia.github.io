@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
 
 :root {
-  --pink:   #FFE5F5;
-  --cream:  #F9F1E8;
-  --green:  #909D7B;
-  --mocha:  #422B1C;
-  --mocha2: #6B3F28;
-  --text:   #2E1A10;
+  /* Coastal-floral palette: Amaranth · Thulian Pink · Brook Green · Chalk · Pomelo Olive */
+  --pink:   #F3E3E8;   /* Chalk-tinted blush — light backgrounds */
+  --cream:  #F8F1E2;   /* Chalk — main background */
+  --green:  #8FA189;   /* Brook Green, deepened — buttons/accents */
+  --mocha:  #5B2A41;   /* Amaranth, darkened — headings, dark buttons, text */
+  --mocha2: #93475F;   /* Thulian Pink, deepened — secondary text/links */
+  --text:   #3A2433;   /* near-mocha plum — body copy */
   --white:  #fff;
-  --shadow: rgba(66,43,28,0.09);
+  --shadow: rgba(91,42,65,0.10);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -842,6 +843,82 @@ footer .sep { opacity: 0.35; }
   margin-bottom: 44px;
 }
 
+.category-block {
+  max-width: 1060px;
+  margin: 0 auto 56px;
+}
+
+.cat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding: 0 4px;
+  border-bottom: 1px solid rgba(91,42,65,0.12);
+  padding-bottom: 14px;
+}
+
+.cat-head h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--mocha);
+  letter-spacing: 0.3px;
+}
+
+.view-all-link {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--mocha2);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px dashed rgba(147,71,95,0.4);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.view-all-link:hover { color: var(--green); border-color: var(--green); }
+
+.products-grid.capped .product-card:nth-child(n+5) { display: none; }
+
+.keychain-block {
+  max-width: 1060px;
+  margin: 0 auto 56px;
+  background: var(--pink);
+  border-radius: 20px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.keychain-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--mocha);
+}
+.keychain-block p { font-size: 0.88rem; color: var(--mocha2); margin-top: 4px; max-width: 38ch; }
+
+.shop-expand {
+  display: block;
+  text-align: center;
+  margin: -16px auto 56px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--mocha2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.shop-expand:hover { color: var(--green); }
+
 .category-heading {
   margin-bottom: 24px;
 }
@@ -1394,6 +1471,185 @@ footer .sep { opacity: 0.35; }
 .review-form button:hover {
   background: var(--green);
 }
+
+/* ── WHATSAPP FLOAT BUTTON ── */
+.wa-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 950;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(91,42,65,0.3);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-float svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.wa-float:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(91,42,65,0.38);
+}
+
+.wa-tip {
+  position: absolute;
+  right: 68px;
+  white-space: nowrap;
+  background: var(--mocha);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.wa-float:hover .wa-tip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 640px) {
+  .wa-float { width: 50px; height: 50px; right: 16px; bottom: 16px; }
+  .wa-float svg { width: 24px; height: 24px; }
+  .wa-tip { display: none; }
+}
+
+/* ── WHIMSICAL ACCENTS ── */
+.whimsy-squiggle {
+  display: block;
+  width: 90px;
+  height: 14px;
+  margin: 10px auto 0;
+}
+.whimsy-squiggle path {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.yarn-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 48px 0;
+  opacity: 0.7;
+}
+.yarn-divider svg { width: 26px; height: 26px; flex-shrink: 0; }
+.yarn-divider .yarn-line {
+  flex: 0 1 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mocha2), transparent);
+}
+
+/* ── PRODUCT-PAGE CALLOUTS (were completely unstyled) ── */
+.custom-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.Note-block,
+.fyi-block,
+.made-to-order {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--mocha2);
+}
+
+.Note-block {
+  background: var(--pink);
+  border: 1px solid rgba(91,42,65,0.1);
+}
+
+.fyi-block {
+  background: rgba(143,161,137,0.16);
+  border: 1px solid rgba(143,161,137,0.35);
+}
+
+.made-to-order {
+  background: var(--cream);
+  border: 1px dashed rgba(91,42,65,0.25);
+}
+
+.Note-block strong, .fyi-block strong, .made-to-order strong { color: var(--mocha); }
+
+/* ── PRODUCT THUMBNAILS (bunny.html gallery) ── */
+.product-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.product-thumbs img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.product-thumbs img:hover { opacity: 0.85; }
+.product-thumbs img.active { opacity: 1; border-color: var(--green); }
+
+/* ── MINI PAGE HERO (FAQs / Keychains) ── */
+.page-hero-mini {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+.page-hero-mini h1 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--mocha);
+  letter-spacing: 0.3px;
+}
+.page-hero-mini p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--mocha2);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* ── KEYCHAIN NOTE ── */
+.keychain-note {
+  max-width: 560px;
+  margin: 36px auto 0;
+  text-align: center;
+  background: var(--pink);
+  border-radius: 16px;
+  padding: 20px 28px;
+  font-size: 0.88rem;
+  color: var(--mocha2);
+  line-height: 1.7;
+}
+.keychain-note a { color: var(--mocha); font-weight: 500; }
+.keychain-note a:hover { color: var(--green); }
 
 /* ── Breathing animation ── */
 @keyframes breathe {
