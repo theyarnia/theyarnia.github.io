@@ -127,7 +127,7 @@ header.scrolled .brand-logo { width: 46px; height: 46px; }
 }
 
 .top-nav a {
-  background: var(--green);
+  background: var(--mocha);
   color: var(--cream);
   padding: 8px 22px;
   border-radius: 30px;
