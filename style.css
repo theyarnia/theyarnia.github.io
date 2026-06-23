@@ -708,7 +708,7 @@ footer .sep { opacity: 0.35; }
   top: 0;
   width: 320px;
   height: 100vh;
-  background: var(--white);
+  background: var(--pink);
   z-index: 1100; /* was 850 */
   transition: left 0.3s ease;
   box-shadow: 2px 0 16px rgba(92,48,48,0.2);
@@ -726,6 +726,7 @@ footer .sep { opacity: 0.35; }
   background: none;
   border: none;
   font-size: 1.2rem;
+  font-family:'Playfair Display', serif;
   color: var(--mocha2);
   cursor: pointer;
   padding: 16px 20px;
