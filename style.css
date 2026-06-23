@@ -1647,3 +1647,7 @@ footer .sep { opacity: 0.35; }
 .keychain-note a { color: var(--mocha); font-weight: 500; }
 .keychain-note a:hover { color: var(--green); }
 }
+.faq-cta .btn-cart {
+  margin-top: 12px;
+  display: inline-block;
+}
