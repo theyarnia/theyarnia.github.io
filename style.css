@@ -27,7 +27,7 @@ body {
 header {
   position: sticky;
   top: 0;
-  z-index: 900;
+  z-index: 500;
   background: rgba(250,240,240,0.82);
   -webkit-backdrop-filter: saturate(135%) blur(12px);
   backdrop-filter: saturate(135%) blur(12px);
@@ -691,7 +691,7 @@ footer .sep { opacity: 0.35; }
   position: fixed;
   inset: 0;
   background: rgba(92,48,48,0.4);
-  z-index: 1000;
+  z-index: 1050; /* was 900 */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -709,7 +709,7 @@ footer .sep { opacity: 0.35; }
   width: 320px;
   height: 100vh;
   background: var(--white);
-  z-index: 850;
+  z-index: 1100; /* was 850 */
   transition: left 0.3s ease;
   box-shadow: 2px 0 16px rgba(92,48,48,0.2);
   display: flex;
@@ -991,6 +991,8 @@ footer .sep { opacity: 0.35; }
   font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.2px;
+  z-index: 400;
+  position: relative; /* needed for z-index to apply */
 }
 
 .announcement-bar strong {
