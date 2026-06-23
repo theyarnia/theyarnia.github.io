@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
 
 :root {
-  /* Coastal-floral palette: Amaranth · Thulian Pink · Brook Green · Chalk · Pomelo Olive */
-  --pink:   #F3E3E8;   /* Chalk-tinted blush — light backgrounds */
-  --cream:  #F8F1E2;   /* Chalk — main background */
-  --green:  #8FA189;   /* Brook Green, deepened — buttons/accents */
-  --mocha:  #5B2A41;   /* Amaranth, darkened — headings, dark buttons, text */
-  --mocha2: #93475F;   /* Thulian Pink, deepened — secondary text/links */
-  --text:   #3A2433;   /* near-mocha plum — body copy */
+  /* Pastel garden palette: balanced sage green + dusty rose */
+  --pink:   #EFE0E5;   /* dusty rose — light backgrounds */
+  --cream:  #F5EFE6;   /* warm linen — main background */
+  --green:  #7FA882;   /* sage green — buttons/accents */
+  --mocha:  #4A3040;   /* deep plum — headings, dark buttons, text */
+  --mocha2: #7D5068;   /* muted mauve — secondary text/links */
+  --text:   #3D2B38;   /* near-mocha plum — body copy */
   --white:  #fff;
-  --shadow: rgba(91,42,65,0.10);
+  --shadow: rgba(74,48,64,0.10);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1002,7 +1002,9 @@ footer .sep { opacity: 0.35; }
 #promo-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(66,43,28,0.6);
+  background: rgba(74,48,64,0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1011,14 +1013,15 @@ footer .sep { opacity: 0.35; }
 }
 
 #promo-popup {
-  background: var(--white);
-  border-radius: 24px;
+  background: #F8F3ED;
+  border-radius: 28px;
   padding: 40px 32px;
   max-width: 380px;
   width: 100%;
   text-align: center;
   position: relative;
-  box-shadow: 0 20px 60px rgba(66,43,28,0.25);
+  box-shadow: 0 12px 48px rgba(74,48,64,0.14), 0 2px 8px rgba(74,48,64,0.06);
+  border: 1px solid rgba(239,224,229,0.8);
   animation: popupSlide 0.4s ease;
 }
 
@@ -1075,10 +1078,11 @@ footer .sep { opacity: 0.35; }
 }
 
 .promo-code-box {
-  background: var(--cream);
-  border-radius: 14px;
-  padding: 18px;
+  background: rgba(239,224,229,0.45);
+  border-radius: 18px;
+  padding: 20px 18px;
   margin: 20px 0;
+  border: 1px solid rgba(239,224,229,0.9);
 }
 
 .promo-code-box p {
@@ -1101,15 +1105,16 @@ footer .sep { opacity: 0.35; }
 
 .promo-code {
   display: inline-block;
-  background: var(--white);
+  background: #F8F3ED;
   color: var(--mocha);
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 10px 22px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   margin-top: 8px;
-  border: 1.5px solid var(--green);
+  border: 1.5px solid rgba(127,168,130,0.5);
+  box-shadow: 0 1px 4px rgba(127,168,130,0.12);
 }
 
 .promo-fine {
@@ -1122,21 +1127,22 @@ footer .sep { opacity: 0.35; }
 
 .promo-cta {
   background: var(--mocha);
-  color: var(--cream);
+  color: #F8F3ED;
   border: none;
-  padding: 12px 32px;
+  padding: 13px 36px;
   border-radius: 30px;
   font-family: 'Jost', sans-serif;
   font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
   letter-spacing: 0.3px;
   margin-top: 10px;
 }
 
 .promo-cta:hover {
   background: var(--green);
+  transform: translateY(-1px);
 }
 
 /* ── FILTER CHIPS ── */
@@ -1167,6 +1173,7 @@ footer .sep { opacity: 0.35; }
 .chip:hover {
   border-color: var(--mocha);
   color: var(--mocha);
+  background: rgba(74,48,64,0.04);
 }
 
 .chip.active {
@@ -1176,15 +1183,15 @@ footer .sep { opacity: 0.35; }
 }
 
 .chip-link {
-  background: var(--pink);
-  border-color: var(--pink);
-  color: var(--mocha);
+  background: transparent;
+  border-color: rgba(74,48,64,0.2);
+  color: var(--mocha2);
 }
 
 .chip-link:hover {
-  background: var(--green);
-  border-color: var(--green);
-  color: var(--white);
+  border-color: var(--mocha);
+  color: var(--mocha);
+  background: transparent;
 }
 
 /* ── ABOUT SECTION ── */
