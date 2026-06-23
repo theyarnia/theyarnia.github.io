@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarnia – Handmade Crochet, Karachi</title>
+  <meta name="description" content="Handmade crochet flowers, amigurumi characters and bags — made slow, by hand, in Karachi.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ── ANNOUNCEMENT BAR ── -->
+  <div class="announcement-bar">
+    ✨ Free shipping on orders over Rs. 5,000 &nbsp;·&nbsp; UNDER CONSTRUCTION ♡
+  </div>
+
+  <!-- ── PROMO POPUP ── -->
+  <div id="promo-overlay" style="display:none;">
+    <div id="promo-popup">
+      <button id="promo-close" onclick="closePromo()" aria-label="Close">✕</button>
+      <img src="logo.png" alt="Yarnia" class="promo-logo">
+      <h2>A little thank-you ♡</h2>
+      <p class="promo-sub">You've been browsing the pieces I lose sleep over — here's 10% off your first one.</p>
+      <div class="promo-code-box">
+        <p>Use this code at checkout</p>
+        <span class="promo-highlight">10% OFF</span>
+        <p>your first order</p>
+        <div class="promo-code">YARNIA</div>
+      </div>
+      <p class="promo-fine">Valid once per customer · New orders only</p>
+      <button class="promo-cta" onclick="closePromo()">Keep Shopping ♡</button>
+    </div>
+  </div>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-top">
+      <div class="brand-group">
+        <img src="logo.png" alt="Yarnia Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1><a href="index.html">Yarnia</a></h1>
+          <p class="tagline">Things made slow, on purpose.</p>
+        </div>
+      </div>      
+      <nav class="top-nav">
+        <button class="menu-btn" onclick="openDrawer()" aria-label="Open menu">☰ Menu</button>
+        <a href="cart.html" class="cart-link">🛒 Cart</a>
+      </nav>
+    </div>
+    <div class="search-bar-wrap">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search for animals, flowers, characters…" oninput="searchProducts()">
+        <button class="search-clear" id="search-clear" onclick="clearSearch()" style="display:none;">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── DRAWER OVERLAY ── -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+
+  <!-- ── SIDE DRAWER (opens LEFT) ── -->
+  <nav class="drawer" id="drawer">
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    <div class="drawer-logo">
+      <img src="logo.png" alt="Yarnia">
+      <span>Yarnia</span>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="index.html" onclick="closeDrawer()">🏠 Home</a></li>
+      <li><a href="#shop" onclick="closeDrawer()">🛍️ Shop All</a></li>
+      <li class="drawer-section">Shop by Category</li>
+      <li><a href="#animals" onclick="closeDrawer(); filterCategory('animals', null)">🐰 Animals</a></li>
+      <li><a href="#characters" onclick="closeDrawer(); filterCategory('characters', null)">🧸 Characters</a></li>
+      <li><a href="#flowers" onclick="closeDrawer(); filterCategory('flowers', null)">🌸 Flowers</a></li>
+      <li><a href="#home" onclick="closeDrawer(); filterCategory('home', null)">👜 Bags &amp; Décor</a></li>
+      <li><a href="keychains.html" onclick="closeDrawer()">🔑 Keychains</a></li>
+      <li class="drawer-section">More</li>
+      <li><a href="faqs.html" onclick="closeDrawer()">❓ FAQs</a></li>
+      <li><a href="contact.html" onclick="closeDrawer()">📞 Contact</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">📸 @the.yarnia_</a>
+      <a href="https://wa.me/923328234439" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero">
+    <div class="hero-stage" id="hero-stage">
+      <img class="hero-frame" data-frame src="frame1.png" alt="">
+      <img class="hero-frame" data-frame src="frame2.png" alt="">
+      <img class="hero-frame" data-frame src="frame3.png" alt="">
+      <img class="hero-frame" data-frame src="frame4.png" alt="">
+      <img class="hero-frame" data-frame src="frame5.png" alt="">
+      <img class="hero-frame" data-frame src="frame6.png" alt="">
+      <img class="hero-frame" data-frame src="frame7.png" alt="">
+      <img class="hero-frame" data-frame src="frame8.png" alt="">
+      <img class="hero-frame" data-fallback src="hero-new.png" alt="A handmade Yarnia crochet collection">
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-flip-dots" id="hero-dots" aria-hidden="true"></div>
+    <div class="hero-overlay">
+      <p class="hero-eyebrow">Handmade · One pair of hands · Karachi</p>
+      <h1 class="hero-title">Every stitch is someone's 2am ♡</h1>
+      <p class="hero-sub">No factory. No shortcuts. Just hands, yarn, and a little too much love put into every single piece.</p>
+      <a class="hero-cta" href="#shop" onclick="scrollToShop(event)">Shop the Collection <span class="arrow">↓</span></a>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ── SHOP SECTION ── -->
+    <section class="products-section" id="shop">
+      <div class="shop-intro reveal">
+        <p class="shop-eyebrow">The Collection</p>
+        <h2 class="shop-title">Made fresh, just for you</h2>
+        <svg class="whimsy-squiggle" viewBox="0 0 90 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 8 Q 13 2, 24 8 T 46 8 T 68 8 T 88 8"/>
+        </svg>
+        <p class="shop-note">A peek at each little world — search or filter to see everything.</p>
+      </div>
+
+      <div class="filter-chips reveal" id="filter-chips">
+        <button class="chip active" data-cat="all" onclick="filterCategory('all', this)">All</button>
+        <button class="chip" data-cat="animals" onclick="filterCategory('animals', this)">🐰 Animals</button>
+        <button class="chip" data-cat="characters" onclick="filterCategory('characters', this)">🧸 Characters</button>
+        <button class="chip" data-cat="flowers" onclick="filterCategory('flowers', this)">🌸 Flowers</button>
+        <button class="chip" data-cat="home" onclick="filterCategory('home', this)">👜 Bags &amp; Décor</button>
+        <a href="keychains.html" class="chip chip-link">🔑 Keychains</a>
+      </div>
+
+      <!-- ANIMALS -->
+      <div class="category-section" id="animals">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>🐰 Animals</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('animals', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="animals-grid">
+            <div class="product-card reveal" data-category="animals" data-name="bunny">
+              <img src="bunny.png" alt="Bunny">
+              <div class="card-inner">
+                <h2>Bunny</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="bunny.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Bunny', 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="animals" data-name="bee">
+              <img src="bee.png" alt="Bee">
+              <div class="card-inner">
+                <h2>Bee</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="bee.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Bee', 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="animals" data-name="bear">
+              <img src="bear.png" alt="Bear">
+              <div class="card-inner">
+                <h2>Bear</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="bear.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Bear', 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="animals" data-name="penguin">
+              <img src="penguin.png" alt="Penguin">
+              <div class="card-inner">
+                <h2>Pocket Penguin</h2><p class="price">Rs. 800</p>
+                <div class="card-actions">
+                  <a href="penguin.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Pocket Penguin', 800)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHARACTERS -->
+      <div class="category-section" id="characters">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>🧸 Characters</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('characters', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="characters-grid">
+            <div class="product-card reveal" data-category="characters" data-name="mike wazowski">
+              <img src="mike.png" alt="mike wazowski">
+              <div class="card-inner">
+                <h2>mike wazowski</h2><p class="price">Rs. 1,500</p>
+                <div class="card-actions">
+                  <a href="mike.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('mike wazowski', 1500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="mr bean's teddy">
+              <img src="mrbean.png" alt="mr bean's teddy">
+              <div class="card-inner">
+                <h2>Mr Bean's Teddy</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="mrbean.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart(&quot;Mr. Bean's Teddy&quot;, 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="mrs teddy">
+              <img src="mrsteddy.png" alt="Mrs. Teddy">
+              <div class="card-inner">
+                <h2>Mrs. Teddy</h2><p class="price">Rs. 3,000</p>
+                <div class="card-actions">
+                  <a href="mrsteddy.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Mrs. Teddy', 3000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="hello kitty">
+              <img src="hellokitty.png" alt="Hello Kitty">
+              <div class="card-inner">
+                <h2>Hello Kitty</h2><p class="price">Rs. 2,500</p>
+                <div class="card-actions">
+                  <a href="hellokitty.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Hello Kitty', 2500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="characters" data-name="pascal">
+              <img src="pascal.png" alt="Pascal">
+              <div class="card-inner">
+                <h2>Pascal</h2><p class="price">Rs. 800</p>
+                <div class="card-actions">
+                  <a href="pascal.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Pascal', 800)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLOWERS -->
+      <div class="category-section" id="flowers">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>🌸 Flowers</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('flowers', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="flowers-grid">
+            <div class="product-card reveal" data-category="flowers" data-name="lily">
+              <img src="lily.png" alt="Lily">
+              <div class="card-inner">
+                <h2>Lily</h2><p class="price">Rs. 2,000</p>
+                <div class="card-actions">
+                  <a href="lily.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Lily', 2000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="flowers" data-name="tulip">
+              <img src="tulip.png" alt="Tulip">
+              <div class="card-inner">
+                <h2>Tulip</h2><p class="price">Rs. 1,500</p>
+                <div class="card-actions">
+                  <a href="tulip.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Tulip', 1500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="flowers" data-name="sunflower in a pot">
+              <img src="sunflowerinpot.png" alt="Sunflower in a Pot">
+              <div class="card-inner">
+                <h2>Sunflower in a Pot</h2><p class="price">Rs. 2,500</p>
+                <div class="card-actions">
+                  <a href="sunflowerinpot.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Sunflower in a Pot', 2500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAGS & DÉCOR -->
+      <div class="category-section" id="home">
+        <div class="category-block">
+          <div class="cat-head">
+            <h3>👜 Bags &amp; Décor</h3>
+            <a href="#shop" class="view-all-link" onclick="viewAllCategory('home', event)">View all →</a>
+          </div>
+          <div class="products-grid capped" id="home-grid">
+            <div class="product-card reveal" data-category="home" data-name="i love me bag">
+              <img src="bag.png" alt="I ♡ Me Bag">
+              <div class="card-inner">
+                <h2>I ♡ Me Bag</h2><p class="price">Rs. 4,000</p>
+                <div class="card-actions">
+                  <a href="bag.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('I ♡ Me Bag', 4000)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="home" data-name="tired or bored dino wall hanging">
+              <img src="dino.png" alt="Tired-or-Bored Dino wall hanging">
+              <div class="card-inner">
+                <h2>Tired-or-Bored Dino Wall Hanging</h2><p class="price">Rs. 3,500</p>
+                <div class="card-actions">
+                  <a href="dino.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('Tired-or-Bored Dino Wall Hanging', 3500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="product-card reveal" data-category="home" data-name="we were infinite wall piece">
+              <img src="infinite.png" alt="We Were Infinite wall piece">
+              <div class="card-inner">
+                <h2>We Were Infinite Wall Piece</h2><p class="price">Rs. 3,500</p>
+                <div class="card-actions">
+                  <a href="infinite.html" class="btn-view">View Details</a>
+                  <button class="btn-cart" onclick="addToCart('We Were Infinite Wall Piece', 3500)">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEYCHAINS TEASER -->
+      <div class="keychain-block reveal">
+        <div>
+          <h3>🔑 Don't forget the keychains</h3>
+          <p>Tiny pieces, big personality — the full keychain lineup lives on its own page.</p>
+        </div>
+        <a href="keychains.html" class="btn-cart" style="width:auto;padding:12px 30px;">Shop Keychains</a>
+      </div>
+
+      <p class="no-results" id="no-results" style="display:none;">No pieces match that yet. Try another search ♡</p>
+    </section>
+
+    <div class="yarn-divider" aria-hidden="true">
+      <span class="yarn-line"></span>
+      <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--mocha2)">
+        <circle cx="13" cy="13" r="8"/>
+        <path d="M6 13c2-3 5-3 7 0s5 3 7 0M6 13c2 3 5 3 7 0s5-3 7 0" stroke-width="1.1"/>
+      </svg>
+      <span class="yarn-line"></span>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about-section">
+      <div class="about-inner reveal">
+        <div class="about-logo-col">
+          <img src="logo.png" alt="Yarnia" class="about-logo">
+        </div>
+        <div class="about-text-col">
+          <h2 class="about-heading">The hands behind Yarnia</h2>
+          <p>No factories, no shortcuts. Just my hands, some yarn, and a little too much love.</p>
+          <p>I started Yarnia right here in Karachi as a creative escape, and today it's a tiny, one-person shop dedicated to the art of handmade crochet. From squishy animals to custom bags and flowers that stay fresh forever, every single piece is stitched from scratch — by me.</p>
+          <p>When you buy from me, you're getting a unique creation that took hours of quiet patience to make. Slight wobbles and one-of-a-kind quirks aren't flaws; they're the proof a human made it.</p>
+          <div class="about-links">
+            <a href="contact.html">Get in Touch</a>
+            <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">@the.yarnia_</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip-dark reveal">
+      <p class="strip-quote">Every piece is one of a kind. Made by hand. Made with intent.</p>
+      <p class="strip-sub">Custom orders open — DM us on Instagram or WhatsApp</p>
+    </section>
+
+    <section class="why-section">
+      <p class="why-heading reveal">Why handmade?</p>
+      <div class="why-grid reveal">
+        <div class="why-item"><div class="why-icon">🌿</div><p class="why-title">Lasts forever</p><p class="why-body">No wilting. No fading. Real flowers die in a week.</p></div>
+        <div class="why-item"><div class="why-icon">🤍</div><p class="why-title">Made with care</p><p class="why-body">Every stitch placed by hand. No two pieces identical.</p></div>
+        <div class="why-item"><div class="why-icon">🎁</div><p class="why-title">Custom orders</p><p class="why-body">Colours, sizes, characters. Tell us what you want.</p></div>
+      </div>
+    </section>
+
+    <div class="yarn-divider" aria-hidden="true">
+      <span class="yarn-line"></span>
+      <svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--mocha2)">
+        <circle cx="13" cy="13" r="8"/>
+        <path d="M6 13c2-3 5-3 7 0s5 3 7 0M6 13c2 3 5 3 7 0s5-3 7 0" stroke-width="1.1"/>
+      </svg>
+      <span class="yarn-line"></span>
+    </div>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section">
+      <h2 class="reveal">Straight from your messages 💬</h2>
+      <p class="reveal" style="max-width:520px;margin:-12px auto 34px;font-weight:300;color:var(--mocha2);font-size:0.95rem;line-height:1.7;">The kindest words arrive as little chats and comments. Here are a few, exactly as they came in.</p>
+      <div class="proof-grid">
+        <figure class="proof-card reveal">
+          <figcaption class="proof-head"><span class="src-dot">💬</span> WhatsApp <span class="src-handle">order chat</span></figcaption>
+          <div class="proof-shot"><img src="review1.jpeg" alt="" onerror="this.style.display='none'"><span class="ph-label">review1.jpeg</span></div>
+          <figcaption class="proof-foot"><span>Verified order</span><span class="stars">★★★★★</span></figcaption>
+        </figure>
+        <figure class="proof-card ig reveal">
+          <figcaption class="proof-head"><span class="src-dot">📸</span> Instagram <span class="src-handle">@the.yarnia_</span></figcaption>
+          <div class="proof-shot"><img src="review2.jpeg" alt="" onerror="this.style.display='none'"><span class="ph-label">review2.jpeg</span></div>
+          <figcaption class="proof-foot"><span>Comment</span><span class="stars">★★★★★</span></figcaption>
+        </figure>
+        <figure class="proof-card reveal">
+          <figcaption class="proof-head"><span class="src-dot">💬</span> WhatsApp <span class="src-handle">order chat</span></figcaption>
+          <div class="proof-shot"><img src="review3.jpeg" alt="" onerror="this.style.display='none'"><span class="ph-label">review3.jpeg</span></div>
+          <figcaption class="proof-foot"><span>Verified order</span><span class="stars">★★★★★</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="review-form-box reveal">
+        <h3>Loved your piece? Tell me ♡</h3>
+        <p class="review-note">Send it over and — with your okay — it might land in the gallery above.</p>
+        <div class="review-form">
+          <input type="text" id="reviewer-name" placeholder="Your name">
+          <input type="text" id="reviewer-product" placeholder="Which piece did you buy?">
+          <div class="star-picker">
+            <span>Rating:</span>
+            <span class="star-btn" onclick="setRating(1)">★</span>
+            <span class="star-btn" onclick="setRating(2)">★</span>
+            <span class="star-btn" onclick="setRating(3)">★</span>
+            <span class="star-btn" onclick="setRating(4)">★</span>
+            <span class="star-btn" onclick="setRating(5)">★</span>
+          </div>
+          <textarea id="reviewer-message" placeholder="Write your review here…" rows="4"></textarea>
+          <button onclick="submitReview()">Send Review via WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/the.yarnia_" target="_blank" rel="noopener">📸 Instagram</a>
+    <span class="sep">·</span>
+    <a href="https://wa.me/923328234439" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <span class="sep">·</span>
+    <span>Stitched with intention, delivered with love. In Karachi · 2026</span>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="cart.js"></script>
+  <script>
+    /* ── Drawer ── */
+    function openDrawer() {
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('drawer-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('drawer-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+    /* ── Category filter ── */
+    let activeCat = 'all';
+    function filterCategory(cat, btn) {
+      activeCat = cat;
+      document.querySelectorAll('.chip').forEach(ch => ch.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(sec => {
+        if (cat === 'all') {
+          sec.style.display = '';
+        } else {
+          const hasMatch = sec.querySelector('[data-category="' + cat + '"]');
+          sec.style.display = hasMatch ? '' : 'none';
+        }
+      });
+      // show full preview grid (capped) on "All", expand the single grid otherwise
+      document.querySelectorAll('.products-grid').forEach(g => {
+        g.classList.toggle('capped', cat === 'all');
+      });
+      document.querySelectorAll('.cat-head .view-all-link').forEach(a => {
+        a.style.display = cat === 'all' ? '' : 'none';
+      });
+      document.querySelector('.keychain-block').style.display = cat === 'all' ? '' : 'none';
+      applySearchFilter();
+    }
+
+    function viewAllCategory(cat, e) {
+      if (e) e.preventDefault();
+      const btn = document.querySelector('.chip[data-cat="' + cat + '"]');
+      filterCategory(cat, btn);
+      document.getElementById('shop').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function applySearchFilter() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      let found = 0;
+      document.querySelectorAll('.product-card').forEach(c => {
+        const catOk = activeCat === 'all' || c.dataset.category === activeCat;
+        const qOk = !q || c.dataset.name.includes(q) || (c.dataset.category||'').includes(q);
+        const show = catOk && qOk;
+        c.style.display = show ? '' : 'none';
+        if (show) found++;
+      });
+      document.getElementById('no-results').style.display = found === 0 ? 'block' : 'none';
+    }
+
+    function searchProducts() {
+      const q = document.getElementById('search-input').value.trim();
+      document.getElementById('search-clear').style.display = q ? 'inline' : 'none';
+      // show all sections, uncap every grid, and hide view-all links while searching
+      document.querySelectorAll('.category-section').forEach(s => s.style.display = '');
+      document.querySelectorAll('.products-grid').forEach(g => g.classList.toggle('capped', !q));
+      document.querySelectorAll('.cat-head .view-all-link').forEach(a => { a.style.display = q ? 'none' : ''; });
+      document.querySelector('.keychain-block').style.display = q ? 'none' : '';
+      applySearchFilter();
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-clear').style.display = 'none';
+      filterCategory(activeCat, document.querySelector('.chip[data-cat="' + activeCat + '"]'));
+    }
+
+    function scrollToShop(e) {
+      if (e) e.preventDefault();
+      const el = document.getElementById('shop');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const top = el.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    /* ── Hero flipbook ── */
+    function initHero() {
+      const frames = Array.from(document.querySelectorAll('.hero-frame[data-frame]'));
+      const fallback = document.querySelector('.hero-frame[data-fallback]');
+      const dots = document.getElementById('hero-dots');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const loaded = frames.filter(f => f.complete && f.naturalWidth > 0);
+      if (loaded.length >= 2 && !reduce) {
+        let i = 0;
+        loaded[0].classList.add('active');
+        dots.innerHTML = loaded.map((_, n) => '<i' + (n === 0 ? ' class="on"' : '') + '></i>').join('');
+        const dotEls = Array.from(dots.children);
+        setInterval(() => {
+          loaded[i].classList.remove('active');
+          if (dotEls[i]) dotEls[i].classList.remove('on');
+          i = (i + 1) % loaded.length;
+          loaded[i].classList.add('active');
+          if (dotEls[i]) dotEls[i].classList.add('on');
+        }, 420);
+      } else {
+        const base = loaded[0] || fallback;
+        base.classList.add('active', 'breathing');
+        dots.style.display = 'none';
+      }
+    }
+
+    /* ── Promo popup ── */
+    function initPromo() {
+      if (sessionStorage.getItem('yarnia-promo-seen')) return;
+      let fired = false;
+      const fire = () => {
+        if (fired || sessionStorage.getItem('yarnia-promo-seen')) return;
+        fired = true;
+        document.getElementById('promo-overlay').style.display = 'flex';
+      };
+      const onScroll = () => { const heroH = document.getElementById('hero').offsetHeight || 500; if (window.scrollY > heroH * 1.15) { fire(); cleanup(); } };
+      const onLeave = (e) => { if (e.clientY <= 0) { fire(); cleanup(); } };
+      function cleanup() { window.removeEventListener('scroll', onScroll); document.removeEventListener('mouseout', onLeave); }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      document.addEventListener('mouseout', onLeave);
+    }
+    function closePromo() {
+      document.getElementById('promo-overlay').style.display = 'none';
+      sessionStorage.setItem('yarnia-promo-seen', '1');
+    }
+
+    /* ── Reviews form → WhatsApp ── */
+    let selectedRating = 0;
+    function setRating(val) {
+      selectedRating = val;
+      document.querySelectorAll('.star-btn').forEach((s, i) => {
+        s.style.color = i < val ? '#c9a84c' : '#ccc';
+      });
+    }
+    function submitReview() {
+      const name = document.getElementById('reviewer-name').value.trim();
+      const product = document.getElementById('reviewer-product').value.trim();
+      const message = document.getElementById('reviewer-message').value.trim();
+      if (!name || !message || selectedRating === 0) {
+        alert('Please fill in your name, a rating, and your review!');
+        return;
+      }
+      const stars = '★'.repeat(selectedRating) + '☆'.repeat(5 - selectedRating);
+      const text = '*New Yarnia Review* ♡\n\n👤 Name: ' + name +
+        '\n🛍️ Product: ' + (product || 'Not specified') +
+        '\n⭐ Rating: ' + stars +
+        '\n\n💬 "' + message + '"';
+      window.open('https://wa.me/923328234439?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    window.addEventListener('load', initHero);
+    document.addEventListener('DOMContentLoaded', () => {
+      initPromo();
+      // apply saved filter from drawer navigation
+      const saved = sessionStorage.getItem('yarnia-filter');
+      if (saved) { sessionStorage.removeItem('yarnia-filter'); filterCategory(saved, null); }
+    });
+  </script>
+</body>
+</html>
