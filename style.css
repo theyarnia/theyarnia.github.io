@@ -1646,13 +1646,4 @@ footer .sep { opacity: 0.35; }
 }
 .keychain-note a { color: var(--mocha); font-weight: 500; }
 .keychain-note a:hover { color: var(--green); }
-
-/* ── Breathing animation ── */
-@keyframes breathe {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.02); }
-}
-
-.hero-frame.breathing {
-  animation: breathe 4s ease-in-out infinite;
 }
