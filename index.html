@@ -643,7 +643,6 @@
       document.querySelectorAll('.cat-head .view-all-link').forEach(a => {
         a.style.display = cat === 'all' ? '' : 'none';
       });
-      document.querySelector('.keychain-block').style.display = cat === 'all' ? '' : 'none';
       applySearchFilter();
     }
 
@@ -664,7 +663,6 @@
         c.style.display = show ? '' : 'none';
         if (show) found++;
       });
-      document.getElementById('no-results').style.display = found === 0 ? 'block' : 'none';
     }
 
     function searchProducts() {
@@ -674,7 +672,6 @@
       document.querySelectorAll('.category-section').forEach(s => s.style.display = '');
       document.querySelectorAll('.products-grid').forEach(g => g.classList.toggle('capped', !q));
       document.querySelectorAll('.cat-head .view-all-link').forEach(a => { a.style.display = q ? 'none' : ''; });
-      document.querySelector('.keychain-block').style.display = q ? 'none' : '';
       applySearchFilter();
     }
 
