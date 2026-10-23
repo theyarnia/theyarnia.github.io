@@ -1,5 +1,10 @@
 // ── Yarnia Cart ──
 const DELIVERY_CHARGE = 300;
+const FREE_SHIPPING_MIN = 10000; // matches the banner: free delivery from Rs. 10,000
+
+function getDelivery(subtotal) {
+  return subtotal >= FREE_SHIPPING_MIN ? 0 : DELIVERY_CHARGE;
+}
 
 function getCart() {
   try { return JSON.parse(localStorage.getItem('yarnia_cart') || '[]'); }
@@ -109,10 +114,12 @@ function renderCart() {
   `).join('');
 
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  const grandTotal = subtotal + DELIVERY_CHARGE;
+  const delivery = getDelivery(subtotal);
+  const grandTotal = subtotal + delivery;
+  const deliveryText = delivery === 0 ? 'Free \u2661' : 'Rs. ' + delivery.toLocaleString();
   if (totalEl) totalEl.innerHTML =
     '<span style="font-size:0.85rem;opacity:0.65;">Subtotal: Rs. ' + subtotal.toLocaleString() + '</span><br>' +
-    '<span style="font-size:0.85rem;opacity:0.65;">Delivery: Rs. ' + DELIVERY_CHARGE.toLocaleString() + '</span><br>' +
+    '<span style="font-size:0.85rem;opacity:0.65;">Delivery: ' + deliveryText + '</span><br>' +
     'Total: Rs. ' + grandTotal.toLocaleString();
 }
 

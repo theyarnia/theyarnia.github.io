@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="announcement-bar">
-    ✨ Free shipping on orders over Rs. 5,000 &nbsp;·&nbsp; Custom Orders are open ♡
+    ✨ Free shipping on orders over Rs. 10,000 &nbsp;·&nbsp; Custom Orders are open ♡
   </div>
   <header>
     <div class="header-top">
@@ -149,11 +149,11 @@
       const cart = getCart();
       if (!cart.length) { msg.style.color = '#c0392b'; msg.textContent = '✕ Your cart is empty!'; return; }
       const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-      discountAmount = Math.round(subtotal * 0.10);
+      discountAmount = Math.round(subtotal * 0.20);
       discountApplied = true;
       msg.style.color = '#27ae60';
       msg.textContent = '✓ Code applied! You save Rs. ' + discountAmount.toLocaleString();
-      const grandTotal = subtotal + DELIVERY_CHARGE - discountAmount;
+      const grandTotal = subtotal + getDelivery(subtotal) - discountAmount;
       document.getElementById('cart-total').style.textDecoration = 'line-through';
       document.getElementById('cart-total').style.opacity = '0.5';
       const d = document.getElementById('cart-total-discounted');
@@ -166,8 +166,9 @@
       if (!cart.length) { alert('Your cart is empty!'); return; }
       const lines = cart.map(i => '• ' + i.name + ' x' + i.qty + ' = Rs. ' + (i.price * i.qty).toLocaleString()).join('\n');
       const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-      const finalTotal = subtotal + DELIVERY_CHARGE - (discountApplied ? discountAmount : 0);
-      const discountLine = discountApplied ? '\nDiscount (YARNIA 10%): -Rs. ' + discountAmount.toLocaleString() : '';
+      const delivery = getDelivery(subtotal);
+      const finalTotal = subtotal + delivery - (discountApplied ? discountAmount : 0);
+      const discountLine = discountApplied ? '\nDiscount (YARNIA 20%): -Rs. ' + discountAmount.toLocaleString() : '';
 
       // Customisation
       const wantsCustom = document.getElementById('custom-check').checked;
@@ -179,7 +180,7 @@
 
       const message = 'Hi Yarnia! I would like to order:\n\n' + lines +
         '\n\nSubtotal: Rs. ' + subtotal.toLocaleString() +
-        '\nDelivery: Rs. 300' + discountLine +
+        '\nDelivery: ' + (delivery === 0 ? 'Free' : 'Rs. ' + delivery.toLocaleString()) + discountLine +
         '\nTotal: Rs. ' + finalTotal.toLocaleString() +
         customLine +
         '\n\nPlease confirm!';
